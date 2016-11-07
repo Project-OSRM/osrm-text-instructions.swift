@@ -9,51 +9,39 @@
 import Foundation
 import MapboxDirections
 
-class Maneuver {
-    public let modifier: String?
-    public let type: String
-    public let exit: Int?
-    
-    internal init(modifier: String?, type: String, exit: Int?) {
-        self.modifier = modifier
-        self.type = type
-        self.exit = exit
-    }
-    
-    internal convenience init(json: [ String: AnyObject ]) {
-        self.init(
-            modifier: json["modifier"] as? String,
-            type: json["type"] as! String,
-            exit: json["exit"] as? Int
-        )
-    }
-}
-
-class Step {
-    public let maneuver: Maneuver
-    public let rotary_name: String?
+class OSRMStep {
+    public let rotaryName: String?
     public let name: String?
     public let destinations: String?
     public let mode: String?
+    public let maneuverModifier: String?
+    public let maneuverType: String
+    public let maneuverExit: Int?
     
-    internal init(maneuver: Maneuver, rotary_name: String?, name: String?, destinations: String?, mode: String?) {
-        self.maneuver = maneuver
-        self.rotary_name = rotary_name
+    internal init(rotaryName: String?, name: String?, destinations: String?, mode: String?, maneuverModifier: String?, maneuverType: String, maneuverExit: Int?) {
+        self.rotaryName = rotaryName
         self.name = name
         self.destinations = destinations
         self.mode = mode
+        self.maneuverModifier = maneuverModifier
+        self.maneuverType = maneuverType
+        self.maneuverExit = maneuverExit
     }
-    
+
     internal convenience init(json: [ String: AnyObject ]) {
+        let maneuver = json["maneuver"] as! [ String: AnyObject ]
+
         self.init(
-            maneuver: Maneuver(json: json["maneuver"] as! [ String: AnyObject ]),
-            rotary_name: json["type"] as? String,
+            rotaryName: json["rotary_name"] as? String,
             name: json["name"] as? String,
             destinations: json["destinations"] as? String,
-            mode: json["mode"] as? String
+            mode: json["mode"] as? String,
+            maneuverModifier: maneuver["modifier"] as? String,
+            maneuverType: maneuver["type"] as! String,
+            maneuverExit: maneuver["exit"] as? Int
         )
     }
-    
+
     // TODO
     //    internal convenience init(routeStep: RouteStep) {
     //        self.init()
@@ -77,9 +65,9 @@ class OSRMTextInstructions {
         self.init(version: version, instructions: plist!)
     }
     
-    func compile(step: Step) -> String? {
-        let modifier = step.maneuver.modifier
-        var type = step.maneuver.type
+    func compile(step: OSRMStep) -> String? {
+        let modifier = step.maneuverModifier
+        var type = step.maneuverType
 
         if (type != "depart" && type != "arrive" && modifier == nil) {
             // TODO: How to throw error here?
@@ -110,11 +98,11 @@ class OSRMTextInstructions {
             // TODO: Handle
             break
         case let x where x == "rotary" || x == "roundabout":
-            if((step.rotary_name != nil) && ((step.maneuver.exit != nil)) && (instructionObject.object(forKey: "name_exit") != nil)) {
+            if((step.rotaryName != nil) && ((step.maneuverExit != nil)) && (instructionObject.object(forKey: "name_exit") != nil)) {
                 instructionObject = instructionObject.object(forKey: "name_exit") as! NSDictionary
-            } else if ((step.rotary_name != nil) && (instructionObject.object(forKey: "name") != nil)) {
+            } else if ((step.rotaryName != nil) && (instructionObject.object(forKey: "name") != nil)) {
                 instructionObject = instructionObject.object(forKey: "name") as! NSDictionary
-            } else if ((step.maneuver.exit != nil) && (instructionObject.object(forKey: "exit") != nil)) {
+            } else if ((step.maneuverExit != nil) && (instructionObject.object(forKey: "exit") != nil)) {
                 instructionObject = instructionObject.object(forKey: "exit") as! NSDictionary
             } else {
                 instructionObject = instructionObject.object(forKey: "default") as! NSDictionary
@@ -145,7 +133,7 @@ class OSRMTextInstructions {
         // NOOP if they don't exist
         let nthWaypoint = "" // TODO, add correct waypoint counting
         let destination = (step.destinations ?? "").components(separatedBy: ",")[0]
-        let exit = step.maneuver.exit ?? 1 // TODO: ordinalize
+        let exit = step.maneuverExit ?? 1 // TODO: ordinalize
         let modifierConstant =
             ((self.instructions.object(forKey: "constants") as! NSDictionary)
             .object(forKey: "modifier") as! NSDictionary)
@@ -155,7 +143,7 @@ class OSRMTextInstructions {
             .replacingOccurrences(of: "{way_name}", with: wayName)
             .replacingOccurrences(of: "{destination}", with: destination)
             .replacingOccurrences(of: "{exit_number}", with: String(exit))
-            .replacingOccurrences(of: "{rotary_name}", with: step.rotary_name ?? "")
+            .replacingOccurrences(of: "{rotary_name}", with: step.rotaryName ?? "")
             .replacingOccurrences(of: "{lane_instruction}", with: "") // TODO: implement correct lane instructions
             .replacingOccurrences(of: "{modifier}", with: modifierConstant)
             .replacingOccurrences(of: "{direction}", with: "") // TODO: integrate actual direction
