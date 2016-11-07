@@ -119,29 +119,29 @@ class OSRMTextInstructions {
         }
 
         // Replace tokens
-        // NOOP if they don't exist
         let nthWaypoint = "" // TODO, add correct waypoint counting
         let destination = (step.destinations ?? "").components(separatedBy: ",")[0]
-        let exit = step.maneuverExit ?? 1 // TODO: ordinalize
+        let exit = NumberFormatter.localizedString(from: (step.maneuverExit ?? 1) as NSNumber, number: .ordinal)
         let modifierConstant =
             (((instructions["constants"]) as! NSDictionary)
             .object(forKey: "modifier") as! NSDictionary)
             .object(forKey: modifier ?? "straight") as! String
-
-        instruction = instruction
-            .replacingOccurrences(of: "{way_name}", with: wayName)
-            .replacingOccurrences(of: "{destination}", with: destination)
-            .replacingOccurrences(of: "{exit_number}", with: String(exit))
-            .replacingOccurrences(of: "{rotary_name}", with: step.rotaryName ?? "")
-            .replacingOccurrences(of: "{lane_instruction}", with: "") // TODO: implement correct lane instructions
-            .replacingOccurrences(of: "{modifier}", with: modifierConstant)
-            .replacingOccurrences(of: "{direction}", with: "") // TODO: integrate actual direction
-            .replacingOccurrences(of: "{nth}", with: nthWaypoint)
+        return instruction.components(separatedBy: " ").map({
+                (s: String) -> String in
+                    switch s {
+                    case "{way_name}": return wayName
+                    case "{destination}": return destination
+                    case "{exit_number}": return exit
+                    case "{rotary_name}": return step.rotaryName ?? ""
+                    case "{lane_instruction}": return "" // TODO: implement correct lane instructions
+                    case "{modifier}": return modifierConstant
+                    case "{direction}": return ""// TODO: integrate actual direction
+                    case "{nth}": return nthWaypoint // TODO: integrate waypoints
+                    default: return s
+                }
+            })
+            .joined(separator: " ")
             .replacingOccurrences(of: "  ", with: " ") // remove excess spaces
-
-        // TODO: capitalize
-
-        return instruction
-
+            // TODO: capitalize
     }
 }
