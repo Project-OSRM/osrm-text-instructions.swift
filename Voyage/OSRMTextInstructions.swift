@@ -48,23 +48,18 @@ class OSRMStep {
     //    }
 }
 
+// Will automatically read correctly-localized Instructions.plist
+let OSRMTextInstructionsStrings = NSDictionary(contentsOfFile: Bundle.main.path(forResource: "Instructions", ofType: "plist")!)!
+
 class OSRMTextInstructions {
-    let instructions: NSDictionary
     let version: String
+    let instructions: NSDictionary
     
-    internal init(version: String, instructions: NSDictionary) {
+    internal init(version: String) {
         self.version = version
-        self.instructions = instructions.object(forKey: version) as! NSDictionary
+        self.instructions = OSRMTextInstructionsStrings.object(forKey: self.version) as! NSDictionary
     }
-    
-    internal convenience init(version: String, language: String) {
-        // TODO: lazy load?
-        let mainBundle = Bundle(for: type(of: self))
-        let plist =  NSDictionary(contentsOfFile: mainBundle.path(forResource: "instructions/" + language + ".json", ofType: "plist")!)
-        
-        self.init(version: version, instructions: plist!)
-    }
-    
+
     func compile(step: OSRMStep) -> String? {
         let modifier = step.maneuverModifier
         var type = step.maneuverType
