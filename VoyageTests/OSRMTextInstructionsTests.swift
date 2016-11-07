@@ -21,14 +21,14 @@ class OSRMTextInstructionsTests: XCTestCase {
                 for fixture in typeDirectoryContents {
                     // parse fixture
                     let json = getFixture(url: fixture) as! [ String: AnyObject ]
-                    let step = Step(json: json["step"] as! [ String: AnyObject ])
+                    let step = OSRMStep(json: json["step"] as! [ String: AnyObject ])
 
                     // compile instruction
                     let instructions = self.instructions.compile(step: step)
 
                     // check generated instruction against fixture
                     // TODO: Remove unnecessary type filter
-                    if (true || step.maneuver.type == "turn") {
+                    if (true || step.maneuverType == "turn") {
                         XCTAssertEqual(
                             json["instruction"] as? String,
                             instructions,
