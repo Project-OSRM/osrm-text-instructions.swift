@@ -9,7 +9,7 @@
 import XCTest
 
 class OSRMTextInstructionsTests: XCTestCase {
-    let instructions = OSRMTextInstructions(version: "v5", language: "en")
+    let instructions = OSRMTextInstructions(version: "v5")
 
     func testFixtures() {
         do {
