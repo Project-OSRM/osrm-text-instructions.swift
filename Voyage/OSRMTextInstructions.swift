@@ -17,8 +17,9 @@ class OSRMStep {
     public let maneuverModifier: String?
     public let maneuverType: String
     public let maneuverExit: Int?
+    public let maneuverBearingAfter: Int?
     
-    internal init(rotaryName: String?, name: String?, destinations: String?, mode: String?, maneuverModifier: String?, maneuverType: String, maneuverExit: Int?) {
+    internal init(rotaryName: String?, name: String?, destinations: String?, mode: String?, maneuverModifier: String?, maneuverType: String, maneuverExit: Int?, maneuverBearingAfter: Int?) {
         self.rotaryName = rotaryName
         self.name = name
         self.destinations = destinations
@@ -26,6 +27,7 @@ class OSRMStep {
         self.maneuverModifier = maneuverModifier
         self.maneuverType = maneuverType
         self.maneuverExit = maneuverExit
+        self.maneuverBearingAfter = maneuverBearingAfter
     }
 
     internal convenience init(json: [ String: AnyObject ]) {
@@ -38,7 +40,8 @@ class OSRMStep {
             mode: json["mode"] as? String,
             maneuverModifier: maneuver["modifier"] as? String,
             maneuverType: maneuver["type"] as! String,
-            maneuverExit: maneuver["exit"] as? Int
+            maneuverExit: maneuver["exit"] as? Int,
+            maneuverBearingAfter: maneuver["bearing_after"] as? Int
         )
     }
 }
@@ -53,6 +56,37 @@ class OSRMTextInstructions {
     internal init(version: String) {
         self.version = version
         self.instructions = OSRMTextInstructionsStrings[version] as! NSDictionary
+    }
+
+    func directionFromDegree(degree: Int?) -> String {
+        let directions = (instructions["constants"] as! NSDictionary).object(forKey: "direction") as! [ String: String ]
+
+        // Transform degrees to their translated compass direction
+        if (degree == nil) {
+            // step had no bearing_after degree, ignoring
+            return "";
+        } else if (degree! >= 0 && degree! <= 20) {
+            return directions["north"]!
+        } else if (degree! > 20 && degree! < 70) {
+            return directions["northeast"]!
+        } else if (degree! >= 70 && degree! < 110) {
+            return directions["east"]!
+        } else if (degree! >= 110 && degree! <= 160) {
+            return directions["southeast"]!
+        } else if (degree! > 160 && degree! <= 200) {
+            return directions["south"]!
+        } else if (degree! > 200 && degree! < 250) {
+            return directions["southwest"]!
+        } else if (degree! >= 250 && degree! <= 290) {
+            return directions["west"]!
+        } else if (degree! > 290 && degree! < 340) {
+            return directions["northwest"]!
+        } else if (degree! >= 340 && degree! <= 360) {
+            return directions["north"]!
+        } else {
+            // invalid bearing
+            return "";
+        }
     }
 
     func compile(step: OSRMStep) -> String? {
@@ -135,7 +169,7 @@ class OSRMTextInstructions {
                     case "{rotary_name}": return step.rotaryName ?? ""
                     case "{lane_instruction}": return "" // TODO: implement correct lane instructions
                     case "{modifier}": return modifierConstant
-                    case "{direction}": return ""// TODO: integrate actual direction
+                    case "{direction}": return directionFromDegree(degree: step.maneuverBearingAfter)
                     case "{nth}": return nthWaypoint // TODO: integrate waypoints
                     default: return s
                 }
