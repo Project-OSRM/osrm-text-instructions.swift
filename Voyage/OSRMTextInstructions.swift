@@ -41,11 +41,6 @@ class OSRMStep {
             maneuverExit: maneuver["exit"] as? Int
         )
     }
-
-    // TODO
-    //    internal convenience init(routeStep: RouteStep) {
-    //        self.init()
-    //    }
 }
 
 // Will automatically read correctly-localized Instructions.plist
@@ -57,7 +52,7 @@ class OSRMTextInstructions {
     
     internal init(version: String) {
         self.version = version
-        self.instructions = OSRMTextInstructionsStrings.object(forKey: self.version) as! NSDictionary
+        self.instructions = OSRMTextInstructionsStrings[version] as! NSDictionary
     }
 
     func compile(step: OSRMStep) -> String? {
@@ -65,11 +60,10 @@ class OSRMTextInstructions {
         var type = step.maneuverType
 
         if (type != "depart" && type != "arrive" && modifier == nil) {
-            // TODO: How to throw error here?
             return nil
         }
 
-        if ((self.instructions.object(forKey: type) as? NSDictionary) == nil ){
+        if (instructions[type] as? NSDictionary == nil) {
             // OSRM specification assumes turn types can be added without
             // major version changes. Unknown types are to be treated as
             // type `turn` by clients
@@ -77,14 +71,14 @@ class OSRMTextInstructions {
         }
 
         var instructionObject: NSDictionary
-        let modesInstructions = self.instructions.object(forKey: "modes") as? NSDictionary
-        let typeInstructions = self.instructions.object(forKey: type) as! NSDictionary
-        if ((step.mode != nil) && modesInstructions?.object(forKey: step.mode!) != nil) {
-            instructionObject = modesInstructions?.object(forKey: step.mode!) as! NSDictionary
-        } else if ((modifier != nil) && typeInstructions.object(forKey: modifier!) != nil) {
-            instructionObject = typeInstructions.object(forKey: modifier!) as! NSDictionary
+        let modesInstructions = instructions["modes"] as? NSDictionary
+        let typeInstructions = instructions[type] as! NSDictionary
+        if (step.mode != nil && modesInstructions != nil && modesInstructions![step.mode!] != nil) {
+            instructionObject = modesInstructions![step.mode!] as! NSDictionary
+        } else if (modifier != nil && typeInstructions[modifier!] != nil) {
+            instructionObject = typeInstructions[modifier!] as! NSDictionary
         } else {
-            instructionObject = typeInstructions.object(forKey: "default") as! NSDictionary
+            instructionObject = typeInstructions["default"] as! NSDictionary
         }
 
         // Special case handling
@@ -92,15 +86,15 @@ class OSRMTextInstructions {
         case "use lane":
             // TODO: Handle
             break
-        case let x where x == "rotary" || x == "roundabout":
-            if((step.rotaryName != nil) && ((step.maneuverExit != nil)) && (instructionObject.object(forKey: "name_exit") != nil)) {
-                instructionObject = instructionObject.object(forKey: "name_exit") as! NSDictionary
-            } else if ((step.rotaryName != nil) && (instructionObject.object(forKey: "name") != nil)) {
-                instructionObject = instructionObject.object(forKey: "name") as! NSDictionary
-            } else if ((step.maneuverExit != nil) && (instructionObject.object(forKey: "exit") != nil)) {
-                instructionObject = instructionObject.object(forKey: "exit") as! NSDictionary
+        case "rotary", "roundabout":
+            if step.rotaryName != nil && step.maneuverExit != nil, let nameExit = instructionObject["name_exit"] as? NSDictionary {
+                instructionObject = nameExit
+            } else if step.rotaryName != nil, let name = instructionObject["name"] as? NSDictionary {
+                instructionObject = name
+            } else if step.maneuverExit != nil, let exit = instructionObject["exit"] as? NSDictionary {
+                instructionObject = exit
             } else {
-                instructionObject = instructionObject.object(forKey: "default") as! NSDictionary
+                instructionObject = instructionObject["default"] as! NSDictionary
             }
             break
         default:
@@ -116,12 +110,12 @@ class OSRMTextInstructions {
         // Decide which instruction string to use
         // Destination takes precedence over name
         var instruction: String
-        if ((step.destinations != nil) && instructionObject.object(forKey: "destination") != nil) {
-            instruction = instructionObject.object(forKey: "destination") as! String
-        } else if ((wayName != "") && instructionObject.object(forKey: "name") != nil) {
-            instruction = instructionObject.object(forKey: "name") as! String
+        if (step.destinations != nil && instructionObject["destination"] != nil) {
+            instruction = instructionObject["destination"] as! String
+        } else if ((wayName != "") && instructionObject["name"] != nil) {
+            instruction = instructionObject["name"] as! String
         } else {
-            instruction = instructionObject.object(forKey: "default") as! String
+            instruction = instructionObject["default"] as! String
         }
 
         // Replace tokens
@@ -130,7 +124,7 @@ class OSRMTextInstructions {
         let destination = (step.destinations ?? "").components(separatedBy: ",")[0]
         let exit = step.maneuverExit ?? 1 // TODO: ordinalize
         let modifierConstant =
-            ((self.instructions.object(forKey: "constants") as! NSDictionary)
+            (((instructions["constants"]) as! NSDictionary)
             .object(forKey: "modifier") as! NSDictionary)
             .object(forKey: modifier ?? "straight") as! String
 
