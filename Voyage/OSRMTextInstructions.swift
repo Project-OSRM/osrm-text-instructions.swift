@@ -21,6 +21,24 @@ class OSRMTextInstructions {
         self.instructions = OSRMTextInstructionsStrings[version] as! NSDictionary
     }
 
+    func laneConfig(intersection: Intersection) -> String? {
+        var config = ""
+        var currentLaneValidity:Bool? = nil
+
+        for (index, _) in (intersection.approachLanes?.enumerated())! {
+            let validity = intersection.usableApproachLanes?.contains(index)
+            if (currentLaneValidity == nil || currentLaneValidity != validity) {
+                if (validity == true) {
+                    config += "o"
+                } else {
+                    config += "x"
+                }
+                currentLaneValidity = validity
+            }
+        }
+        return config
+    }
+
     func directionFromDegree(degree: Int?) -> String {
         let directions = (instructions["constants"] as! NSDictionary).object(forKey: "direction") as! [ String: String ]
 
@@ -80,9 +98,24 @@ class OSRMTextInstructions {
         }
 
         // Special case handling
+        var laneInstruction: String?
         switch type?.description ?? "turn" {
         case "use lane":
-            // TODO: Handle
+            var laneConfig: String? = ""
+            if let intersection = step.intersections?.first {
+                laneConfig = self.laneConfig(intersection: intersection)
+            }
+            laneInstruction =
+                (((instructions["constants"]) as! NSDictionary)
+                    .object(forKey: "lanes") as! NSDictionary)
+                    .object(forKey: laneConfig ?? "") as? String
+
+            if (laneInstruction == nil) {
+                // If the lane configuration is not found, default to continue
+                instructionObject = ((instructions["use lane"]) as! NSDictionary)
+                    .object(forKey: "no_lanes") as! NSDictionary
+            }
+
             break
         case "rotary", "roundabout":
             // TODO: Enable once rotary_name exposed in RouteStep
@@ -135,7 +168,7 @@ class OSRMTextInstructions {
                     case "{exit_number}": return exit
                     // TODO: Enable once rotary_name exposed in MBRouteStep
                     // case "{rotary_name}": return step.rotaryName ?? ""
-                    case "{lane_instruction}": return "" // TODO: implement correct lane instructions
+                    case "{lane_instruction}": return laneInstruction ?? ""
                     case "{modifier}": return modifierConstant
                     case "{direction}": return directionFromDegree(degree: bearing)
                     case "{nth}": return nthWaypoint // TODO: integrate waypoints
