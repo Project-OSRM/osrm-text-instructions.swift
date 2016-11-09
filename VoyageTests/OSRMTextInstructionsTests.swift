@@ -30,17 +30,14 @@ class OSRMTextInstructionsTests: XCTestCase {
                     let step = RouteStep(json: json?["step"] as! [String: Any])
 
                     // compile instruction
-                    let instructions = self.instructions.compile(step: step)
+                    let instruction = self.instructions.compile(step: step)
 
                     // check generated instruction against fixture
-                    // TODO: Remove unnecessary type filter
-                    if (true || step.maneuverType == .turn) {
-                        XCTAssertEqual(
-                            json?["instruction"] as? String,
-                            instructions,
-                            fixture.path
-                        )
-                    }
+                    XCTAssertEqual(
+                        json!["instruction"] as? String,
+                        instruction,
+                        fixture.path
+                    )
                 }
             }
         } catch let error as NSError {
@@ -93,6 +90,9 @@ class OSRMTextInstructionsTests: XCTestCase {
         // if jsonManeuver["ref"] != nil { maneuver["ref"] = jsonManeuver["ref"] }
 
         step["maneuver"] = maneuver
+        if (jsonStep["intersections"] != nil) {
+            step["intersections"] = jsonStep["intersections"]
+        }
         fixture["step"] = step
         fixture["instruction"] = json["instruction"] as! String
 
