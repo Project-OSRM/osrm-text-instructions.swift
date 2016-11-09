@@ -9,44 +9,7 @@
 import Foundation
 import MapboxDirections
 
-class OSRMStep {
-    public let rotaryName: String?
-    public let name: String?
-    public let destinations: String?
-    public let mode: String?
-    public let maneuverModifier: String?
-    public let maneuverType: String
-    public let maneuverExit: Int?
-    public let maneuverBearingAfter: Int?
-    
-    internal init(rotaryName: String?, name: String?, destinations: String?, mode: String?, maneuverModifier: String?, maneuverType: String, maneuverExit: Int?, maneuverBearingAfter: Int?) {
-        self.rotaryName = rotaryName
-        self.name = name
-        self.destinations = destinations
-        self.mode = mode
-        self.maneuverModifier = maneuverModifier
-        self.maneuverType = maneuverType
-        self.maneuverExit = maneuverExit
-        self.maneuverBearingAfter = maneuverBearingAfter
-    }
-
-    internal convenience init(json: [ String: AnyObject ]) {
-        let maneuver = json["maneuver"] as! [ String: AnyObject ]
-
-        self.init(
-            rotaryName: json["rotary_name"] as? String,
-            name: json["name"] as? String,
-            destinations: json["destinations"] as? String,
-            mode: json["mode"] as? String,
-            maneuverModifier: maneuver["modifier"] as? String,
-            maneuverType: maneuver["type"] as! String,
-            maneuverExit: maneuver["exit"] as? Int,
-            maneuverBearingAfter: maneuver["bearing_after"] as? Int
-        )
-    }
-}
-
-// Will automatically read correctly-localized Instructions.plist
+// Will automatically read localized Instructions.plist
 let OSRMTextInstructionsStrings = NSDictionary(contentsOfFile: Bundle.main.path(forResource: "Instructions", ofType: "plist")!)!
 
 class OSRMTextInstructions {
@@ -89,26 +52,27 @@ class OSRMTextInstructions {
         }
     }
 
-    func compile(step: OSRMStep) -> String? {
-        let modifier = step.maneuverModifier
+    func compile(step: RouteStep) -> String? {
         var type = step.maneuverType
+        let modifier = step.maneuverDirection?.description
+        let mode = step.transportType
 
-        if (type != "depart" && type != "arrive" && modifier == nil) {
+        if (type != .depart && type != .arrive && modifier == nil) {
             return nil
         }
 
-        if (instructions[type] as? NSDictionary == nil) {
+        if (instructions[type?.description as Any] as? NSDictionary == nil) {
             // OSRM specification assumes turn types can be added without
             // major version changes. Unknown types are to be treated as
             // type `turn` by clients
-            type = "turn"
+            type = .turn
         }
 
         var instructionObject: NSDictionary
         let modesInstructions = instructions["modes"] as? NSDictionary
-        let typeInstructions = instructions[type] as! NSDictionary
-        if (step.mode != nil && modesInstructions != nil && modesInstructions![step.mode!] != nil) {
-            instructionObject = modesInstructions![step.mode!] as! NSDictionary
+        let typeInstructions = instructions[type?.description as Any] as! NSDictionary
+        if (mode != nil && modesInstructions != nil && modesInstructions![mode?.description as Any] != nil) {
+            instructionObject = modesInstructions![mode?.description as Any] as! NSDictionary
         } else if (modifier != nil && typeInstructions[modifier!] != nil) {
             instructionObject = typeInstructions[modifier!] as! NSDictionary
         } else {
@@ -116,16 +80,17 @@ class OSRMTextInstructions {
         }
 
         // Special case handling
-        switch type {
+        switch type?.description ?? "turn" {
         case "use lane":
             // TODO: Handle
             break
         case "rotary", "roundabout":
-            if step.rotaryName != nil && step.maneuverExit != nil, let nameExit = instructionObject["name_exit"] as? NSDictionary {
-                instructionObject = nameExit
-            } else if step.rotaryName != nil, let name = instructionObject["name"] as? NSDictionary {
-                instructionObject = name
-            } else if step.maneuverExit != nil, let exit = instructionObject["exit"] as? NSDictionary {
+            // TODO: Enable once rotary_name exposed in RouteStep
+            //            if step.rotaryName != nil && step.maneuverExit != nil, let nameExit = instructionObject["name_exit"] as? NSDictionary {
+            //                instructionObject = nameExit
+            //            } else if step.rotaryName != nil, let name = instructionObject["name"] as? NSDictionary {
+            //                instructionObject = name
+            if step.exitIndex != nil, let exit = instructionObject["exit"] as? NSDictionary {
                 instructionObject = exit
             } else {
                 instructionObject = instructionObject["default"] as! NSDictionary
@@ -155,21 +120,24 @@ class OSRMTextInstructions {
         // Replace tokens
         let nthWaypoint = "" // TODO, add correct waypoint counting
         let destination = (step.destinations ?? "").components(separatedBy: ",")[0]
-        let exit = NumberFormatter.localizedString(from: (step.maneuverExit ?? 1) as NSNumber, number: .ordinal)
+        let exit = NumberFormatter.localizedString(from: (step.exitIndex ?? 1) as NSNumber, number: .ordinal)
         let modifierConstant =
             (((instructions["constants"]) as! NSDictionary)
             .object(forKey: "modifier") as! NSDictionary)
             .object(forKey: modifier ?? "straight") as! String
+        var bearing: Int? = nil
+        if (step.finalHeading != nil) { bearing = Int(step.finalHeading! as Double) }
         return instruction.components(separatedBy: " ").map({
                 (s: String) -> String in
                     switch s {
                     case "{way_name}": return wayName
                     case "{destination}": return destination
                     case "{exit_number}": return exit
-                    case "{rotary_name}": return step.rotaryName ?? ""
+                    // TODO: Enable once rotary_name exposed in MBRouteStep
+                    // case "{rotary_name}": return step.rotaryName ?? ""
                     case "{lane_instruction}": return "" // TODO: implement correct lane instructions
                     case "{modifier}": return modifierConstant
-                    case "{direction}": return directionFromDegree(degree: step.maneuverBearingAfter)
+                    case "{direction}": return directionFromDegree(degree: bearing)
                     case "{nth}": return nthWaypoint // TODO: integrate waypoints
                     default: return s
                 }
