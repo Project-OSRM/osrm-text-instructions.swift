@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import MapboxDirections
 
 class OSRMTextInstructionsTests: XCTestCase {
     let instructions = OSRMTextInstructions(version: "v5")
@@ -20,17 +21,22 @@ class OSRMTextInstructionsTests: XCTestCase {
 
                 for fixture in typeDirectoryContents {
                     // parse fixture
-                    let json = getFixture(url: fixture) as! [ String: AnyObject ]
-                    let step = OSRMStep(json: json["step"] as! [ String: AnyObject ])
+                    let json = getFixture(url: fixture)
+                    if json == nil {
+                        XCTAssert(false, "invalid json")
+                        return
+                    }
+
+                    let step = RouteStep(json: json?["step"] as! [String: Any])
 
                     // compile instruction
                     let instructions = self.instructions.compile(step: step)
 
                     // check generated instruction against fixture
                     // TODO: Remove unnecessary type filter
-                    if (true || step.maneuverType == "turn") {
+                    if (true || step.maneuverType == .turn) {
                         XCTAssertEqual(
-                            json["instruction"] as? String,
+                            json?["instruction"] as? String,
                             instructions,
                             fixture.path
                         )
@@ -43,19 +49,53 @@ class OSRMTextInstructionsTests: XCTestCase {
         }
     }
 
-    func getFixture(url: URL) -> Any {
-        var json = Data()
+    func getFixture(url: URL) -> NSMutableDictionary? {
+        var rawJSON = Data()
         do {
-            json = try Data(contentsOf: url, options: [])
+            rawJSON = try Data(contentsOf: url, options: [])
         } catch {
             XCTAssert(false)
         }
-        var routeJSON: Any!
+
+        let json: NSDictionary
         do {
-            routeJSON = try JSONSerialization.jsonObject(with: json, options: [])
+            json = try JSONSerialization.jsonObject(with: rawJSON, options: []) as! NSDictionary
         } catch {
             XCTAssert(false)
+            return nil
         }
-        return routeJSON
+
+        // provide default values for properties that RouteStep
+        // needs, but that our not in the fixtures
+        let fixture: NSMutableDictionary = [:]
+        let maneuver: NSMutableDictionary = [
+            "location": [ 1.0, 1.0 ],
+            "instruction": "NODATA"
+        ]
+        let step: NSMutableDictionary = [
+            "mode": "driving"
+        ]
+
+        let jsonStep = json["step"] as! [ String: Any ]
+        step["name"] = jsonStep["name"]
+        if jsonStep["destinations"] != nil { step["destinations"] = jsonStep["destinations"] }
+        if jsonStep["mode"] != nil { step["mode"] = jsonStep["mode"] }
+
+        let jsonManeuver = jsonStep["maneuver"] as! [ String: Any ]
+        maneuver["type"] = jsonManeuver["type"]
+        if jsonManeuver["modifier"] != nil { maneuver["modifier"] = jsonManeuver["modifier"] }
+        if jsonManeuver["bearing_after"] != nil { maneuver["bearing_after"] = jsonManeuver["bearing_after"] }
+        if jsonManeuver["exit"] != nil { maneuver["exit"] = jsonManeuver["exit"] }
+
+        // TODO: wait until rotary_name is enabled in RouteStep
+        // if jsonManeuver["rotary_name"] != nil { maneuver["rotary_name"] = jsonManeuver["rotary_name"] }
+        // TODO: wait until ref is enabled in RouteStep
+        // if jsonManeuver["ref"] != nil { maneuver["ref"] = jsonManeuver["ref"] }
+
+        step["maneuver"] = maneuver
+        fixture["step"] = step
+        fixture["instruction"] = json["instruction"] as! String
+
+        return fixture
     }
 }
