@@ -150,7 +150,7 @@ class OSRMTextInstructions {
             instruction = instructionObject["default"] as! String
         }
 
-        // Replace tokens
+        // Prepare replacements for tokens
         let nthWaypoint = "" // TODO, add correct waypoint counting
         let destination = (step.destinations ?? "").components(separatedBy: ",")[0]
         let exit = NumberFormatter.localizedString(from: (step.exitIndex ?? 1) as NSNumber, number: .ordinal)
@@ -160,23 +160,49 @@ class OSRMTextInstructions {
             .object(forKey: modifier ?? "straight") as! String
         var bearing: Int? = nil
         if (step.finalHeading != nil) { bearing = Int(step.finalHeading! as Double) }
-        return instruction.components(separatedBy: " ").map({
-                (s: String) -> String in
-                    switch s {
-                    case "{way_name}": return wayName
-                    case "{destination}": return destination
-                    case "{exit_number}": return exit
+
+        // Replace tokens
+        let scanner = Scanner(string: instruction)
+        scanner.charactersToBeSkipped = nil
+        var result = ""
+        while (!scanner.isAtEnd) {
+            var buffer: NSString?
+
+            if scanner.scanUpTo("{", into: &buffer) {
+                result += buffer as! String
+            }
+            guard scanner.scanString("{", into: nil) else {
+                continue
+            }
+
+            var token: NSString?
+            guard scanner.scanUpTo("}", into: &token) else {
+                continue
+            }
+
+            if scanner.scanString("}", into: nil) {
+                switch token ?? "" {
+                case "way_name": result += wayName
+                case "destination": result += destination
+                case "exit_number": result += exit
                     // TODO: Enable once rotary_name exposed in MBRouteStep
-                    // case "{rotary_name}": return step.rotaryName ?? ""
-                    case "{lane_instruction}": return laneInstruction ?? ""
-                    case "{modifier}": return modifierConstant
-                    case "{direction}": return directionFromDegree(degree: bearing)
-                    case "{nth}": return nthWaypoint // TODO: integrate waypoints
-                    default: return s
+                // case "rotary_name": result += step.rotaryName ?? ""
+                case "lane_instruction": result += laneInstruction ?? ""
+                case "modifier": result += modifierConstant
+                case "direction": result += directionFromDegree(degree: bearing)
+                case "nth": result += nthWaypoint // TODO: integrate
+                default: break
                 }
-            })
-            .joined(separator: " ")
-            .replacingOccurrences(of: "  ", with: " ") // remove excess spaces
-            // TODO: capitalize
+            } else {
+                result += token as! String
+            }
+        }
+
+        // remove excess spaces
+        result = result.replacingOccurrences(of: "  ", with: " ")
+
+        // TODO: capitalize
+
+        return result
     }
 }
