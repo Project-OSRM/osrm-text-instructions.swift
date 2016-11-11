@@ -21,12 +21,24 @@ class OSRMTextInstructions {
         self.instructions = OSRMTextInstructionsStrings[version] as! NSDictionary
     }
 
+    func capitalizeFirstLetter(string: String) -> String {
+        return string.replacingCharacters(in: string.startIndex..<string.index(after: string.startIndex), with: String(string[string.startIndex]).uppercased())
+    }
+
     func laneConfig(intersection: Intersection) -> String? {
         var config = ""
         var currentLaneValidity:Bool? = nil
 
-        for (index, _) in (intersection.approachLanes?.enumerated())! {
-            let validity = intersection.usableApproachLanes?.contains(index)
+        guard let approachLanes = intersection.approachLanes else {
+            return config
+        }
+
+        guard let useableApproachLanes = intersection.usableApproachLanes else {
+            return config
+        }
+
+        for (index, _) in approachLanes.enumerated() {
+            let validity = useableApproachLanes.contains(index)
             if (currentLaneValidity == nil || currentLaneValidity != validity) {
                 if (validity == true) {
                     config += "o"
@@ -40,32 +52,33 @@ class OSRMTextInstructions {
     }
 
     func directionFromDegree(degree: Int?) -> String {
-        let directions = (instructions["constants"] as! NSDictionary).object(forKey: "direction") as! [ String: String ]
+        guard let degree = degree else {
+            // step had no bearing_after degree, ignoring
+            return ""
+        }
+
+        // fetch locatized compass directions strings
+        let directions = (instructions["constants"] as! NSDictionary)["direction"] as! [ String: String ]
 
         // Transform degrees to their translated compass direction
-        if (degree == nil) {
-            // step had no bearing_after degree, ignoring
-            return "";
-        } else if (degree! >= 0 && degree! <= 20) {
+        switch degree {
+        case 340...360, 0...20:
             return directions["north"]!
-        } else if (degree! > 20 && degree! < 70) {
+        case 20..<70:
             return directions["northeast"]!
-        } else if (degree! >= 70 && degree! < 110) {
+        case 70...110:
             return directions["east"]!
-        } else if (degree! >= 110 && degree! <= 160) {
+        case 110...160:
             return directions["southeast"]!
-        } else if (degree! > 160 && degree! <= 200) {
+        case 160...200:
             return directions["south"]!
-        } else if (degree! > 200 && degree! < 250) {
+        case 200..<250:
             return directions["southwest"]!
-        } else if (degree! >= 250 && degree! <= 290) {
+        case 250...290:
             return directions["west"]!
-        } else if (degree! > 290 && degree! < 340) {
+        case 290..<340:
             return directions["northwest"]!
-        } else if (degree! >= 340 && degree! <= 360) {
-            return directions["north"]!
-        } else {
-            // invalid bearing
+        default:
             return "";
         }
     }
@@ -75,7 +88,7 @@ class OSRMTextInstructions {
         let modifier = step.maneuverDirection?.description
         let mode = step.transportType
 
-        if (type != .depart && type != .arrive && modifier == nil) {
+        if type != .depart && type != .arrive && modifier == nil {
             return nil
         }
 
@@ -105,15 +118,11 @@ class OSRMTextInstructions {
             if let intersection = step.intersections?.first {
                 laneConfig = self.laneConfig(intersection: intersection)
             }
-            laneInstruction =
-                (((instructions["constants"]) as! NSDictionary)
-                    .object(forKey: "lanes") as! NSDictionary)
-                    .object(forKey: laneConfig ?? "") as? String
+            laneInstruction = (((instructions["constants"]) as! NSDictionary)["lanes"] as! NSDictionary)[laneConfig ?? ""] as? String
 
             if (laneInstruction == nil) {
                 // If the lane configuration is not found, default to continue
-                instructionObject = ((instructions["use lane"]) as! NSDictionary)
-                    .object(forKey: "no_lanes") as! NSDictionary
+                instructionObject = ((instructions["use lane"]) as! NSDictionary)["no_lanes"] as! NSDictionary
             }
 
             break
@@ -150,7 +159,7 @@ class OSRMTextInstructions {
             instruction = instructionObject["default"] as! String
         }
 
-        // Prepare replacements for tokens
+        // Prepare token replacements
         let nthWaypoint = "" // TODO, add correct waypoint counting
         let destination = (step.destinations ?? "").components(separatedBy: ",")[0]
         var exit: String = ""
@@ -158,9 +167,7 @@ class OSRMTextInstructions {
             exit = NumberFormatter.localizedString(from: (exitIndex) as NSNumber, number: .ordinal)
         }
         let modifierConstant =
-            (((instructions["constants"]) as! NSDictionary)
-            .object(forKey: "modifier") as! NSDictionary)
-            .object(forKey: modifier ?? "straight") as! String
+            (((instructions["constants"]) as! NSDictionary)["modifier"] as! NSDictionary)[modifier ?? "straight"] as! String
         var bearing: Int? = nil
         if (step.finalHeading != nil) { bearing = Int(step.finalHeading! as Double) }
 
@@ -202,9 +209,12 @@ class OSRMTextInstructions {
         }
 
         // remove excess spaces
-        result = result.replacingOccurrences(of: "  ", with: " ")
+        result = result.replacingOccurrences(of: "\\s\\s", with: " ", options: .regularExpression)
 
-        // TODO: capitalize
+        // capitalize
+        if ((((OSRMTextInstructionsStrings["meta"] as! NSDictionary)["capitalizeFirstLetter"]) as! Bool) == true) {
+            result = capitalizeFirstLetter(string: result)
+        }
 
         return result
     }
