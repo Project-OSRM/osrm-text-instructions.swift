@@ -42,6 +42,7 @@
 		358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSRMTextInstructions.swift; sourceTree = "<group>"; };
 		35EBDB5D1E5E1572006EB3CD /* OSRMTextInstructions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OSRMTextInstructions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C51B63E81E65FA04002F4634 /* TokenType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenType.swift; sourceTree = "<group>"; };
+		DA2DFB3B1E8373AF00CEEBE9 /* json2plist.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = json2plist.sh; sourceTree = "<group>"; };
 		DAEACB561E788D4300E481C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Instructions.plist; sourceTree = "<group>"; };
 		DAEACB581E788D5100E481C6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/Instructions.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +94,7 @@
 				352BBC381E5E5AB400703DF1 /* osrm-text-instructions */,
 				35EBDB5F1E5E1572006EB3CD /* OSRMTextInstructions */,
 				352BBC2A1E5E4D4200703DF1 /* OSRMTextInstructionsTests */,
+				DA2DFB3A1E8373A100CEEBE9 /* Scripts */,
 				35EBDB5E1E5E1572006EB3CD /* Products */,
 				35228C511E5E17040082B14F /* Frameworks */,
 			);
@@ -127,6 +129,14 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		DA2DFB3A1E8373A100CEEBE9 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				DA2DFB3B1E8373AF00CEEBE9 /* json2plist.sh */,
+			);
+			name = Scripts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -139,6 +149,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
+
+/* Begin PBXLegacyTarget section */
+		DA2DFB3D1E83744600CEEBE9 /* plists */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = DA2DFB3E1E83744600CEEBE9 /* Build configuration list for PBXLegacyTarget "plists" */;
+			buildPhases = (
+			);
+			buildToolPath = ./json2plist.sh;
+			buildWorkingDirectory = "$(SRCROOT)";
+			dependencies = (
+			);
+			name = plists;
+			passBuildSettingsInEnvironment = 1;
+			productName = plists;
+		};
+/* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
 		352BBC281E5E4D4200703DF1 /* OSRMTextInstructionsTests */ = {
@@ -198,6 +225,11 @@
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
+					DA2DFB3D1E83744600CEEBE9 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = GJZR2MEM28;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 35EBDB571E5E1572006EB3CD /* Build configuration list for PBXProject "OSRMTextInstructions" */;
@@ -215,6 +247,7 @@
 			targets = (
 				35EBDB5C1E5E1572006EB3CD /* OSRMTextInstructions */,
 				352BBC281E5E4D4200703DF1 /* OSRMTextInstructionsTests */,
+				DA2DFB3D1E83744600CEEBE9 /* plists */,
 			);
 		};
 /* End PBXProject section */
@@ -479,6 +512,31 @@
 			};
 			name = Release;
 		};
+		DA2DFB3F1E83744600CEEBE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = GJZR2MEM28;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DA2DFB401E83744600CEEBE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = GJZR2MEM28;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -508,6 +566,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		DA2DFB3E1E83744600CEEBE9 /* Build configuration list for PBXLegacyTarget "plists" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA2DFB3F1E83744600CEEBE9 /* Debug */,
+				DA2DFB401E83744600CEEBE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
