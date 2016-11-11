@@ -153,7 +153,10 @@ class OSRMTextInstructions {
         // Prepare replacements for tokens
         let nthWaypoint = "" // TODO, add correct waypoint counting
         let destination = (step.destinations ?? "").components(separatedBy: ",")[0]
-        let exit = NumberFormatter.localizedString(from: (step.exitIndex ?? 1) as NSNumber, number: .ordinal)
+        var exit: String = ""
+        if let exitIndex = step.exitIndex, exitIndex <= 10 {
+            exit = NumberFormatter.localizedString(from: (exitIndex) as NSNumber, number: .ordinal)
+        }
         let modifierConstant =
             (((instructions["constants"]) as! NSDictionary)
             .object(forKey: "modifier") as! NSDictionary)
