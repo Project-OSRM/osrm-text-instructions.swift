@@ -27,7 +27,7 @@ class OSRMTextInstructionsTests: XCTestCase {
                         return
                     }
 
-                    let step = RouteStep(json: json?["step"] as! [String: Any])
+                    let step = RouteStep(json: json!["step"] as! [String: Any])
 
                     // compile instruction
                     let instruction = self.instructions.compile(step: step)
@@ -66,8 +66,7 @@ class OSRMTextInstructionsTests: XCTestCase {
         // needs, but that our not in the fixtures
         let fixture: NSMutableDictionary = [:]
         let maneuver: NSMutableDictionary = [
-            "location": [ 1.0, 1.0 ],
-            "instruction": "NODATA"
+            "location": [ 1.0, 1.0 ]
         ]
         let step: NSMutableDictionary = [
             "mode": "driving"
