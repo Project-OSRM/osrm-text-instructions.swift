@@ -14,41 +14,43 @@ let OSRMTextInstructionsStrings = NSDictionary(contentsOfFile: Bundle.main.path(
 
 class OSRMTextInstructions {
     let version: String
-    let instructions: NSDictionary
-    
+    let instructions: [ String: Any ]
+
     internal init(version: String) {
         self.version = version
-        self.instructions = OSRMTextInstructionsStrings[version] as! NSDictionary
+        self.instructions = OSRMTextInstructionsStrings[version] as! [ String: Any ]
     }
 
     func capitalizeFirstLetter(string: String) -> String {
-        return string.replacingCharacters(in: string.startIndex..<string.index(after: string.startIndex), with: String(string[string.startIndex]).uppercased())
+        return String(string.characters.prefix(1)).uppercased() + String(string.characters.dropFirst())
     }
 
     func laneConfig(intersection: Intersection) -> String? {
-        var config = ""
-        var currentLaneValidity:Bool? = nil
-
         guard let approachLanes = intersection.approachLanes else {
-            return config
+            return ""
         }
 
         guard let useableApproachLanes = intersection.usableApproachLanes else {
-            return config
+            return ""
         }
 
-        for (index, _) in approachLanes.enumerated() {
-            let validity = useableApproachLanes.contains(index)
-            if (currentLaneValidity == nil || currentLaneValidity != validity) {
-                if (validity == true) {
-                    config += "o"
-                } else {
-                    config += "x"
-                }
-                currentLaneValidity = validity
-            }
+        // find lane configuration
+        var config = Array(repeating: "x", count: approachLanes.count)
+        for index in useableApproachLanes {
+            config[index] = "o"
         }
-        return config
+
+        // reduce lane configurations to common cases
+        var current = ""
+        return config.reduce("", {
+            (result: String?, lane: String) -> String? in
+            if (lane != current) {
+                current = lane
+                return result! + lane
+            } else {
+                return result
+            }
+        })
     }
 
     func directionFromDegree(degree: Int?) -> String {
@@ -62,19 +64,19 @@ class OSRMTextInstructions {
 
         // Transform degrees to their translated compass direction
         switch degree {
-        case 340...360, 0...20:
+        case 340..<360, 0..<20:
             return directions["north"]!
         case 20..<70:
             return directions["northeast"]!
-        case 70...110:
+        case 70..<110:
             return directions["east"]!
-        case 110...160:
+        case 110..<160:
             return directions["southeast"]!
-        case 160...200:
+        case 160..<200:
             return directions["south"]!
         case 200..<250:
             return directions["southwest"]!
-        case 250...290:
+        case 250..<290:
             return directions["west"]!
         case 290..<340:
             return directions["northwest"]!
@@ -92,7 +94,7 @@ class OSRMTextInstructions {
             return nil
         }
 
-        if (instructions[type?.description as Any] as? NSDictionary == nil) {
+        if instructions[type?.description ?? ""] as? NSDictionary == nil {
             // OSRM specification assumes turn types can be added without
             // major version changes. Unknown types are to be treated as
             // type `turn` by clients
@@ -101,10 +103,10 @@ class OSRMTextInstructions {
 
         var instructionObject: NSDictionary
         let modesInstructions = instructions["modes"] as? NSDictionary
-        let typeInstructions = instructions[type?.description as Any] as! NSDictionary
-        if (mode != nil && modesInstructions != nil && modesInstructions![mode?.description as Any] != nil) {
+        let typeInstructions = instructions[type?.description ?? ""] as! NSDictionary
+        if mode != nil && modesInstructions != nil && modesInstructions![mode?.description as Any] != nil {
             instructionObject = modesInstructions![mode?.description as Any] as! NSDictionary
-        } else if (modifier != nil && typeInstructions[modifier!] != nil) {
+        } else if modifier != nil && typeInstructions[modifier!] != nil {
             instructionObject = typeInstructions[modifier!] as! NSDictionary
         } else {
             instructionObject = typeInstructions["default"] as! NSDictionary
@@ -120,8 +122,8 @@ class OSRMTextInstructions {
             }
             laneInstruction = (((instructions["constants"]) as! NSDictionary)["lanes"] as! NSDictionary)[laneConfig ?? ""] as? String
 
-            if (laneInstruction == nil) {
-                // If the lane configuration is not found, default to continue
+            if laneInstruction == nil {
+                // Lane configuration is not found, default to continue
                 instructionObject = ((instructions["use lane"]) as! NSDictionary)["no_lanes"] as! NSDictionary
             }
 
@@ -151,9 +153,9 @@ class OSRMTextInstructions {
         // Decide which instruction string to use
         // Destination takes precedence over name
         var instruction: String
-        if (step.destinations != nil && instructionObject["destination"] != nil) {
+        if step.destinations != nil && instructionObject["destination"] != nil {
             instruction = instructionObject["destination"] as! String
-        } else if ((wayName != "") && instructionObject["name"] != nil) {
+        } else if wayName != "" && instructionObject["name"] != nil {
             instruction = instructionObject["name"] as! String
         } else {
             instruction = instructionObject["default"] as! String
@@ -169,13 +171,13 @@ class OSRMTextInstructions {
         let modifierConstant =
             (((instructions["constants"]) as! NSDictionary)["modifier"] as! NSDictionary)[modifier ?? "straight"] as! String
         var bearing: Int? = nil
-        if (step.finalHeading != nil) { bearing = Int(step.finalHeading! as Double) }
+        if step.finalHeading != nil { bearing = Int(step.finalHeading! as Double) }
 
         // Replace tokens
         let scanner = Scanner(string: instruction)
         scanner.charactersToBeSkipped = nil
         var result = ""
-        while (!scanner.isAtEnd) {
+        while !scanner.isAtEnd {
             var buffer: NSString?
 
             if scanner.scanUpTo("{", into: &buffer) {
@@ -195,7 +197,7 @@ class OSRMTextInstructions {
                 case "way_name": result += wayName
                 case "destination": result += destination
                 case "exit_number": result += exit
-                    // TODO: Enable once rotary_name exposed in MBRouteStep
+                // TODO: Enable once rotary_name exposed in MBRouteStep
                 // case "rotary_name": result += step.rotaryName ?? ""
                 case "lane_instruction": result += laneInstruction ?? ""
                 case "modifier": result += modifierConstant
@@ -212,7 +214,7 @@ class OSRMTextInstructions {
         result = result.replacingOccurrences(of: "\\s\\s", with: " ", options: .regularExpression)
 
         // capitalize
-        if ((((OSRMTextInstructionsStrings["meta"] as! NSDictionary)["capitalizeFirstLetter"]) as! Bool) == true) {
+        if (((OSRMTextInstructionsStrings["meta"] as! NSDictionary)["capitalizeFirstLetter"]) as! Bool) == true {
             result = capitalizeFirstLetter(string: result)
         }
 
