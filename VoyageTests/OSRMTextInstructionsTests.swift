@@ -12,29 +12,35 @@ import MapboxDirections
 class OSRMTextInstructionsTests: XCTestCase {
     let instructions = OSRMTextInstructions(version: "v5")
 
+    func testCapitalizeFirstLetter() {
+        XCTAssertEqual("Capitalized String", instructions.capitalizeFirstLetter(string: ("capitalized String")))
+        XCTAssertEqual("Capitalized String", instructions.capitalizeFirstLetter(string: ("Capitalized String")))
+        XCTAssertEqual("S", instructions.capitalizeFirstLetter(string: ("s")))
+        XCTAssertEqual("S", instructions.capitalizeFirstLetter(string: ("S")))
+        XCTAssertEqual("", instructions.capitalizeFirstLetter(string: ("")))
+    }
+
     func testFixtures() {
         do {
-            let url = URL(fileURLWithPath: "/Users/johan/Code/mapbox/voyage/osrm-text-instructions/test/fixtures/v5/")
+            let url = URL(fileURLWithPath: Bundle.main.resourcePath! + "/osrm-text-instructions/test/fixtures/v5/")
             let directoryContents = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: [])
             for type in directoryContents {
                 let typeDirectoryContents = try FileManager.default.contentsOfDirectory(at: type, includingPropertiesForKeys: nil, options: [])
-
                 for fixture in typeDirectoryContents {
                     // parse fixture
-                    let json = getFixture(url: fixture)
-                    if json == nil {
+                    guard let json = getFixture(url: fixture) else {
                         XCTAssert(false, "invalid json")
                         return
                     }
 
-                    let step = RouteStep(json: json!["step"] as! [String: Any])
+                    let step = RouteStep(json: json["step"] as! [String: Any])
 
                     // compile instruction
                     let instruction = self.instructions.compile(step: step)
 
                     // check generated instruction against fixture
                     XCTAssertEqual(
-                        json!["instruction"] as? String,
+                        json["instruction"] as? String,
                         instruction,
                         fixture.path
                     )
@@ -74,24 +80,39 @@ class OSRMTextInstructionsTests: XCTestCase {
 
         let jsonStep = json["step"] as! [ String: Any ]
         step["name"] = jsonStep["name"]
-        if jsonStep["destinations"] != nil { step["destinations"] = jsonStep["destinations"] }
-        if jsonStep["mode"] != nil { step["mode"] = jsonStep["mode"] }
+        if let destinations = jsonStep["destinations"] {
+            step["destinations"] = destinations
+        }
+        if let mode = jsonStep["mode"] {
+            step["mode"] = mode
+        }
 
         let jsonManeuver = jsonStep["maneuver"] as! [ String: Any ]
         maneuver["type"] = jsonManeuver["type"]
-        if jsonManeuver["modifier"] != nil { maneuver["modifier"] = jsonManeuver["modifier"] }
-        if jsonManeuver["bearing_after"] != nil { maneuver["bearing_after"] = jsonManeuver["bearing_after"] }
-        if jsonManeuver["exit"] != nil { maneuver["exit"] = jsonManeuver["exit"] }
-
-        // TODO: wait until rotary_name is enabled in RouteStep
-        // if jsonManeuver["rotary_name"] != nil { maneuver["rotary_name"] = jsonManeuver["rotary_name"] }
-        // TODO: wait until ref is enabled in RouteStep
-        // if jsonManeuver["ref"] != nil { maneuver["ref"] = jsonManeuver["ref"] }
-
-        step["maneuver"] = maneuver
-        if (jsonStep["intersections"] != nil) {
-            step["intersections"] = jsonStep["intersections"]
+        if let modifier = jsonManeuver["modifier"] {
+            maneuver["modifier"] = modifier
         }
+        if let bearingAfter = jsonManeuver["bearing_after"] {
+            maneuver["bearing_after"] = bearingAfter
+        }
+        if let exit = jsonManeuver["exit"] {
+            maneuver["exit"] = exit
+        }
+        // TODO: wait until rotary_name is enabled in RouteStep
+        //  if let rotaryName = jsonManeuver["rotary_name"] {
+        //      maneuver["rotary_name"] = rotaryName
+        //  }
+
+        // TODO: wait until ref is enabled in RouteStep
+        //  if let ref = jsonManeuver["ref"] {
+        //      maneuver["ref"] = ref
+        //  }
+
+
+        if let intersections = jsonStep["intersections"] {
+            step["intersections"] = intersections
+        }
+        step["maneuver"] = maneuver
         fixture["step"] = step
         fixture["instruction"] = json["instruction"] as! String
 
