@@ -80,6 +80,9 @@ class OSRMTextInstructionsTests: XCTestCase {
 
         let jsonStep = json["step"] as! [ String: Any ]
         step["name"] = jsonStep["name"]
+        if let ref = jsonStep["ref"] {
+            step["ref"] = ref
+        }
         if let destinations = jsonStep["destinations"] {
             step["destinations"] = destinations
         }
@@ -98,21 +101,14 @@ class OSRMTextInstructionsTests: XCTestCase {
         if let exit = jsonManeuver["exit"] {
             maneuver["exit"] = exit
         }
-        // TODO: wait until rotary_name is enabled in RouteStep
-        //  if let rotaryName = jsonManeuver["rotary_name"] {
-        //      maneuver["rotary_name"] = rotaryName
-        //  }
+        if let rotaryName = jsonManeuver["rotary_name"] {
+            maneuver["rotary_name"] = rotaryName
+        }
 
-        // TODO: wait until ref is enabled in RouteStep
-        //  if let ref = jsonManeuver["ref"] {
-        //      maneuver["ref"] = ref
-        //  }
-
-
+        step["maneuver"] = maneuver
         if let intersections = jsonStep["intersections"] {
             step["intersections"] = intersections
         }
-        step["maneuver"] = maneuver
         fixture["step"] = step
         fixture["instruction"] = json["instruction"] as! String
 
