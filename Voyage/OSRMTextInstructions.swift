@@ -147,8 +147,16 @@ class OSRMTextInstructions {
 
         // TODO: Decide way_name with special handling for name and ref
         var wayName = ""
-        let name = step.name ?? ""
-        wayName = name // TODO: Remove
+        let name = step.names?.first ?? ""
+        let ref = step.codes?.first
+
+        if (!name.isEmpty && ref != nil && name != ref) {
+            wayName = name + " (" + ref! + ")";
+        } else if (name.isEmpty && ref != nil) {
+            wayName = ref!;
+        } else {
+            wayName = name;
+        }
 
         // Decide which instruction string to use
         // Destination takes precedence over name
@@ -163,7 +171,7 @@ class OSRMTextInstructions {
 
         // Prepare token replacements
         let nthWaypoint = "" // TODO, add correct waypoint counting
-        let destination = (step.destinations ?? "").components(separatedBy: ",")[0]
+        let destination = step.destinations?.first ?? ""
         var exit: String = ""
         if let exitIndex = step.exitIndex, exitIndex <= 10 {
             exit = NumberFormatter.localizedString(from: (exitIndex) as NSNumber, number: .ordinal)
