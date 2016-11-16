@@ -89,6 +89,9 @@ class OSRMTextInstructionsTests: XCTestCase {
         if let mode = jsonStep["mode"] {
             step["mode"] = mode
         }
+        if let rotaryName = jsonStep["rotary_name"] {
+            step["rotary_name"] = rotaryName
+        }
 
         let jsonManeuver = jsonStep["maneuver"] as! [ String: Any ]
         maneuver["type"] = jsonManeuver["type"]
@@ -100,9 +103,6 @@ class OSRMTextInstructionsTests: XCTestCase {
         }
         if let exit = jsonManeuver["exit"] {
             maneuver["exit"] = exit
-        }
-        if let rotaryName = jsonManeuver["rotary_name"] {
-            maneuver["rotary_name"] = rotaryName
         }
 
         step["maneuver"] = maneuver
