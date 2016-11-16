@@ -22,7 +22,7 @@ class OSRMTextInstructionsTests: XCTestCase {
 
     func testFixtures() {
         do {
-            let url = URL(fileURLWithPath: Bundle.main.resourcePath! + "/osrm-text-instructions/test/fixtures/v5/")
+            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "v5", ofType: nil, inDirectory: "osrm-text-instructions/test/fixtures/")!)
             let directoryContents = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: [])
             for type in directoryContents {
                 let typeDirectoryContents = try FileManager.default.contentsOfDirectory(at: type, includingPropertiesForKeys: nil, options: [])
