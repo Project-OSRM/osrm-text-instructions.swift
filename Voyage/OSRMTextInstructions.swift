@@ -104,16 +104,18 @@ class OSRMTextInstructions {
         var instructionObject: NSDictionary
         let modesInstructions = instructions["modes"] as? NSDictionary
         let typeInstructions = instructions[type?.description ?? ""] as! NSDictionary
-        if mode != nil && modesInstructions != nil && modesInstructions![mode?.description as Any] != nil {
-            instructionObject = modesInstructions![mode?.description as Any] as! NSDictionary
-        } else if modifier != nil && typeInstructions[modifier!] != nil {
-            instructionObject = typeInstructions[modifier!] as! NSDictionary
+        if let mode = mode, let modesInstructions = modesInstructions, let modesInstruction = modesInstructions[mode.description as Any] as? NSDictionary {
+            instructionObject = modesInstruction
+        } else if let modifier = modifier, let typeInstruction = typeInstructions[modifier] as? NSDictionary {
+            instructionObject = typeInstruction
         } else {
             instructionObject = typeInstructions["default"] as! NSDictionary
         }
 
         // Special case handling
         var laneInstruction: String?
+        var rotaryName = ""
+        var wayName = ""
         switch type?.description ?? "turn" {
         case "use lane":
             var laneConfig: String? = ""
@@ -129,13 +131,15 @@ class OSRMTextInstructions {
 
             break
         case "rotary", "roundabout":
-            // TODO: Enable once rotary_name exposed in RouteStep
-            //            if step.rotaryName != nil && step.maneuverExit != nil, let nameExit = instructionObject["name_exit"] as? NSDictionary {
-            //                instructionObject = nameExit
-            //            } else if step.rotaryName != nil, let name = instructionObject["name"] as? NSDictionary {
-            //                instructionObject = name
-            if step.exitIndex != nil, let exit = instructionObject["exit"] as? NSDictionary {
-                instructionObject = exit
+            wayName = step.exitNames?.first ?? ""
+            if let _rotaryName = step.names?.first, let _ = step.exitIndex, let obj = instructionObject["name_exit"] as? NSDictionary {
+                instructionObject = obj
+                rotaryName = _rotaryName
+            } else if let _rotaryName = step.names?.first, let obj = instructionObject["name"] as? NSDictionary {
+                instructionObject = obj
+                rotaryName = _rotaryName
+            } else if let _ = step.exitIndex, let obj = instructionObject["exit"] as? NSDictionary {
+                instructionObject = obj
             } else {
                 instructionObject = instructionObject["default"] as! NSDictionary
             }
@@ -145,26 +149,26 @@ class OSRMTextInstructions {
             break
         }
 
-        // TODO: Decide way_name with special handling for name and ref
-        var wayName = ""
-        let name = step.names?.first ?? ""
-        let ref = step.codes?.first
-
-        if (!name.isEmpty && ref != nil && name != ref) {
-            wayName = name + " (" + ref! + ")";
-        } else if (name.isEmpty && ref != nil) {
-            wayName = ref!;
-        } else {
-            wayName = name;
+        // Set wayName
+        if type?.description != "rotary" && type?.description != "roundabout" {
+            let name = step.names?.first ?? ""
+            let ref = step.codes?.first
+            if !name.isEmpty, let ref = ref, name != ref {
+                wayName = name + " (" + ref + ")";
+            } else if name.isEmpty, let ref = ref {
+                wayName = ref;
+            } else {
+                wayName = name;
+            }
         }
 
         // Decide which instruction string to use
         // Destination takes precedence over name
         var instruction: String
-        if step.destinations != nil && instructionObject["destination"] != nil {
-            instruction = instructionObject["destination"] as! String
-        } else if wayName != "" && instructionObject["name"] != nil {
-            instruction = instructionObject["name"] as! String
+        if let _ = step.destinations, let obj = instructionObject["destination"] as? String {
+            instruction = obj
+        } else if !wayName.isEmpty, let obj = instructionObject["name"] as? String {
+            instruction = obj
         } else {
             instruction = instructionObject["default"] as! String
         }
@@ -205,8 +209,7 @@ class OSRMTextInstructions {
                 case "way_name": result += wayName
                 case "destination": result += destination
                 case "exit_number": result += exit
-                // TODO: Enable once rotary_name exposed in MBRouteStep
-                // case "rotary_name": result += step.rotaryName ?? ""
+                case "rotary_name": result += rotaryName
                 case "lane_instruction": result += laneInstruction ?? ""
                 case "modifier": result += modifierConstant
                 case "direction": result += directionFromDegree(degree: bearing)
