@@ -110,7 +110,7 @@ class OSRMTextInstructionsTests: XCTestCase {
             step["intersections"] = intersections
         }
         fixture["step"] = step
-        fixture["instruction"] = json["instruction"] as! String
+        fixture["instruction"] = (json["instructions"] as! [ String: Any ])["en"] as! String
 
         return fixture
     }
