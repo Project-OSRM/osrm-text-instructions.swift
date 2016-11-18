@@ -64,19 +64,19 @@ class OSRMTextInstructions {
 
         // Transform degrees to their translated compass direction
         switch degree {
-        case 340..<360, 0..<20:
+        case 340..<360, 0...20:
             return directions["north"]!
         case 20..<70:
             return directions["northeast"]!
-        case 70..<110:
+        case 70...110:
             return directions["east"]!
         case 110..<160:
             return directions["southeast"]!
-        case 160..<200:
+        case 160...200:
             return directions["south"]!
         case 200..<250:
             return directions["southwest"]!
-        case 250..<290:
+        case 250...290:
             return directions["west"]!
         case 290..<340:
             return directions["northwest"]!
