@@ -12,19 +12,57 @@ import MapboxDirections
 // Will automatically read localized Instructions.plist
 let OSRMTextInstructionsStrings = NSDictionary(contentsOfFile: Bundle.main.path(forResource: "Instructions", ofType: "plist")!)!
 
-class OSRMTextInstructions {
-    let version: String
-    let instructions: [ String: Any ]
+extension String {
+    var sentenceCased: String {
+        return String(characters.prefix(1)).uppercased() + String(characters.dropFirst())
+    }
+}
 
+class OSRMInstructionFormatter: Formatter {
+    let version: String
+    let instructions: [String: Any]
+    
+    let ordinalFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.locale = .current
+        formatter.numberStyle = .ordinal
+        return formatter
+    }()
+    
     internal init(version: String) {
         self.version = version
-        self.instructions = OSRMTextInstructionsStrings[version] as! [ String: Any ]
+        self.instructions = OSRMTextInstructionsStrings[version] as! [String: Any]
+        
+        super.init()
+    }
+    
+    required init?(coder decoder: NSCoder) {
+        if let version = decoder.decodeObject(of: NSString.self, forKey: "version") as? String {
+            self.version = version
+        } else {
+            return nil
+        }
+        
+        if let instructions = decoder.decodeObject(of: [NSDictionary.self, NSArray.self, NSString.self], forKey: "instructions") as? [String: Any] {
+            self.instructions = instructions
+        } else {
+            return nil
+        }
+        
+        super.init(coder: decoder)
+    }
+    
+    override func encode(with coder: NSCoder) {
+        super.encode(with: coder)
+        
+        coder.encode(version, forKey: "version")
+        coder.encode(instructions, forKey: "instructions")
     }
 
-    func capitalizeFirstLetter(string: String) -> String {
-        return String(string.characters.prefix(1)).uppercased() + String(string.characters.dropFirst())
+    var constants: [String: Any] {
+        return instructions["constants"] as! [String: Any]
     }
-
+    
     func laneConfig(intersection: Intersection) -> String? {
         guard let approachLanes = intersection.approachLanes else {
             return ""
@@ -60,7 +98,7 @@ class OSRMTextInstructions {
         }
 
         // fetch locatized compass directions strings
-        let directions = (instructions["constants"] as! NSDictionary)["direction"] as! [ String: String ]
+        let directions = constants["direction"] as! [String: String]
 
         // Transform degrees to their translated compass direction
         switch degree {
@@ -84,9 +122,16 @@ class OSRMTextInstructions {
             return "";
         }
     }
-
-    func compile(step: RouteStep) -> String? {
-        var type = step.maneuverType
+    
+    typealias InstructionsByToken = [String: String]
+    typealias InstructionsByModifier = [String: InstructionsByToken]
+    
+    override func string(for obj: Any?) -> String? {
+        guard let step = obj as? RouteStep else {
+            return nil
+        }
+        
+        var type = step.maneuverType ?? .turn
         let modifier = step.maneuverDirection?.description
         let mode = step.transportType
 
@@ -94,94 +139,97 @@ class OSRMTextInstructions {
             return nil
         }
 
-        if instructions[type?.description ?? ""] as? NSDictionary == nil {
+        if instructions[type.description] == nil {
             // OSRM specification assumes turn types can be added without
             // major version changes. Unknown types are to be treated as
             // type `turn` by clients
             type = .turn
         }
 
-        var instructionObject: NSDictionary
-        let modesInstructions = instructions["modes"] as? NSDictionary
-        let typeInstructions = instructions[type?.description ?? ""] as! NSDictionary
-        if let mode = mode, let modesInstructions = modesInstructions, let modesInstruction = modesInstructions[mode.description as Any] as? NSDictionary {
-            instructionObject = modesInstruction
-        } else if let modifier = modifier, let typeInstruction = typeInstructions[modifier] as? NSDictionary {
-            instructionObject = typeInstruction
-        } else {
-            instructionObject = typeInstructions["default"] as! NSDictionary
+        var instructionObject: InstructionsByToken
+        var rotaryName = ""
+        var wayName: String
+        switch type {
+        case .takeRotary, .takeRoundabout:
+            // Special instruction types have an intermediate level keyed to “default”.
+            let instructionsByModifier = instructions[type.description] as! [String: InstructionsByModifier]
+            let defaultInstructions = instructionsByModifier["default"]!
+            
+            wayName = step.exitNames?.first ?? ""
+            if let _rotaryName = step.names?.first, let _ = step.exitIndex, let obj = defaultInstructions["name_exit"] {
+                instructionObject = obj
+                rotaryName = _rotaryName
+            } else if let _rotaryName = step.names?.first, let obj = defaultInstructions["name"] {
+                instructionObject = obj
+                rotaryName = _rotaryName
+            } else if let _ = step.exitIndex, let obj = defaultInstructions["exit"] {
+                instructionObject = obj
+            } else {
+                instructionObject = defaultInstructions["default"]!
+            }
+        default:
+            var typeInstructions = instructions[type.description] as! InstructionsByModifier
+            let modesInstructions = instructions["modes"] as? InstructionsByModifier
+            if let mode = mode, let modesInstructions = modesInstructions, let modesInstruction = modesInstructions[mode.description] {
+                instructionObject = modesInstruction
+            } else if let modifier = modifier, let typeInstruction = typeInstructions[modifier] {
+                instructionObject = typeInstruction
+            } else {
+                instructionObject = typeInstructions["default"]!
+            }
+            
+            // Set wayName
+            let name = step.names?.first
+            let ref = step.codes?.first
+            if let name = name, let ref = ref, name != ref {
+                wayName = "\(name) (\(ref))"
+            } else if name == nil, let ref = ref {
+                wayName = ref
+            } else {
+                wayName = name ?? ""
+            }
         }
 
         // Special case handling
         var laneInstruction: String?
-        var rotaryName = ""
-        var wayName = ""
-        switch type?.description ?? "turn" {
-        case "use lane":
-            var laneConfig: String? = ""
+        switch type {
+        case .useLane:
+            var laneConfig: String?
             if let intersection = step.intersections?.first {
                 laneConfig = self.laneConfig(intersection: intersection)
             }
-            laneInstruction = (((instructions["constants"]) as! NSDictionary)["lanes"] as! NSDictionary)[laneConfig ?? ""] as? String
+            let laneInstructions = constants["lanes"] as! [String: String]
+            laneInstruction = laneInstructions[laneConfig ?? ""]
 
             if laneInstruction == nil {
                 // Lane configuration is not found, default to continue
-                instructionObject = ((instructions["use lane"]) as! NSDictionary)["no_lanes"] as! NSDictionary
+                let useLaneConfiguration = instructions["use lane"] as! InstructionsByModifier
+                instructionObject = useLaneConfiguration["no_lanes"]!
             }
-
-            break
-        case "rotary", "roundabout":
-            wayName = step.exitNames?.first ?? ""
-            if let _rotaryName = step.names?.first, let _ = step.exitIndex, let obj = instructionObject["name_exit"] as? NSDictionary {
-                instructionObject = obj
-                rotaryName = _rotaryName
-            } else if let _rotaryName = step.names?.first, let obj = instructionObject["name"] as? NSDictionary {
-                instructionObject = obj
-                rotaryName = _rotaryName
-            } else if let _ = step.exitIndex, let obj = instructionObject["exit"] as? NSDictionary {
-                instructionObject = obj
-            } else {
-                instructionObject = instructionObject["default"] as! NSDictionary
-            }
-            break
         default:
-            // NOOP
             break
-        }
-
-        // Set wayName
-        if type?.description != "rotary" && type?.description != "roundabout" {
-            let name = step.names?.first ?? ""
-            let ref = step.codes?.first
-            if !name.isEmpty, let ref = ref, name != ref {
-                wayName = name + " (" + ref + ")";
-            } else if name.isEmpty, let ref = ref {
-                wayName = ref;
-            } else {
-                wayName = name;
-            }
         }
 
         // Decide which instruction string to use
         // Destination takes precedence over name
         var instruction: String
-        if let _ = step.destinations, let obj = instructionObject["destination"] as? String {
+        if let _ = step.destinations, let obj = instructionObject["destination"] {
             instruction = obj
-        } else if !wayName.isEmpty, let obj = instructionObject["name"] as? String {
+        } else if !wayName.isEmpty, let obj = instructionObject["name"] {
             instruction = obj
         } else {
-            instruction = instructionObject["default"] as! String
+            instruction = instructionObject["default"]!
         }
 
         // Prepare token replacements
-        let nthWaypoint = "" // TODO, add correct waypoint counting
+        let nthWaypoint = "" // TODO: add correct waypoint counting
         let destination = step.destinations?.first ?? ""
         var exit: String = ""
         if let exitIndex = step.exitIndex, exitIndex <= 10 {
-            exit = NumberFormatter.localizedString(from: (exitIndex) as NSNumber, number: .ordinal)
+            exit = ordinalFormatter.string(from: exitIndex as NSNumber)!
         }
-        let modifierConstant =
-            (((instructions["constants"]) as! NSDictionary)["modifier"] as! NSDictionary)[modifier ?? "straight"] as! String
+        let modifierConstants = constants["modifier"] as! [String: String]
+        let modifierConstant = modifierConstants[modifier ?? "straight"]!
         var bearing: Int? = nil
         if step.finalHeading != nil { bearing = Int(step.finalHeading! as Double) }
 
@@ -225,10 +273,15 @@ class OSRMTextInstructions {
         result = result.replacingOccurrences(of: "\\s\\s", with: " ", options: .regularExpression)
 
         // capitalize
-        if (((OSRMTextInstructionsStrings["meta"] as! NSDictionary)["capitalizeFirstLetter"]) as! Bool) == true {
-            result = capitalizeFirstLetter(string: result)
+        let meta = OSRMTextInstructionsStrings["meta"] as! [String: Bool]
+        if meta["capitalizeFirstLetter"]! {
+            result = result.sentenceCased
         }
 
         return result
+    }
+    
+    override func getObjectValue(_ obj: AutoreleasingUnsafeMutablePointer<AnyObject?>?, for string: String, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
+        return false
     }
 }
