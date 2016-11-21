@@ -10,14 +10,14 @@ import XCTest
 import MapboxDirections
 
 class OSRMTextInstructionsTests: XCTestCase {
-    let instructions = OSRMTextInstructions(version: "v5")
+    let instructions = OSRMInstructionFormatter(version: "v5")
 
-    func testCapitalizeFirstLetter() {
-        XCTAssertEqual("Capitalized String", instructions.capitalizeFirstLetter(string: ("capitalized String")))
-        XCTAssertEqual("Capitalized String", instructions.capitalizeFirstLetter(string: ("Capitalized String")))
-        XCTAssertEqual("S", instructions.capitalizeFirstLetter(string: ("s")))
-        XCTAssertEqual("S", instructions.capitalizeFirstLetter(string: ("S")))
-        XCTAssertEqual("", instructions.capitalizeFirstLetter(string: ("")))
+    func testSentenceCasing() {
+        XCTAssertEqual("Capitalized String", "capitalized String".sentenceCased)
+        XCTAssertEqual("Capitalized String", "Capitalized String".sentenceCased)
+        XCTAssertEqual("S", "s".sentenceCased)
+        XCTAssertEqual("S", "S".sentenceCased)
+        XCTAssertEqual("", "".sentenceCased)
     }
 
     func testFixtures() {
@@ -36,7 +36,7 @@ class OSRMTextInstructionsTests: XCTestCase {
                     let step = RouteStep(json: json["step"] as! [String: Any])
 
                     // compile instruction
-                    let instruction = self.instructions.compile(step: step)
+                    let instruction = instructions.string(for: step)
 
                     // check generated instruction against fixture
                     XCTAssertEqual(
