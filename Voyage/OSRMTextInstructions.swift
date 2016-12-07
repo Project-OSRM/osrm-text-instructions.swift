@@ -102,7 +102,7 @@ class OSRMInstructionFormatter: Formatter {
 
         // Transform degrees to their translated compass direction
         switch degree {
-        case 340..<360, 0...20:
+        case 340...360, 0...20:
             return directions["north"]!
         case 20..<70:
             return directions["northeast"]!
