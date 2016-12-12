@@ -22,6 +22,17 @@ class OSRMInstructionFormatter: Formatter {
     let version: String
     let instructions: [String: Any]
     
+    enum TokenType: String {
+        case wayName = "way_name"
+        case destination = "destination"
+        case rotaryName = "rotary_name"
+        case exit = "exit_number"
+        case laneInstruction = "lane_instruction"
+        case modifier = "modifier"
+        case direction = "direction"
+        case wayPoint = "way_point"
+    }
+    
     let ordinalFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.locale = .current
@@ -127,6 +138,10 @@ class OSRMInstructionFormatter: Formatter {
     typealias InstructionsByModifier = [String: InstructionsByToken]
     
     override func string(for obj: Any?) -> String? {
+        return string(for: obj, modifyValueByKey: nil)
+    }
+    
+    func string(for obj: Any?, modifyValueByKey: ((TokenType, String) -> String)?) -> String? {
         guard let step = obj as? RouteStep else {
             return nil
         }
@@ -181,12 +196,13 @@ class OSRMInstructionFormatter: Formatter {
             // Set wayName
             let name = step.names?.first
             let ref = step.codes?.first
+            
             if let name = name, let ref = ref, name != ref {
-                wayName = "\(name) (\(ref))"
+                wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.wayName, name)) (\(modifyValueByKey!(.wayName, ref)))" : "\(name) (\(ref))"
             } else if name == nil, let ref = ref {
-                wayName = ref
+                wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.wayName, ref))" : ref
             } else {
-                wayName = name ?? ""
+                wayName = name != nil ? modifyValueByKey != nil ? "\(modifyValueByKey!(.wayName, name!))" : name! : ""
             }
         }
 
@@ -251,22 +267,30 @@ class OSRMInstructionFormatter: Formatter {
             guard scanner.scanUpTo("}", into: &token) else {
                 continue
             }
-
+            
             if scanner.scanString("}", into: nil) {
-                switch token ?? "" {
-                case "way_name": result += wayName
-                case "destination": result += destination
-                case "exit_number": result += exit
-                case "rotary_name": result += rotaryName
-                case "lane_instruction": result += laneInstruction ?? ""
-                case "modifier": result += modifierConstant
-                case "direction": result += directionFromDegree(degree: bearing)
-                case "nth": result += nthWaypoint // TODO: integrate
-                default: break
+                if let tokenType = TokenType(rawValue: token as! String) {
+                    var replacement: String
+                    switch tokenType {
+                    case .wayName: replacement = wayName
+                    case .destination: replacement = destination
+                    case .exit: replacement = exit
+                    case .rotaryName: replacement = rotaryName
+                    case .laneInstruction: replacement = laneInstruction ?? ""
+                    case .modifier: replacement = modifierConstant
+                    case .direction: replacement = directionFromDegree(degree: bearing)
+                    case .wayPoint: replacement = nthWaypoint
+                    }
+                    if tokenType == .wayName {
+                        result += replacement // already modified above
+                    } else {
+                        result += modifyValueByKey?(tokenType, replacement) ?? replacement
+                    }
                 }
             } else {
                 result += token as! String
             }
+            
         }
 
         // remove excess spaces
