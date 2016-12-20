@@ -297,11 +297,11 @@ class OSRMInstructionFormatter: Formatter {
         result = result.replacingOccurrences(of: "\\s\\s", with: " ", options: .regularExpression)
 
         // capitalize
-        let meta = OSRMTextInstructionsStrings["meta"] as! [String: Bool]
-        if meta["capitalizeFirstLetter"]! {
+        let meta = OSRMTextInstructionsStrings["meta"] as! [String: Any]
+        if meta["capitalizeFirstLetter"] as? Bool ?? false {
             result = result.sentenceCased
         }
-
+        
         return result
     }
     
