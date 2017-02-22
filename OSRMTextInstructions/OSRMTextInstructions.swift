@@ -5,7 +5,7 @@ import MapboxDirections
 let OSRMTextInstructionsStrings = NSDictionary(contentsOfFile: Bundle.main.path(forResource: "Instructions", ofType: "plist")!)!
 
 extension String {
-    var sentenceCased: String {
+    public var sentenceCased: String {
         return String(characters.prefix(1)).uppercased() + String(characters.dropFirst())
     }
 }

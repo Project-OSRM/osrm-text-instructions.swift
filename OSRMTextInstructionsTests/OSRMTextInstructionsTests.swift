@@ -8,6 +8,7 @@
 
 import XCTest
 import MapboxDirections
+import OSRMTextInstructions
 
 class OSRMTextInstructionsTests: XCTestCase {
     let instructions = OSRMInstructionFormatter(version: "v5")

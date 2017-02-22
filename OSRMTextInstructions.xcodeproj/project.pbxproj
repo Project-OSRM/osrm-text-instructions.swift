@@ -9,13 +9,30 @@
 /* Begin PBXBuildFile section */
 		35228C531E5E17050082B14F /* Polyline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35228C521E5E17050082B14F /* Polyline.framework */; };
 		35228C551E5E17090082B14F /* MapboxDirections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35228C541E5E17090082B14F /* MapboxDirections.framework */; };
+		352BBC2C1E5E4D4200703DF1 /* OSRMTextInstructionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352BBC2B1E5E4D4200703DF1 /* OSRMTextInstructionsTests.swift */; };
+		352BBC2E1E5E4D4200703DF1 /* OSRMTextInstructions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35EBDB5D1E5E1572006EB3CD /* OSRMTextInstructions.framework */; };
+		352BBC341E5E4EE100703DF1 /* MapboxDirections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35228C541E5E17090082B14F /* MapboxDirections.framework */; };
+		352BBC351E5E4EE300703DF1 /* Polyline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35228C521E5E17050082B14F /* Polyline.framework */; };
 		358D145A1E5E355600ADE590 /* osrm-text-instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = 358D14571E5E355600ADE590 /* osrm-text-instructions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		358D145B1E5E355600ADE590 /* OSRMTextInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		352BBC2F1E5E4D4200703DF1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 35EBDB541E5E1572006EB3CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 35EBDB5C1E5E1572006EB3CD;
+			remoteInfo = OSRMTextInstructions;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		35228C521E5E17050082B14F /* Polyline.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Polyline.framework; path = Carthage/Build/iOS/Polyline.framework; sourceTree = "<group>"; };
 		35228C541E5E17090082B14F /* MapboxDirections.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapboxDirections.framework; path = Carthage/Build/iOS/MapboxDirections.framework; sourceTree = "<group>"; };
+		352BBC291E5E4D4200703DF1 /* OSRMTextInstructionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSRMTextInstructionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		352BBC2B1E5E4D4200703DF1 /* OSRMTextInstructionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSRMTextInstructionsTests.swift; sourceTree = "<group>"; };
+		352BBC2D1E5E4D4200703DF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		358D14561E5E355600ADE590 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		358D14571E5E355600ADE590 /* osrm-text-instructions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "osrm-text-instructions.h"; sourceTree = "<group>"; };
 		358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSRMTextInstructions.swift; sourceTree = "<group>"; };
@@ -23,6 +40,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		352BBC261E5E4D4200703DF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				352BBC2E1E5E4D4200703DF1 /* OSRMTextInstructions.framework in Frameworks */,
+				352BBC341E5E4EE100703DF1 /* MapboxDirections.framework in Frameworks */,
+				352BBC351E5E4EE300703DF1 /* Polyline.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		35EBDB591E5E1572006EB3CD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -44,10 +71,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		352BBC2A1E5E4D4200703DF1 /* OSRMTextInstructionsTests */ = {
+			isa = PBXGroup;
+			children = (
+				352BBC2B1E5E4D4200703DF1 /* OSRMTextInstructionsTests.swift */,
+				352BBC2D1E5E4D4200703DF1 /* Info.plist */,
+			);
+			path = OSRMTextInstructionsTests;
+			sourceTree = "<group>";
+		};
 		35EBDB531E5E1572006EB3CD = {
 			isa = PBXGroup;
 			children = (
 				35EBDB5F1E5E1572006EB3CD /* OSRMTextInstructions */,
+				352BBC2A1E5E4D4200703DF1 /* OSRMTextInstructionsTests */,
 				35EBDB5E1E5E1572006EB3CD /* Products */,
 				35228C511E5E17040082B14F /* Frameworks */,
 			);
@@ -57,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				35EBDB5D1E5E1572006EB3CD /* OSRMTextInstructions.framework */,
+				352BBC291E5E4D4200703DF1 /* OSRMTextInstructionsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,6 +123,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		352BBC281E5E4D4200703DF1 /* OSRMTextInstructionsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 352BBC331E5E4D4200703DF1 /* Build configuration list for PBXNativeTarget "OSRMTextInstructionsTests" */;
+			buildPhases = (
+				352BBC251E5E4D4200703DF1 /* Sources */,
+				352BBC261E5E4D4200703DF1 /* Frameworks */,
+				352BBC271E5E4D4200703DF1 /* Resources */,
+				352BBC371E5E507800703DF1 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				352BBC301E5E4D4200703DF1 /* PBXTargetDependency */,
+			);
+			name = OSRMTextInstructionsTests;
+			productName = OSRMTextInstructionsTests;
+			productReference = 352BBC291E5E4D4200703DF1 /* OSRMTextInstructionsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		35EBDB5C1E5E1572006EB3CD /* OSRMTextInstructions */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35EBDB651E5E1572006EB3CD /* Build configuration list for PBXNativeTarget "OSRMTextInstructions" */;
@@ -109,8 +166,14 @@
 		35EBDB541E5E1572006EB3CD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
 				TargetAttributes = {
+					352BBC281E5E4D4200703DF1 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = GJZR2MEM28;
+						ProvisioningStyle = Automatic;
+					};
 					35EBDB5C1E5E1572006EB3CD = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = GJZR2MEM28;
@@ -132,11 +195,19 @@
 			projectRoot = "";
 			targets = (
 				35EBDB5C1E5E1572006EB3CD /* OSRMTextInstructions */,
+				352BBC281E5E4D4200703DF1 /* OSRMTextInstructionsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		352BBC271E5E4D4200703DF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		35EBDB5B1E5E1572006EB3CD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -146,7 +217,33 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		352BBC371E5E507800703DF1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/MapboxDirections.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Polyline.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		352BBC251E5E4D4200703DF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				352BBC2C1E5E4D4200703DF1 /* OSRMTextInstructionsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		35EBDB581E5E1572006EB3CD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -157,7 +254,47 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		352BBC301E5E4D4200703DF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 35EBDB5C1E5E1572006EB3CD /* OSRMTextInstructions */;
+			targetProxy = 352BBC2F1E5E4D4200703DF1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		352BBC311E5E4D4200703DF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = GJZR2MEM28;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = OSRMTextInstructionsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mapbox.OSRMTextInstructionsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		352BBC321E5E4D4200703DF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = GJZR2MEM28;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = OSRMTextInstructionsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mapbox.OSRMTextInstructionsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		35EBDB631E5E1572006EB3CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -311,6 +448,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		352BBC331E5E4D4200703DF1 /* Build configuration list for PBXNativeTarget "OSRMTextInstructionsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				352BBC311E5E4D4200703DF1 /* Debug */,
+				352BBC321E5E4D4200703DF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		35EBDB571E5E1572006EB3CD /* Build configuration list for PBXProject "OSRMTextInstructions" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
