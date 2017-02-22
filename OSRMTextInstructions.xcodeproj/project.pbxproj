@@ -15,6 +15,7 @@
 		352BBC351E5E4EE300703DF1 /* Polyline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35228C521E5E17050082B14F /* Polyline.framework */; };
 		358D145A1E5E355600ADE590 /* osrm-text-instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = 358D14571E5E355600ADE590 /* osrm-text-instructions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		358D145B1E5E355600ADE590 /* OSRMTextInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */; };
+		DA0584D41E5E562A006F138F /* Instructions.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA0584D31E5E562A006F138F /* Instructions.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		358D14571E5E355600ADE590 /* osrm-text-instructions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "osrm-text-instructions.h"; sourceTree = "<group>"; };
 		358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSRMTextInstructions.swift; sourceTree = "<group>"; };
 		35EBDB5D1E5E1572006EB3CD /* OSRMTextInstructions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OSRMTextInstructions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA0584D31E5E562A006F138F /* Instructions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Instructions.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,8 +107,17 @@
 				358D14561E5E355600ADE590 /* Info.plist */,
 				358D14571E5E355600ADE590 /* osrm-text-instructions.h */,
 				358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */,
+				DA0584D21E5E561D006F138F /* Resources */,
 			);
 			path = OSRMTextInstructions;
+			sourceTree = "<group>";
+		};
+		DA0584D21E5E561D006F138F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DA0584D31E5E562A006F138F /* Instructions.plist */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +223,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA0584D41E5E562A006F138F /* Instructions.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +467,7 @@
 				352BBC321E5E4D4200703DF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		35EBDB571E5E1572006EB3CD /* Build configuration list for PBXProject "OSRMTextInstructions" */ = {
 			isa = XCConfigurationList;
