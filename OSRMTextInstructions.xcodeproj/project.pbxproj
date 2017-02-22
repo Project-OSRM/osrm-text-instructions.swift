@@ -13,6 +13,7 @@
 		352BBC2E1E5E4D4200703DF1 /* OSRMTextInstructions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35EBDB5D1E5E1572006EB3CD /* OSRMTextInstructions.framework */; };
 		352BBC341E5E4EE100703DF1 /* MapboxDirections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35228C541E5E17090082B14F /* MapboxDirections.framework */; };
 		352BBC351E5E4EE300703DF1 /* Polyline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35228C521E5E17050082B14F /* Polyline.framework */; };
+		352BBC391E5E5AB400703DF1 /* osrm-text-instructions in Resources */ = {isa = PBXBuildFile; fileRef = 352BBC381E5E5AB400703DF1 /* osrm-text-instructions */; };
 		358D145A1E5E355600ADE590 /* osrm-text-instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = 358D14571E5E355600ADE590 /* osrm-text-instructions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		358D145B1E5E355600ADE590 /* OSRMTextInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */; };
 		DA0584D41E5E562A006F138F /* Instructions.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA0584D31E5E562A006F138F /* Instructions.plist */; };
@@ -34,6 +35,7 @@
 		352BBC291E5E4D4200703DF1 /* OSRMTextInstructionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSRMTextInstructionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		352BBC2B1E5E4D4200703DF1 /* OSRMTextInstructionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSRMTextInstructionsTests.swift; sourceTree = "<group>"; };
 		352BBC2D1E5E4D4200703DF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		352BBC381E5E5AB400703DF1 /* osrm-text-instructions */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "osrm-text-instructions"; sourceTree = "<group>"; };
 		358D14561E5E355600ADE590 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		358D14571E5E355600ADE590 /* osrm-text-instructions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "osrm-text-instructions.h"; sourceTree = "<group>"; };
 		358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSRMTextInstructions.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 		35EBDB531E5E1572006EB3CD = {
 			isa = PBXGroup;
 			children = (
+				352BBC381E5E5AB400703DF1 /* osrm-text-instructions */,
 				35EBDB5F1E5E1572006EB3CD /* OSRMTextInstructions */,
 				352BBC2A1E5E4D4200703DF1 /* OSRMTextInstructionsTests */,
 				35EBDB5E1E5E1572006EB3CD /* Products */,
@@ -216,6 +219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				352BBC391E5E5AB400703DF1 /* osrm-text-instructions in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
