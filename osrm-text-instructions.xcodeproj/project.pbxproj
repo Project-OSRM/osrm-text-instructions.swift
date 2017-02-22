@@ -11,6 +11,7 @@
 		35228C531E5E17050082B14F /* Polyline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35228C521E5E17050082B14F /* Polyline.framework */; };
 		35228C551E5E17090082B14F /* MapboxDirections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35228C541E5E17090082B14F /* MapboxDirections.framework */; };
 		35EBDB621E5E1572006EB3CD /* osrm-text-instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = 35EBDB601E5E1572006EB3CD /* osrm-text-instructions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DA0584D01E5E54D1006F138F /* Instructions.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA0584CF1E5E54D1006F138F /* Instructions.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		35EBDB5D1E5E1572006EB3CD /* OSRMTextInstructions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OSRMTextInstructions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35EBDB601E5E1572006EB3CD /* osrm-text-instructions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "osrm-text-instructions.h"; sourceTree = "<group>"; };
 		35EBDB611E5E1572006EB3CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA0584CF1E5E54D1006F138F /* Instructions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Instructions.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 			isa = PBXGroup;
 			children = (
 				35EBDB5F1E5E1572006EB3CD /* osrm-text-instructions */,
+				DA0584C91E5E5412006F138F /* Resources */,
 				35EBDB5E1E5E1572006EB3CD /* Products */,
 				35228C511E5E17040082B14F /* Frameworks */,
 			);
@@ -69,6 +72,14 @@
 				35EBDB611E5E1572006EB3CD /* Info.plist */,
 			);
 			path = "osrm-text-instructions";
+			sourceTree = "<group>";
+		};
+		DA0584C91E5E5412006F138F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DA0584CF1E5E54D1006F138F /* Instructions.plist */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +152,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA0584D01E5E54D1006F138F /* Instructions.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
