@@ -2,15 +2,15 @@ import Foundation
 import MapboxDirections
 
 // Will automatically read localized Instructions.plist
-let OSRMTextInstructionsStrings = NSDictionary(contentsOfFile: Bundle.main.path(forResource: "Instructions", ofType: "plist")!)!
+let OSRMTextInstructionsStrings = NSDictionary(contentsOfFile: Bundle(for: OSRMInstructionFormatter.self).path(forResource: "Instructions", ofType: "plist")!)!
 
 extension String {
-    var sentenceCased: String {
+    public var sentenceCased: String {
         return String(characters.prefix(1)).uppercased() + String(characters.dropFirst())
     }
 }
 
-class OSRMInstructionFormatter: Formatter {
+public class OSRMInstructionFormatter: Formatter {
     let version: String
     let instructions: [String: Any]
     
@@ -32,14 +32,14 @@ class OSRMInstructionFormatter: Formatter {
         return formatter
     }()
     
-    internal init(version: String) {
+    public init(version: String) {
         self.version = version
         self.instructions = OSRMTextInstructionsStrings[version] as! [String: Any]
         
         super.init()
     }
     
-    required init?(coder decoder: NSCoder) {
+    required public init?(coder decoder: NSCoder) {
         if let version = decoder.decodeObject(of: NSString.self, forKey: "version") as? String {
             self.version = version
         } else {
@@ -55,7 +55,7 @@ class OSRMInstructionFormatter: Formatter {
         super.init(coder: decoder)
     }
     
-    override func encode(with coder: NSCoder) {
+    override public func encode(with coder: NSCoder) {
         super.encode(with: coder)
         
         coder.encode(version, forKey: "version")
@@ -129,7 +129,7 @@ class OSRMInstructionFormatter: Formatter {
     typealias InstructionsByToken = [String: String]
     typealias InstructionsByModifier = [String: InstructionsByToken]
     
-    override func string(for obj: Any?) -> String? {
+    override public func string(for obj: Any?) -> String? {
         return string(for: obj, modifyValueByKey: nil)
     }
     
@@ -297,7 +297,7 @@ class OSRMInstructionFormatter: Formatter {
         return result
     }
     
-    override func getObjectValue(_ obj: AutoreleasingUnsafeMutablePointer<AnyObject?>?, for string: String, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
+    override public func getObjectValue(_ obj: AutoreleasingUnsafeMutablePointer<AnyObject?>?, for string: String, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
         return false
     }
 }
