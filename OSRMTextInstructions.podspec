@@ -4,10 +4,10 @@ Pod::Spec.new do |s|
 
   s.name = "OSRMTextInstructions"
   s.version = "0.0.1"
-  s.summary = "osrm-text-instructions parser for Swift and Objective-C."
+  s.summary = "Transforms OSRM route reponses into human-readable instructions."
 
   s.description  = <<-DESC
-  OSRMTextInstructions is a library that transforms OSRM route responses into localized text instructions.
+  OSRMTextInstructions transforms OSRM route responses into localized, human-readable turn-by-turn instructions. Primarily intended for use with MapboxDirections.swift.
                 DESC
 
   s.homepage = "http://project-osrm.org/"
