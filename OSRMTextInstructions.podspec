@@ -25,6 +25,10 @@ Pod::Spec.new do |s|
 
   s.source = { :git => "https://github.com/Project-OSRM/osrm-text-instructions.swift.git", :tag => "v#{s.version.to_s}" }
 
+  # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+
+  s.resources = ['OSRMTextInstructions/*.plist']
+  
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.source_files = "OSRMTextInstructions"
