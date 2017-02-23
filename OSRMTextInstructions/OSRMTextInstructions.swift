@@ -28,7 +28,9 @@ public class OSRMInstructionFormatter: Formatter {
     let ordinalFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.locale = .current
-        formatter.numberStyle = .ordinal
+        if #available(iOS 9.0, OSX 10.11, *) {
+            formatter.numberStyle = .ordinal
+        }
         return formatter
     }()
     
