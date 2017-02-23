@@ -2,27 +2,24 @@ Pod::Spec.new do |s|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  s.name = "OSRMTextInstructions.swift"
+  s.name = "OSRMTextInstructions"
   s.version = "0.0.1"
   s.summary = "Project OSRM text instructions"
 
   s.description  = <<-DESC
-  OSRM Text Instructions is a library for iOS, macOS, tvOS, and watchOS applications written in Swift or Objective-C that transforms OSRM route responses into localized text instructions.
+  OSRMTextInstructions is a library that transforms OSRM route responses into localized text instructions.
                 DESC
 
   s.homepage = "http://project-osrm.org/"
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  s.license = { :type => "ISC", :file => "LICENSE.md" }
+  s.license = { :type => "BSD", :file => "LICENSE.md" }
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.author = { "Mapbox" => "mobile@mapbox.com" }
-
-  # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
-  s.ios.deployment_target = "9.0"
+  s.social_media_url   = "https://twitter.com/mapbox"
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
