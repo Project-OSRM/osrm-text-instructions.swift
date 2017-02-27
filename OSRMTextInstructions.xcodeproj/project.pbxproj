@@ -14,8 +14,10 @@
 		352BBC341E5E4EE100703DF1 /* MapboxDirections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35228C541E5E17090082B14F /* MapboxDirections.framework */; };
 		352BBC351E5E4EE300703DF1 /* Polyline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35228C521E5E17050082B14F /* Polyline.framework */; };
 		352BBC391E5E5AB400703DF1 /* osrm-text-instructions in Resources */ = {isa = PBXBuildFile; fileRef = 352BBC381E5E5AB400703DF1 /* osrm-text-instructions */; };
-		358D145A1E5E355600ADE590 /* osrm-text-instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = 358D14571E5E355600ADE590 /* osrm-text-instructions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		358D145B1E5E355600ADE590 /* OSRMTextInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */; };
+		C53A48391E64D392005589B5 /* OSRMTokenType.h in Headers */ = {isa = PBXBuildFile; fileRef = C53A48361E64D392005589B5 /* OSRMTokenType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C53A483A1E64D392005589B5 /* OSRMTokenType.m in Sources */ = {isa = PBXBuildFile; fileRef = C53A48371E64D392005589B5 /* OSRMTokenType.m */; };
+		C53A483C1E64DA9B005589B5 /* OSRMTextInstructions.h in Headers */ = {isa = PBXBuildFile; fileRef = C53A483B1E64DA9B005589B5 /* OSRMTextInstructions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA0584D41E5E562A006F138F /* Instructions.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA0584D31E5E562A006F138F /* Instructions.plist */; };
 /* End PBXBuildFile section */
 
@@ -37,9 +39,11 @@
 		352BBC2D1E5E4D4200703DF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		352BBC381E5E5AB400703DF1 /* osrm-text-instructions */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "osrm-text-instructions"; sourceTree = "<group>"; };
 		358D14561E5E355600ADE590 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		358D14571E5E355600ADE590 /* osrm-text-instructions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "osrm-text-instructions.h"; sourceTree = "<group>"; };
 		358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSRMTextInstructions.swift; sourceTree = "<group>"; };
 		35EBDB5D1E5E1572006EB3CD /* OSRMTextInstructions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OSRMTextInstructions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C53A48361E64D392005589B5 /* OSRMTokenType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSRMTokenType.h; sourceTree = "<group>"; };
+		C53A48371E64D392005589B5 /* OSRMTokenType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSRMTokenType.m; sourceTree = "<group>"; };
+		C53A483B1E64DA9B005589B5 /* OSRMTextInstructions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSRMTextInstructions.h; sourceTree = "<group>"; };
 		DA0584D31E5E562A006F138F /* Instructions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Instructions.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,8 +111,10 @@
 		35EBDB5F1E5E1572006EB3CD /* OSRMTextInstructions */ = {
 			isa = PBXGroup;
 			children = (
+				C53A483B1E64DA9B005589B5 /* OSRMTextInstructions.h */,
+				C53A48361E64D392005589B5 /* OSRMTokenType.h */,
+				C53A48371E64D392005589B5 /* OSRMTokenType.m */,
 				358D14561E5E355600ADE590 /* Info.plist */,
-				358D14571E5E355600ADE590 /* osrm-text-instructions.h */,
 				358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */,
 				DA0584D21E5E561D006F138F /* Resources */,
 			);
@@ -130,7 +136,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				358D145A1E5E355600ADE590 /* osrm-text-instructions.h in Headers */,
+				C53A48391E64D392005589B5 /* OSRMTokenType.h in Headers */,
+				C53A483C1E64DA9B005589B5 /* OSRMTextInstructions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C53A483A1E64D392005589B5 /* OSRMTokenType.m in Sources */,
 				358D145B1E5E355600ADE590 /* OSRMTextInstructions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
