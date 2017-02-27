@@ -14,7 +14,7 @@ public class OSRMInstructionFormatter: Formatter {
     let version: String
     let instructions: [String: Any]
     
-    enum TokenType: String {
+    public enum TokenType: String {
         case wayName = "way_name"
         case destination = "destination"
         case rotaryName = "rotary_name"
@@ -135,7 +135,7 @@ public class OSRMInstructionFormatter: Formatter {
         return string(for: obj, modifyValueByKey: nil)
     }
     
-    func string(for obj: Any?, modifyValueByKey: ((TokenType, String) -> String)?) -> String? {
+    public func string(for obj: Any?, modifyValueByKey: ((TokenType, String) -> String)?) -> String? {
         guard let step = obj as? RouteStep else {
             return nil
         }
