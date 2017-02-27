@@ -14,17 +14,6 @@ public class OSRMInstructionFormatter: Formatter {
     let version: String
     let instructions: [String: Any]
     
-    enum TokenType: String {
-        case wayName = "way_name"
-        case destination = "destination"
-        case rotaryName = "rotary_name"
-        case exit = "exit_number"
-        case laneInstruction = "lane_instruction"
-        case modifier = "modifier"
-        case direction = "direction"
-        case wayPoint = "way_point"
-    }
-    
     let ordinalFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.locale = .current
@@ -135,7 +124,7 @@ public class OSRMInstructionFormatter: Formatter {
         return string(for: obj, modifyValueByKey: nil)
     }
     
-    func string(for obj: Any?, modifyValueByKey: ((TokenType, String) -> String)?) -> String? {
+    public func string(for obj: Any?, modifyValueByKey: ((OSRMTokenType, String) -> String)?) -> String? {
         guard let step = obj as? RouteStep else {
             return nil
         }
@@ -263,23 +252,23 @@ public class OSRMInstructionFormatter: Formatter {
             }
             
             if scanner.scanString("}", into: nil) {
-                if let tokenType = TokenType(rawValue: token as! String) {
-                    var replacement: String
-                    switch tokenType {
-                    case .wayName: replacement = wayName
-                    case .destination: replacement = destination
-                    case .exit: replacement = exit
-                    case .rotaryName: replacement = rotaryName
-                    case .laneInstruction: replacement = laneInstruction ?? ""
-                    case .modifier: replacement = modifierConstant
-                    case .direction: replacement = directionFromDegree(degree: bearing)
-                    case .wayPoint: replacement = nthWaypoint
-                    }
-                    if tokenType == .wayName {
-                        result += replacement // already modified above
-                    } else {
-                        result += modifyValueByKey?(tokenType, replacement) ?? replacement
-                    }
+                let tokenType = OSRMTokenType(rawValue: token as! String)
+                var replacement: String
+                switch tokenType {
+                case OSRMTokenType.wayName: replacement = wayName
+                case OSRMTokenType.destination: replacement = destination
+                case OSRMTokenType.exit: replacement = exit
+                case OSRMTokenType.rotaryName: replacement = rotaryName
+                case OSRMTokenType.laneInstruction: replacement = laneInstruction ?? ""
+                case OSRMTokenType.modifier: replacement = modifierConstant
+                case OSRMTokenType.direction: replacement = directionFromDegree(degree: bearing)
+                case OSRMTokenType.wayPoint: replacement = nthWaypoint
+                default: replacement = ""
+                }
+                if tokenType == .wayName {
+                    result += replacement // already modified above
+                } else {
+                    result += modifyValueByKey?(tokenType, replacement) ?? replacement
                 }
             } else {
                 result += token as! String
