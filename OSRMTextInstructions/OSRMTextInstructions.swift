@@ -14,17 +14,6 @@ public class OSRMInstructionFormatter: Formatter {
     let version: String
     let instructions: [String: Any]
     
-    enum TokenType: String {
-        case wayName = "way_name"
-        case destination = "destination"
-        case rotaryName = "rotary_name"
-        case exit = "exit_number"
-        case laneInstruction = "lane_instruction"
-        case modifier = "modifier"
-        case direction = "direction"
-        case wayPoint = "way_point"
-    }
-    
     let ordinalFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.locale = .current
@@ -135,7 +124,7 @@ public class OSRMInstructionFormatter: Formatter {
         return string(for: obj, modifyValueByKey: nil)
     }
     
-    func string(for obj: Any?, modifyValueByKey: ((TokenType, String) -> String)?) -> String? {
+    public func string(for obj: Any?, modifyValueByKey: ((TokenType, String) -> String)?) -> String? {
         guard let step = obj as? RouteStep else {
             return nil
         }
@@ -263,7 +252,7 @@ public class OSRMInstructionFormatter: Formatter {
             }
             
             if scanner.scanString("}", into: nil) {
-                if let tokenType = TokenType(rawValue: token as! String) {
+                if let tokenType = TokenType(description: token as! String) {
                     var replacement: String
                     switch tokenType {
                     case .wayName: replacement = wayName
