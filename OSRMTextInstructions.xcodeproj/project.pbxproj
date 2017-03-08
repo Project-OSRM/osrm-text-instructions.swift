@@ -164,9 +164,9 @@
 			buildConfigurationList = 35EBDB651E5E1572006EB3CD /* Build configuration list for PBXNativeTarget "OSRMTextInstructions" */;
 			buildPhases = (
 				35EBDB581E5E1572006EB3CD /* Sources */,
-				35EBDB591E5E1572006EB3CD /* Frameworks */,
 				35EBDB5A1E5E1572006EB3CD /* Headers */,
 				35EBDB5B1E5E1572006EB3CD /* Resources */,
+				35EBDB591E5E1572006EB3CD /* Frameworks */,
 			);
 			buildRules = (
 			);
