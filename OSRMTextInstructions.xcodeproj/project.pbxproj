@@ -17,7 +17,7 @@
 		358D145A1E5E355600ADE590 /* osrm-text-instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = 358D14571E5E355600ADE590 /* osrm-text-instructions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		358D145B1E5E355600ADE590 /* OSRMTextInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */; };
 		C51B63E91E65FA04002F4634 /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51B63E81E65FA04002F4634 /* TokenType.swift */; };
-		DA0584D41E5E562A006F138F /* Instructions.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA0584D31E5E562A006F138F /* Instructions.plist */; };
+		DAEACB551E788D4300E481C6 /* Instructions.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAEACB571E788D4300E481C6 /* Instructions.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,8 @@
 		358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSRMTextInstructions.swift; sourceTree = "<group>"; };
 		35EBDB5D1E5E1572006EB3CD /* OSRMTextInstructions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OSRMTextInstructions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C51B63E81E65FA04002F4634 /* TokenType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenType.swift; sourceTree = "<group>"; };
-		DA0584D31E5E562A006F138F /* Instructions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Instructions.plist; sourceTree = "<group>"; };
+		DAEACB561E788D4300E481C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Instructions.plist; sourceTree = "<group>"; };
+		DAEACB581E788D5100E481C6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/Instructions.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +122,7 @@
 		DA0584D21E5E561D006F138F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DA0584D31E5E562A006F138F /* Instructions.plist */,
+				DAEACB571E788D4300E481C6 /* Instructions.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -205,6 +206,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 35EBDB531E5E1572006EB3CD;
 			productRefGroup = 35EBDB5E1E5E1572006EB3CD /* Products */;
@@ -230,7 +232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA0584D41E5E562A006F138F /* Instructions.plist in Resources */,
+				DAEACB551E788D4300E481C6 /* Instructions.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +284,18 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		DAEACB571E788D4300E481C6 /* Instructions.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DAEACB561E788D4300E481C6 /* en */,
+				DAEACB581E788D5100E481C6 /* zh-Hans */,
+			);
+			name = Instructions.plist;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		352BBC311E5E4D4200703DF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -319,6 +333,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -372,6 +387,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
