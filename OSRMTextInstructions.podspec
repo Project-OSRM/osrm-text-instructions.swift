@@ -35,7 +35,7 @@ Pod::Spec.new do |s|
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  s.resources = ['OSRMTextInstructions/*.plist']
+  s.resources = ['OSRMTextInstructions/*.lproj/*.plist']
   
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
