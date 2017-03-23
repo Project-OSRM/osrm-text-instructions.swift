@@ -48,10 +48,10 @@ Pod::Spec.new do |s|
 
   s.dependency "MapboxDirections.swift"
 
+  s.prepare_command = "./json2plist.sh"
+
   s.xcconfig = {
     "SWIFT_VERSION" => "3.0"
   }
 
 end
-
-
