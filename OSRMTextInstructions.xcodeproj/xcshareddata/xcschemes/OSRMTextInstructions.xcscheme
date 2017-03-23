@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "352BBC281E5E4D4200703DF1"
+               BuildableName = "OSRMTextInstructionsTests.xctest"
+               BlueprintName = "OSRMTextInstructionsTests"
+               ReferencedContainer = "container:OSRMTextInstructions.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "35EBDB5C1E5E1572006EB3CD"
+            BuildableName = "OSRMTextInstructions.framework"
+            BlueprintName = "OSRMTextInstructions"
+            ReferencedContainer = "container:OSRMTextInstructions.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
