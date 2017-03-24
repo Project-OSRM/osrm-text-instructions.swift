@@ -1,11 +1,3 @@
-//
-//  OSRMTextInstructionsTests.swift
-//  Voyage
-//
-//  Created by Johan Uhle on 07.11.16.
-//  Copyright © 2016 Mapbox. All rights reserved.
-//
-
 import XCTest
 import MapboxDirections
 import OSRMTextInstructions
@@ -24,7 +16,7 @@ class OSRMTextInstructionsTests: XCTestCase {
     func testFixtures() {
         do {
             let bundle = Bundle(for: OSRMTextInstructionsTests.self)
-            let url = URL(fileURLWithPath: bundle.path(forResource: "v5", ofType: nil, inDirectory: "osrm-text-instructions/test/fixtures/")!)
+            let url = bundle.url(forResource: "v5", withExtension: nil, subdirectory: "osrm-text-instructions/test/fixtures/")!
             
             let directoryContents = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: [])
             for type in directoryContents {
