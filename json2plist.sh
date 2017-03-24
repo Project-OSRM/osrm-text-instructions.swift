@@ -15,7 +15,7 @@ for file in ./*; do
     fi
 
     if [ "$LANGUAGE" != "skip" ]; then
-      LANGUAGE_DIR="${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/${LANGUAGE}.lproj"
+      LANGUAGE_DIR="${BUILT_PRODUCTS_DIR:-../../../OSRMTextInstructions/}/${UNLOCALIZED_RESOURCES_FOLDER_PATH:-}/${LANGUAGE}.lproj"
       mkdir -p "${LANGUAGE_DIR}"
       plutil -convert xml1 "./${file}" -o "${LANGUAGE_DIR}/Instructions.plist"
     fi
