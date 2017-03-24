@@ -211,8 +211,6 @@
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
-			knownRegions = (
-			);
 			mainGroup = 35EBDB531E5E1572006EB3CD;
 			productRefGroup = 35EBDB5E1E5E1572006EB3CD /* Products */;
 			projectDirPath = "";
@@ -453,7 +451,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/OSRMTextInstructions/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.project-osrm.OSRMTextInstructions.swift";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.project-osrm.OSRMTextInstructions";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -478,7 +476,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/OSRMTextInstructions/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.project-osrm.OSRMTextInstructions.swift";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.project-osrm.OSRMTextInstructions";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
