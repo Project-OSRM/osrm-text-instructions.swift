@@ -9,16 +9,13 @@ for file in ./*; do
     if [ "$file" = "./en.json" ]; then
       LANGUAGE="Base"
     else
-      # skip not-supported languages
       LANGUAGE=$(basename $file)
       LANGUAGE=${LANGUAGE%.json}
     fi
 
-    if [ "$LANGUAGE" != "skip" ]; then
-      LANGUAGE_DIR="${BUILT_PRODUCTS_DIR:-../../../OSRMTextInstructions/}/${UNLOCALIZED_RESOURCES_FOLDER_PATH:-}/${LANGUAGE}.lproj"
-      mkdir -p "${LANGUAGE_DIR}"
-      plutil -convert xml1 "./${file}" -o "${LANGUAGE_DIR}/Instructions.plist"
-    fi
+    LANGUAGE_DIR="${BUILT_PRODUCTS_DIR:-../../../OSRMTextInstructions/}/${UNLOCALIZED_RESOURCES_FOLDER_PATH:-}/${LANGUAGE}.lproj"
+    mkdir -p "${LANGUAGE_DIR}"
+    plutil -convert xml1 "./${file}" -o "${LANGUAGE_DIR}/Instructions.plist"
 done
 
 cd - || exit 1
