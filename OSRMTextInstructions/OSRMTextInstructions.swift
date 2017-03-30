@@ -31,7 +31,7 @@ public class OSRMInstructionFormatter: Formatter {
     }
     
     required public init?(coder decoder: NSCoder) {
-        if let version = decoder.decodeObject(of: NSString.self, forKey: "version") as? String {
+        if let version = decoder.decodeObject(of: NSString.self, forKey: "version") as String? {
             self.version = version
         } else {
             return nil
@@ -240,7 +240,7 @@ public class OSRMInstructionFormatter: Formatter {
             var buffer: NSString?
 
             if scanner.scanUpTo("{", into: &buffer) {
-                result += buffer as! String
+                result += buffer! as String
             }
             guard scanner.scanString("{", into: nil) else {
                 continue
@@ -252,7 +252,7 @@ public class OSRMInstructionFormatter: Formatter {
             }
             
             if scanner.scanString("}", into: nil) {
-                if let tokenType = TokenType(description: token as! String) {
+                if let tokenType = TokenType(description: token! as String) {
                     var replacement: String
                     switch tokenType {
                     case .wayName: replacement = wayName
@@ -271,7 +271,7 @@ public class OSRMInstructionFormatter: Formatter {
                     }
                 }
             } else {
-                result += token as! String
+                result += token! as String
             }
             
         }
