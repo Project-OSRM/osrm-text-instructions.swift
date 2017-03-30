@@ -11,12 +11,32 @@
 		35228C551E5E17090082B14F /* MapboxDirections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35228C541E5E17090082B14F /* MapboxDirections.framework */; };
 		352BBC2C1E5E4D4200703DF1 /* OSRMTextInstructionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352BBC2B1E5E4D4200703DF1 /* OSRMTextInstructionsTests.swift */; };
 		352BBC2E1E5E4D4200703DF1 /* OSRMTextInstructions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35EBDB5D1E5E1572006EB3CD /* OSRMTextInstructions.framework */; };
-		352BBC341E5E4EE100703DF1 /* MapboxDirections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35228C541E5E17090082B14F /* MapboxDirections.framework */; };
-		352BBC351E5E4EE300703DF1 /* Polyline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35228C521E5E17050082B14F /* Polyline.framework */; };
 		352BBC391E5E5AB400703DF1 /* osrm-text-instructions in Resources */ = {isa = PBXBuildFile; fileRef = 352BBC381E5E5AB400703DF1 /* osrm-text-instructions */; };
-		358D145A1E5E355600ADE590 /* osrm-text-instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = 358D14571E5E355600ADE590 /* osrm-text-instructions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		358D145A1E5E355600ADE590 /* OSRMTextInstructions.h in Headers */ = {isa = PBXBuildFile; fileRef = 358D14571E5E355600ADE590 /* OSRMTextInstructions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		358D145B1E5E355600ADE590 /* OSRMTextInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */; };
 		C51B63E91E65FA04002F4634 /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51B63E81E65FA04002F4634 /* TokenType.swift */; };
+		DA5F589C1E85A32C00BA4D0A /* OSRMTextInstructions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5F58931E85A32C00BA4D0A /* OSRMTextInstructions.framework */; };
+		DA5F58AB1E85B0A000BA4D0A /* OSRMTextInstructions.h in Headers */ = {isa = PBXBuildFile; fileRef = 358D14571E5E355600ADE590 /* OSRMTextInstructions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DA5F58AC1E85B0A500BA4D0A /* OSRMTextInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */; };
+		DA5F58AD1E85B0A500BA4D0A /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51B63E81E65FA04002F4634 /* TokenType.swift */; };
+		DA5F58AE1E85B0AE00BA4D0A /* OSRMTextInstructionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352BBC2B1E5E4D4200703DF1 /* OSRMTextInstructionsTests.swift */; };
+		DA5F58C11E85B43200BA4D0A /* MapboxDirections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5F58B61E85B24E00BA4D0A /* MapboxDirections.framework */; };
+		DA5F58C21E85B43200BA4D0A /* Polyline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5F58B71E85B24E00BA4D0A /* Polyline.framework */; };
+		DA5F58E11E85BDCE00BA4D0A /* osrm-text-instructions in Resources */ = {isa = PBXBuildFile; fileRef = 352BBC381E5E5AB400703DF1 /* osrm-text-instructions */; };
+		DA5F58E21E85BDCE00BA4D0A /* osrm-text-instructions in Resources */ = {isa = PBXBuildFile; fileRef = 352BBC381E5E5AB400703DF1 /* osrm-text-instructions */; };
+		DA5F58E31E85BE1100BA4D0A /* OSRMTextInstructions.h in Headers */ = {isa = PBXBuildFile; fileRef = 358D14571E5E355600ADE590 /* OSRMTextInstructions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DA5F58E41E85BE1500BA4D0A /* OSRMTextInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */; };
+		DA5F58E51E85BE1500BA4D0A /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51B63E81E65FA04002F4634 /* TokenType.swift */; };
+		DA5F58E61E85BE1900BA4D0A /* OSRMTextInstructionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352BBC2B1E5E4D4200703DF1 /* OSRMTextInstructionsTests.swift */; };
+		DA5F58EA1E85BE5C00BA4D0A /* MapboxDirections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5F58E81E85BE5C00BA4D0A /* MapboxDirections.framework */; };
+		DA5F58EB1E85BE5C00BA4D0A /* Polyline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5F58E91E85BE5C00BA4D0A /* Polyline.framework */; };
+		DA5F58ED1E85BF2D00BA4D0A /* OSRMTextInstructions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5F58C81E85BA5D00BA4D0A /* OSRMTextInstructions.framework */; };
+		DA5F58EE1E85C10700BA4D0A /* MapboxDirections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5F58E81E85BE5C00BA4D0A /* MapboxDirections.framework */; };
+		DA5F58FC1E85C19A00BA4D0A /* OSRMTextInstructions.h in Headers */ = {isa = PBXBuildFile; fileRef = 358D14571E5E355600ADE590 /* OSRMTextInstructions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DA5F58FD1E85C19E00BA4D0A /* OSRMTextInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */; };
+		DA5F58FE1E85C19E00BA4D0A /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51B63E81E65FA04002F4634 /* TokenType.swift */; };
+		DA5F59011E85C1B200BA4D0A /* MapboxDirections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5F58FF1E85C1B200BA4D0A /* MapboxDirections.framework */; };
+		DA5F59021E85C1B200BA4D0A /* Polyline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5F59001E85C1B200BA4D0A /* Polyline.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +46,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 35EBDB5C1E5E1572006EB3CD;
 			remoteInfo = OSRMTextInstructions;
+		};
+		DA5F589D1E85A32C00BA4D0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 35EBDB541E5E1572006EB3CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA5F58921E85A32C00BA4D0A;
+			remoteInfo = OSRMTextInstructionsMac;
+		};
+		DA5F58D21E85BA5D00BA4D0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 35EBDB541E5E1572006EB3CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA5F58C71E85BA5D00BA4D0A;
+			remoteInfo = OSRMTextInstructionsTV;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -37,11 +71,22 @@
 		352BBC2D1E5E4D4200703DF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		352BBC381E5E5AB400703DF1 /* osrm-text-instructions */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "osrm-text-instructions"; sourceTree = "<group>"; };
 		358D14561E5E355600ADE590 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		358D14571E5E355600ADE590 /* osrm-text-instructions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "osrm-text-instructions.h"; sourceTree = "<group>"; };
+		358D14571E5E355600ADE590 /* OSRMTextInstructions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSRMTextInstructions.h; sourceTree = "<group>"; };
 		358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSRMTextInstructions.swift; sourceTree = "<group>"; };
 		35EBDB5D1E5E1572006EB3CD /* OSRMTextInstructions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OSRMTextInstructions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C51B63E81E65FA04002F4634 /* TokenType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenType.swift; sourceTree = "<group>"; };
 		DA2DFB3B1E8373AF00CEEBE9 /* json2plist.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = json2plist.sh; sourceTree = "<group>"; };
+		DA5F58931E85A32C00BA4D0A /* OSRMTextInstructions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OSRMTextInstructions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA5F589B1E85A32C00BA4D0A /* OSRMTextInstructionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSRMTextInstructionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA5F58B61E85B24E00BA4D0A /* MapboxDirections.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapboxDirections.framework; path = Carthage/Build/Mac/MapboxDirections.framework; sourceTree = "<group>"; };
+		DA5F58B71E85B24E00BA4D0A /* Polyline.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Polyline.framework; path = Carthage/Build/Mac/Polyline.framework; sourceTree = "<group>"; };
+		DA5F58C81E85BA5D00BA4D0A /* OSRMTextInstructions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OSRMTextInstructions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA5F58D01E85BA5D00BA4D0A /* OSRMTextInstructionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSRMTextInstructionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA5F58E81E85BE5C00BA4D0A /* MapboxDirections.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapboxDirections.framework; path = Carthage/Build/tvOS/MapboxDirections.framework; sourceTree = "<group>"; };
+		DA5F58E91E85BE5C00BA4D0A /* Polyline.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Polyline.framework; path = Carthage/Build/tvOS/Polyline.framework; sourceTree = "<group>"; };
+		DA5F58F41E85C13700BA4D0A /* OSRMTextInstructions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OSRMTextInstructions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA5F58FF1E85C1B200BA4D0A /* MapboxDirections.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapboxDirections.framework; path = Carthage/Build/watchOS/MapboxDirections.framework; sourceTree = "<group>"; };
+		DA5F59001E85C1B200BA4D0A /* Polyline.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Polyline.framework; path = Carthage/Build/watchOS/Polyline.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,8 +95,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				352BBC2E1E5E4D4200703DF1 /* OSRMTextInstructions.framework in Frameworks */,
-				352BBC341E5E4EE100703DF1 /* MapboxDirections.framework in Frameworks */,
-				352BBC351E5E4EE300703DF1 /* Polyline.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +107,50 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DA5F588F1E85A32C00BA4D0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA5F58C11E85B43200BA4D0A /* MapboxDirections.framework in Frameworks */,
+				DA5F58C21E85B43200BA4D0A /* Polyline.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA5F58981E85A32C00BA4D0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA5F589C1E85A32C00BA4D0A /* OSRMTextInstructions.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA5F58C41E85BA5D00BA4D0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA5F58EA1E85BE5C00BA4D0A /* MapboxDirections.framework in Frameworks */,
+				DA5F58EB1E85BE5C00BA4D0A /* Polyline.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA5F58CD1E85BA5D00BA4D0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA5F58ED1E85BF2D00BA4D0A /* OSRMTextInstructions.framework in Frameworks */,
+				DA5F58EE1E85C10700BA4D0A /* MapboxDirections.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA5F58F01E85C13700BA4D0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA5F59011E85C1B200BA4D0A /* MapboxDirections.framework in Frameworks */,
+				DA5F59021E85C1B200BA4D0A /* Polyline.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -72,6 +159,12 @@
 			children = (
 				35228C541E5E17090082B14F /* MapboxDirections.framework */,
 				35228C521E5E17050082B14F /* Polyline.framework */,
+				DA5F58B61E85B24E00BA4D0A /* MapboxDirections.framework */,
+				DA5F58B71E85B24E00BA4D0A /* Polyline.framework */,
+				DA5F58E81E85BE5C00BA4D0A /* MapboxDirections.framework */,
+				DA5F58E91E85BE5C00BA4D0A /* Polyline.framework */,
+				DA5F58FF1E85C1B200BA4D0A /* MapboxDirections.framework */,
+				DA5F59001E85C1B200BA4D0A /* Polyline.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -102,6 +195,11 @@
 			children = (
 				35EBDB5D1E5E1572006EB3CD /* OSRMTextInstructions.framework */,
 				352BBC291E5E4D4200703DF1 /* OSRMTextInstructionsTests.xctest */,
+				DA5F58931E85A32C00BA4D0A /* OSRMTextInstructions.framework */,
+				DA5F589B1E85A32C00BA4D0A /* OSRMTextInstructionsTests.xctest */,
+				DA5F58C81E85BA5D00BA4D0A /* OSRMTextInstructions.framework */,
+				DA5F58D01E85BA5D00BA4D0A /* OSRMTextInstructionsTests.xctest */,
+				DA5F58F41E85C13700BA4D0A /* OSRMTextInstructions.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,19 +208,11 @@
 			isa = PBXGroup;
 			children = (
 				358D14561E5E355600ADE590 /* Info.plist */,
-				358D14571E5E355600ADE590 /* osrm-text-instructions.h */,
+				358D14571E5E355600ADE590 /* OSRMTextInstructions.h */,
 				358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */,
 				C51B63E81E65FA04002F4634 /* TokenType.swift */,
-				DA0584D21E5E561D006F138F /* Resources */,
 			);
 			path = OSRMTextInstructions;
-			sourceTree = "<group>";
-		};
-		DA0584D21E5E561D006F138F /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		DA2DFB3A1E8373A100CEEBE9 /* Scripts */ = {
@@ -140,7 +230,31 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				358D145A1E5E355600ADE590 /* osrm-text-instructions.h in Headers */,
+				358D145A1E5E355600ADE590 /* OSRMTextInstructions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA5F58901E85A32C00BA4D0A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA5F58AB1E85B0A000BA4D0A /* OSRMTextInstructions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA5F58C51E85BA5D00BA4D0A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA5F58E31E85BE1100BA4D0A /* OSRMTextInstructions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA5F58F11E85C13700BA4D0A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA5F58FC1E85C19A00BA4D0A /* OSRMTextInstructions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +299,101 @@
 			productReference = 35EBDB5D1E5E1572006EB3CD /* OSRMTextInstructions.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		DA5F58921E85A32C00BA4D0A /* OSRMTextInstructionsMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA5F58A81E85A32C00BA4D0A /* Build configuration list for PBXNativeTarget "OSRMTextInstructionsMac" */;
+			buildPhases = (
+				DA5F588E1E85A32C00BA4D0A /* Sources */,
+				DA5F588F1E85A32C00BA4D0A /* Frameworks */,
+				DA5F58901E85A32C00BA4D0A /* Headers */,
+				DA5F58911E85A32C00BA4D0A /* Resources */,
+				DA5F58B11E85B12100BA4D0A /* Copy Instructions Property Lists */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OSRMTextInstructionsMac;
+			productName = OSRMTextInstructionsMac;
+			productReference = DA5F58931E85A32C00BA4D0A /* OSRMTextInstructions.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DA5F589A1E85A32C00BA4D0A /* OSRMTextInstructionsMacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA5F58A91E85A32C00BA4D0A /* Build configuration list for PBXNativeTarget "OSRMTextInstructionsMacTests" */;
+			buildPhases = (
+				DA5F58971E85A32C00BA4D0A /* Sources */,
+				DA5F58981E85A32C00BA4D0A /* Frameworks */,
+				DA5F58991E85A32C00BA4D0A /* Resources */,
+				DA5F58E01E85BCC400BA4D0A /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DA5F589E1E85A32C00BA4D0A /* PBXTargetDependency */,
+			);
+			name = OSRMTextInstructionsMacTests;
+			productName = OSRMTextInstructionsMacTests;
+			productReference = DA5F589B1E85A32C00BA4D0A /* OSRMTextInstructionsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DA5F58C71E85BA5D00BA4D0A /* OSRMTextInstructionsTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA5F58D91E85BA5D00BA4D0A /* Build configuration list for PBXNativeTarget "OSRMTextInstructionsTV" */;
+			buildPhases = (
+				DA5F58C31E85BA5D00BA4D0A /* Sources */,
+				DA5F58C41E85BA5D00BA4D0A /* Frameworks */,
+				DA5F58C51E85BA5D00BA4D0A /* Headers */,
+				DA5F58C61E85BA5D00BA4D0A /* Resources */,
+				DA5F58E71E85BE2A00BA4D0A /* Copy Instructions Property Lists */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OSRMTextInstructionsTV;
+			productName = OSRMTextInstructionsTV;
+			productReference = DA5F58C81E85BA5D00BA4D0A /* OSRMTextInstructions.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DA5F58CF1E85BA5D00BA4D0A /* OSRMTextInstructionsTVTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA5F58DC1E85BA5D00BA4D0A /* Build configuration list for PBXNativeTarget "OSRMTextInstructionsTVTests" */;
+			buildPhases = (
+				DA5F58CC1E85BA5D00BA4D0A /* Sources */,
+				DA5F58CD1E85BA5D00BA4D0A /* Frameworks */,
+				DA5F58CE1E85BA5D00BA4D0A /* Resources */,
+				DA5F58EC1E85BEBE00BA4D0A /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DA5F58D31E85BA5D00BA4D0A /* PBXTargetDependency */,
+			);
+			name = OSRMTextInstructionsTVTests;
+			productName = OSRMTextInstructionsTVTests;
+			productReference = DA5F58D01E85BA5D00BA4D0A /* OSRMTextInstructionsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DA5F58F31E85C13700BA4D0A /* OSRMTextInstructionsWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA5F58F91E85C13700BA4D0A /* Build configuration list for PBXNativeTarget "OSRMTextInstructionsWatch" */;
+			buildPhases = (
+				DA5F58EF1E85C13700BA4D0A /* Sources */,
+				DA5F58F01E85C13700BA4D0A /* Frameworks */,
+				DA5F58F11E85C13700BA4D0A /* Headers */,
+				DA5F58F21E85C13700BA4D0A /* Resources */,
+				DA5F59031E85C1D700BA4D0A /* Copy Instructions Property Lists */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OSRMTextInstructionsWatch;
+			productName = OSRMTextInstructionsWatch;
+			productReference = DA5F58F41E85C13700BA4D0A /* OSRMTextInstructions.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -205,6 +414,31 @@
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
+					DA5F58921E85A32C00BA4D0A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = GJZR2MEM28;
+						ProvisioningStyle = Automatic;
+					};
+					DA5F589A1E85A32C00BA4D0A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = GJZR2MEM28;
+						ProvisioningStyle = Automatic;
+					};
+					DA5F58C71E85BA5D00BA4D0A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = GJZR2MEM28;
+						ProvisioningStyle = Automatic;
+					};
+					DA5F58CF1E85BA5D00BA4D0A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = GJZR2MEM28;
+						ProvisioningStyle = Automatic;
+					};
+					DA5F58F31E85C13700BA4D0A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = GJZR2MEM28;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 35EBDB571E5E1572006EB3CD /* Build configuration list for PBXProject "OSRMTextInstructions" */;
@@ -212,6 +446,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				en,
 			);
 			mainGroup = 35EBDB531E5E1572006EB3CD;
 			productRefGroup = 35EBDB5E1E5E1572006EB3CD /* Products */;
@@ -220,6 +455,11 @@
 			targets = (
 				35EBDB5C1E5E1572006EB3CD /* OSRMTextInstructions */,
 				352BBC281E5E4D4200703DF1 /* OSRMTextInstructionsTests */,
+				DA5F58921E85A32C00BA4D0A /* OSRMTextInstructionsMac */,
+				DA5F589A1E85A32C00BA4D0A /* OSRMTextInstructionsMacTests */,
+				DA5F58C71E85BA5D00BA4D0A /* OSRMTextInstructionsTV */,
+				DA5F58CF1E85BA5D00BA4D0A /* OSRMTextInstructionsTVTests */,
+				DA5F58F31E85C13700BA4D0A /* OSRMTextInstructionsWatch */,
 			);
 		};
 /* End PBXProject section */
@@ -234,6 +474,43 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		35EBDB5B1E5E1572006EB3CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA5F58911E85A32C00BA4D0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA5F58991E85A32C00BA4D0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA5F58E11E85BDCE00BA4D0A /* osrm-text-instructions in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA5F58C61E85BA5D00BA4D0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA5F58CE1E85BA5D00BA4D0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA5F58E21E85BDCE00BA4D0A /* osrm-text-instructions in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA5F58F21E85C13700BA4D0A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -272,6 +549,78 @@
 			shellPath = /bin/sh;
 			shellScript = ./json2plist.sh;
 		};
+		DA5F58B11E85B12100BA4D0A /* Copy Instructions Property Lists */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Instructions Property Lists";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = ./json2plist.sh;
+		};
+		DA5F58E01E85BCC400BA4D0A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/MapboxDirections.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/Polyline.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		DA5F58E71E85BE2A00BA4D0A /* Copy Instructions Property Lists */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Instructions Property Lists";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = ./json2plist.sh;
+		};
+		DA5F58EC1E85BEBE00BA4D0A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/tvOS/MapboxDirections.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/Polyline.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		DA5F59031E85C1D700BA4D0A /* Copy Instructions Property Lists */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Instructions Property Lists";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = ./json2plist.sh;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -292,6 +641,49 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DA5F588E1E85A32C00BA4D0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA5F58AC1E85B0A500BA4D0A /* OSRMTextInstructions.swift in Sources */,
+				DA5F58AD1E85B0A500BA4D0A /* TokenType.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA5F58971E85A32C00BA4D0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA5F58AE1E85B0AE00BA4D0A /* OSRMTextInstructionsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA5F58C31E85BA5D00BA4D0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA5F58E41E85BE1500BA4D0A /* OSRMTextInstructions.swift in Sources */,
+				DA5F58E51E85BE1500BA4D0A /* TokenType.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA5F58CC1E85BA5D00BA4D0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA5F58E61E85BE1900BA4D0A /* OSRMTextInstructionsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA5F58EF1E85C13700BA4D0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA5F58FD1E85C19E00BA4D0A /* OSRMTextInstructions.swift in Sources */,
+				DA5F58FE1E85C19E00BA4D0A /* TokenType.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -299,6 +691,16 @@
 			isa = PBXTargetDependency;
 			target = 35EBDB5C1E5E1572006EB3CD /* OSRMTextInstructions */;
 			targetProxy = 352BBC2F1E5E4D4200703DF1 /* PBXContainerItemProxy */;
+		};
+		DA5F589E1E85A32C00BA4D0A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA5F58921E85A32C00BA4D0A /* OSRMTextInstructionsMac */;
+			targetProxy = DA5F589D1E85A32C00BA4D0A /* PBXContainerItemProxy */;
+		};
+		DA5F58D31E85BA5D00BA4D0A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA5F58C71E85BA5D00BA4D0A /* OSRMTextInstructionsTV */;
+			targetProxy = DA5F58D21E85BA5D00BA4D0A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -378,14 +780,17 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
@@ -426,13 +831,16 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
@@ -450,10 +858,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/OSRMTextInstructions/Info.plist";
+				INFOPLIST_FILE = OSRMTextInstructions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.project-osrm.OSRMTextInstructions.swift";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.project-osrm.OSRMTextInstructions";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -475,13 +883,245 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/OSRMTextInstructions/Info.plist";
+				INFOPLIST_FILE = OSRMTextInstructions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.project-osrm.OSRMTextInstructions.swift";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.project-osrm.OSRMTextInstructions";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		DA5F58A41E85A32C00BA4D0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = GJZR2MEM28;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = OSRMTextInstructions/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.project-osrm.OSRMTextInstructions";
+				PRODUCT_NAME = OSRMTextInstructions;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		DA5F58A51E85A32C00BA4D0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = GJZR2MEM28;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = OSRMTextInstructions/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.project-osrm.OSRMTextInstructions";
+				PRODUCT_NAME = OSRMTextInstructions;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		DA5F58A61E85A32C00BA4D0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = GJZR2MEM28;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = OSRMTextInstructionsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.project-osrm.OSRMTextInstructionsTests";
+				PRODUCT_NAME = OSRMTextInstructionsTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		DA5F58A71E85A32C00BA4D0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = GJZR2MEM28;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = OSRMTextInstructionsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.project-osrm.OSRMTextInstructionsTests";
+				PRODUCT_NAME = OSRMTextInstructionsTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		DA5F58DA1E85BA5D00BA4D0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = GJZR2MEM28;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = OSRMTextInstructions/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.project-osrm.OSRMTextInstructions";
+				PRODUCT_NAME = OSRMTextInstructions;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+			};
+			name = Debug;
+		};
+		DA5F58DB1E85BA5D00BA4D0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = GJZR2MEM28;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = OSRMTextInstructions/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.project-osrm.OSRMTextInstructions";
+				PRODUCT_NAME = OSRMTextInstructions;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+			};
+			name = Release;
+		};
+		DA5F58DD1E85BA5D00BA4D0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = GJZR2MEM28;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = OSRMTextInstructionsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.project-osrm.OSRMTextInstructionsTests";
+				PRODUCT_NAME = OSRMTextInstructionsTests;
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		DA5F58DE1E85BA5D00BA4D0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = GJZR2MEM28;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = OSRMTextInstructionsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.project-osrm.OSRMTextInstructionsTests";
+				PRODUCT_NAME = OSRMTextInstructionsTests;
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		DA5F58FA1E85C13700BA4D0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = GJZR2MEM28;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
+				INFOPLIST_FILE = OSRMTextInstructions/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.project-osrm.OSRMTextInstructions";
+				PRODUCT_NAME = OSRMTextInstructions;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Debug;
+		};
+		DA5F58FB1E85C13700BA4D0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = GJZR2MEM28;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
+				INFOPLIST_FILE = OSRMTextInstructions/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.project-osrm.OSRMTextInstructions";
+				PRODUCT_NAME = OSRMTextInstructions;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
 			};
 			name = Release;
 		};
@@ -514,6 +1154,50 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		DA5F58A81E85A32C00BA4D0A /* Build configuration list for PBXNativeTarget "OSRMTextInstructionsMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA5F58A41E85A32C00BA4D0A /* Debug */,
+				DA5F58A51E85A32C00BA4D0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA5F58A91E85A32C00BA4D0A /* Build configuration list for PBXNativeTarget "OSRMTextInstructionsMacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA5F58A61E85A32C00BA4D0A /* Debug */,
+				DA5F58A71E85A32C00BA4D0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA5F58D91E85BA5D00BA4D0A /* Build configuration list for PBXNativeTarget "OSRMTextInstructionsTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA5F58DA1E85BA5D00BA4D0A /* Debug */,
+				DA5F58DB1E85BA5D00BA4D0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA5F58DC1E85BA5D00BA4D0A /* Build configuration list for PBXNativeTarget "OSRMTextInstructionsTVTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA5F58DD1E85BA5D00BA4D0A /* Debug */,
+				DA5F58DE1E85BA5D00BA4D0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA5F58F91E85C13700BA4D0A /* Build configuration list for PBXNativeTarget "OSRMTextInstructionsWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA5F58FA1E85C13700BA4D0A /* Debug */,
+				DA5F58FB1E85C13700BA4D0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
