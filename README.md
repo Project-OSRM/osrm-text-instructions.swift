@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Project-OSRM/osrm-text-instructions.swift.svg?branch=master)](https://travis-ci.org/Project-OSRM/osrm-text-instructions.swift)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![CocoaPods](https://img.shields.io/cocoapods/v/OSRMTextInstructions.svg)](http://cocoadocs.org/docsets/OSRMTextInstructions/)
 
 OSRM Text Instructions is a library for iOS, macOS, tvOS, and watchOS applications written in Swift or Objective-C that transforms [OSRM](http://www.project-osrm.org/) route responses into localized text instructions.
 
