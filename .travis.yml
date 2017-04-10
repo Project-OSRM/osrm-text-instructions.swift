@@ -1,7 +1,12 @@
 language: objective-c
 osx_image: xcode8.2
+cache:
+  directories:
+  - Carthage
 install:
-  - carthage bootstrap --platform $PLATFORM
+  - brew update
+  - brew outdated carthage || brew upgrade carthage
+  - carthage bootstrap --no-use-binaries --platform $PLATFORM --cache-builds
 before_script:
   - export LANG=en_US.UTF-8
 script:
