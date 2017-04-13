@@ -1,2 +1,2 @@
-github "mapbox/MapboxDirections.swift" "v0.8.1"
+github "mapbox/MapboxDirections.swift" "v0.9.0"
 github "raphaelmor/Polyline" "v4.1.1"
