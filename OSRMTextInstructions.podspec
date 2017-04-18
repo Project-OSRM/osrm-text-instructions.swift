@@ -50,8 +50,4 @@ Pod::Spec.new do |s|
 
   s.prepare_command = "./json2plist.sh"
 
-  s.xcconfig = {
-    "SWIFT_VERSION" => "3.0"
-  }
-
 end
