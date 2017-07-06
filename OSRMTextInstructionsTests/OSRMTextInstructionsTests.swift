@@ -86,6 +86,9 @@ class OSRMTextInstructionsTests: XCTestCase {
         if let ref = jsonStep["ref"] {
             step["ref"] = ref
         }
+        if let exits = jsonStep["exits"] {
+            step["exits"] = exits
+        }
         if let destinations = jsonStep["destinations"] {
             step["destinations"] = destinations
         }

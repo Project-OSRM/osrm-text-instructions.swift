@@ -212,7 +212,11 @@ public class OSRMInstructionFormatter: Formatter {
         // Decide which instruction string to use
         // Destination takes precedence over name
         var instruction: String
-        if let _ = step.destinations, let obj = instructionObject["destination"] {
+        if let _ = step.destinations, let _ = step.exitCodes?.first, let obj = instructionObject["exit_destination"] {
+            instruction = obj
+        } else if let _ = step.destinations, let obj = instructionObject["destination"] {
+            instruction = obj
+        } else if let _ = step.exitCodes?.first, let obj = instructionObject["exit"] {
             instruction = obj
         } else if !wayName.isEmpty, let obj = instructionObject["name"] {
             instruction = obj
@@ -225,10 +229,11 @@ public class OSRMInstructionFormatter: Formatter {
         if let legIndex = legIndex, let numberOfLegs = numberOfLegs, legIndex != numberOfLegs - 1 {
             nthWaypoint = ordinalFormatter.string(from: (legIndex + 1) as NSNumber)
         }
+        let exitCode = step.exitCodes?.first ?? ""
         let destination = step.destinations?.first ?? ""
-        var exit: String = ""
+        var exitOrdinal: String = ""
         if let exitIndex = step.exitIndex, exitIndex <= 10 {
-            exit = ordinalFormatter.string(from: exitIndex as NSNumber)!
+            exitOrdinal = ordinalFormatter.string(from: exitIndex as NSNumber)!
         }
         let modifierConstants = constants["modifier"] as! [String: String]
         let modifierConstant = modifierConstants[modifier ?? "straight"]!
@@ -260,7 +265,8 @@ public class OSRMInstructionFormatter: Formatter {
                     switch tokenType {
                     case .wayName: replacement = wayName
                     case .destination: replacement = destination
-                    case .exit: replacement = exit
+                    case .exitCode: replacement = exitCode
+                    case .exitIndex: replacement = exitOrdinal
                     case .rotaryName: replacement = rotaryName
                     case .laneInstruction: replacement = laneInstruction ?? ""
                     case .modifier: replacement = modifierConstant

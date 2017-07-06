@@ -6,7 +6,8 @@ public enum TokenType: Int, CustomStringConvertible {
     case wayName
     case destination
     case rotaryName
-    case exit
+    case exitCode
+    case exitIndex
     case laneInstruction
     case modifier
     case direction
@@ -21,8 +22,10 @@ public enum TokenType: Int, CustomStringConvertible {
             type = .destination
         case "rotary_name":
             type = .rotaryName
+        case "exit":
+            type = .exitCode
         case "exit_number":
-            type = .exit
+            type = .exitIndex
         case "lane_instruction":
             type = .laneInstruction
         case "modifier":
@@ -45,7 +48,9 @@ public enum TokenType: Int, CustomStringConvertible {
             return "destination"
         case .rotaryName:
             return "rotary_name"
-        case .exit:
+        case .exitCode:
+            return "exit"
+        case .exitIndex:
             return "exit_number"
         case .laneInstruction:
             return "lane_instruction"
