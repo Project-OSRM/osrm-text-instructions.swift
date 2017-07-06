@@ -121,10 +121,10 @@ public class OSRMInstructionFormatter: Formatter {
     typealias InstructionsByModifier = [String: InstructionsByToken]
     
     override public func string(for obj: Any?) -> String? {
-        return string(for: obj, modifyValueByKey: nil)
+        return string(for: obj, legIndex: nil, numberOfLegs: nil, modifyValueByKey: nil)
     }
     
-    public func string(for obj: Any?, modifyValueByKey: ((TokenType, String) -> String)?) -> String? {
+    public func string(for obj: Any?, legIndex: Int?, numberOfLegs: Int?, modifyValueByKey: ((TokenType, String) -> String)?) -> String? {
         guard let step = obj as? RouteStep else {
             return nil
         }
@@ -221,7 +221,10 @@ public class OSRMInstructionFormatter: Formatter {
         }
 
         // Prepare token replacements
-        let nthWaypoint = "" // TODO: add correct waypoint counting
+        var nthWaypoint: String? = nil
+        if let legIndex = legIndex, let numberOfLegs = numberOfLegs, legIndex != numberOfLegs - 1 {
+            nthWaypoint = ordinalFormatter.string(from: (legIndex + 1) as NSNumber)
+        }
         let destination = step.destinations?.first ?? ""
         var exit: String = ""
         if let exitIndex = step.exitIndex, exitIndex <= 10 {
@@ -262,7 +265,7 @@ public class OSRMInstructionFormatter: Formatter {
                     case .laneInstruction: replacement = laneInstruction ?? ""
                     case .modifier: replacement = modifierConstant
                     case .direction: replacement = directionFromDegree(degree: bearing)
-                    case .wayPoint: replacement = nthWaypoint
+                    case .wayPoint: replacement = nthWaypoint ?? ""
                     }
                     if tokenType == .wayName {
                         result += replacement // already modified above

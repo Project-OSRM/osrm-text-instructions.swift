@@ -1,9 +1,16 @@
 import XCTest
 import MapboxDirections
-import OSRMTextInstructions
+@testable import OSRMTextInstructions
 
 class OSRMTextInstructionsTests: XCTestCase {
     let instructions = OSRMInstructionFormatter(version: "v5")
+    
+    override func setUp() {
+        super.setUp()
+        
+        // Force an English locale to match the fixture language rather than the test machine’s language.
+        instructions.ordinalFormatter.locale = Locale(identifier: "en-US")
+    }
 
     func testSentenceCasing() {
         XCTAssertEqual("Capitalized String", "capitalized String".sentenceCased)
@@ -27,11 +34,12 @@ class OSRMTextInstructionsTests: XCTestCase {
                         XCTAssert(false, "invalid json")
                         return
                     }
+                    let options = json["options"] as? [String: Int]
 
                     let step = RouteStep(json: json["step"] as! [String: Any])
 
                     // compile instruction
-                    let instruction = instructions.string(for: step)
+                    let instruction = instructions.string(for: step, legIndex: options?["legIndex"], numberOfLegs: options?["legCount"], modifyValueByKey: nil)
 
                     // check generated instruction against fixture
                     XCTAssertEqual(
@@ -107,6 +115,7 @@ class OSRMTextInstructionsTests: XCTestCase {
         fixture["step"] = step
         fixture["instruction"] = (json["instructions"] as! [ String: Any ])["en"] as! String
 
+        fixture["options"] = json["options"]
         return fixture
     }
 }

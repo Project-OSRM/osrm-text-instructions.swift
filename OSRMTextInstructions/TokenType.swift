@@ -29,7 +29,7 @@ public enum TokenType: Int, CustomStringConvertible {
             type = .modifier
         case "direction":
             type = .direction
-        case "way_point":
+        case "nth":
             type = .wayPoint
         default:
             return nil
@@ -54,7 +54,7 @@ public enum TokenType: Int, CustomStringConvertible {
         case .direction:
             return "direction"
         case .wayPoint:
-            return "way_point"
+            return "nth"
         }
     }
 }
