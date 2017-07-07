@@ -15,13 +15,13 @@ OSRM Text Instructions for Swift is based on the canonical [osrm-text-instructio
 Specify the following dependency in your [Carthage](https://github.com/Carthage/Carthage/) Cartfile:
 
 ```cartfile
-github "Project-OSRM/osrm-text-instructions.swift" ~> 0.1
+github "Project-OSRM/osrm-text-instructions.swift" ~> 0.10
 ```
 
 Or in your [CocoaPods](http://cocoapods.org/) Podfile:
 
 ```podspec
-pod 'OSRMTextInstructions', '~> 0.1'
+pod 'OSRMTextInstructions', '~> 0.10'
 ```
 
 Then `import OSRMTextInstructions` or `@import OSRMTextInstructions;`.
