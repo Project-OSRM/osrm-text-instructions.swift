@@ -187,8 +187,8 @@ public class OSRMInstructionFormatter: Formatter {
             
             if let name = name, let ref = ref, name != ref, !isMotorWay {
                 wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.wayName, name)) (\(modifyValueByKey!(.wayName, ref)))" : "\(name) (\(ref))"
-            } else if let ref = ref, isMotorWay, let decimalRange = ref.rangeOfCharacter(from: CharacterSet.decimalDigits), !decimalRange.isEmpty {
-                wayName = ref;
+            } else if let ref = ref, isMotorWay, let decimalRange = ref.rangeOfCharacter(from: .decimalDigits), !decimalRange.isEmpty {
+                wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.wayName, ref))" : ref
             } else if name == nil, let ref = ref {
                 wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.wayName, ref))" : ref
             } else {
