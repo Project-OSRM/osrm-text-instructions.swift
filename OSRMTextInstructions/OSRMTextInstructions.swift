@@ -121,10 +121,10 @@ public class OSRMInstructionFormatter: Formatter {
     typealias InstructionsByModifier = [String: InstructionsByToken]
     
     override public func string(for obj: Any?) -> String? {
-        return string(for: obj, legIndex: nil, numberOfLegs: nil, modifyValueByKey: nil)
+        return string(for: obj, legIndex: nil, numberOfLegs: nil, roadClasses: nil, modifyValueByKey: nil)
     }
     
-    public func string(for obj: Any?, legIndex: Int?, numberOfLegs: Int?, modifyValueByKey: ((TokenType, String) -> String)?) -> String? {
+    public func string(for obj: Any?, legIndex: Int?, numberOfLegs: Int?, roadClasses: RoadClasses?, modifyValueByKey: ((TokenType, String) -> String)?) -> String? {
         guard let step = obj as? RouteStep else {
             return nil
         }
@@ -179,9 +179,16 @@ public class OSRMInstructionFormatter: Formatter {
             // Set wayName
             let name = step.names?.first
             let ref = step.codes?.first
+            var isMotorWay = false
             
-            if let name = name, let ref = ref, name != ref {
+            if let roadClasses = roadClasses, roadClasses.contains(.motorway) {
+                isMotorWay = true
+            }
+            
+            if let name = name, let ref = ref, name != ref, !isMotorWay {
                 wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.wayName, name)) (\(modifyValueByKey!(.wayName, ref)))" : "\(name) (\(ref))"
+            } else if let ref = ref, isMotorWay, let decimalRange = ref.rangeOfCharacter(from: CharacterSet.decimalDigits), !decimalRange.isEmpty {
+                wayName = ref;
             } else if name == nil, let ref = ref {
                 wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.wayName, ref))" : ref
             } else {
