@@ -124,7 +124,17 @@ public class OSRMInstructionFormatter: Formatter {
         return string(for: obj, legIndex: nil, numberOfLegs: nil, roadClasses: nil, modifyValueByKey: nil)
     }
     
-    public func string(for obj: Any?, legIndex: Int?, numberOfLegs: Int?, roadClasses: RoadClasses?, modifyValueByKey: ((TokenType, String) -> String)?) -> String? {
+    /**
+     Creates an instruction given a step and options.
+     
+     - parameter step: 
+     - parameter legIndex: Current leg index the user is currently on.
+     - parameter numberOfLegs: Total number of `RouteLeg` for the given `Route`.
+     - parameter roadClasses: Option set representing the classes of road for the `RouteStep`.
+     - parameter modifyValueByKey: Allows for mutating the instruction at given parts of the instruction.
+     - returns: An instruction as a `String`.
+     */
+    public func string(for obj: Any?, legIndex: Int?, numberOfLegs: Int?, roadClasses: RoadClasses? = RoadClasses([]), modifyValueByKey: ((TokenType, String) -> String)?) -> String? {
         guard let step = obj as? RouteStep else {
             return nil
         }
@@ -179,15 +189,11 @@ public class OSRMInstructionFormatter: Formatter {
             // Set wayName
             let name = step.names?.first
             let ref = step.codes?.first
-            var isMotorWay = false
+            let isMotorway = roadClasses?.contains(.motorway) ?? false
             
-            if let roadClasses = roadClasses, roadClasses.contains(.motorway) {
-                isMotorWay = true
-            }
-            
-            if let name = name, let ref = ref, name != ref, !isMotorWay {
+            if let name = name, let ref = ref, name != ref, !isMotorway {
                 wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.wayName, name)) (\(modifyValueByKey!(.wayName, ref)))" : "\(name) (\(ref))"
-            } else if let ref = ref, isMotorWay, let decimalRange = ref.rangeOfCharacter(from: .decimalDigits), !decimalRange.isEmpty {
+            } else if let ref = ref, isMotorway, let decimalRange = ref.rangeOfCharacter(from: .decimalDigits), !decimalRange.isEmpty {
                 wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.wayName, ref))" : ref
             } else if name == nil, let ref = ref {
                 wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.wayName, ref))" : ref
