@@ -34,12 +34,17 @@ class OSRMTextInstructionsTests: XCTestCase {
                         XCTAssert(false, "invalid json")
                         return
                     }
-                    let options = json["options"] as? [String: Int]
+                    let options = json["options"] as? [String: Any]
 
                     let step = RouteStep(json: json["step"] as! [String: Any])
+                    
+                    var roadClasses: RoadClasses? = nil
+                    if let classes = options?["classes"] as? [String] {
+                        roadClasses = RoadClasses(descriptions: classes)
+                    }
 
                     // compile instruction
-                    let instruction = instructions.string(for: step, legIndex: options?["legIndex"], numberOfLegs: options?["legCount"], modifyValueByKey: nil)
+                    let instruction = instructions.string(for: step, legIndex: options?["legIndex"] as? Int, numberOfLegs: options?["legCount"] as? Int, roadClasses: roadClasses, modifyValueByKey: nil)
 
                     // check generated instruction against fixture
                     XCTAssertEqual(
