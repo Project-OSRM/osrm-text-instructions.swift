@@ -225,9 +225,9 @@ public class OSRMInstructionFormatter: Formatter {
         // Decide which instruction string to use
         // Destination takes precedence over name
         var instruction: String
-        if let _ = step.destinations, let _ = step.exitCodes?.first, let obj = instructionObject["exit_destination"] {
+        if let _ = step.destinations ?? step.destinationCodes, let _ = step.exitCodes?.first, let obj = instructionObject["exit_destination"] {
             instruction = obj
-        } else if let _ = step.destinations, let obj = instructionObject["destination"] {
+        } else if let _ = step.destinations ?? step.destinationCodes, let obj = instructionObject["destination"] {
             instruction = obj
         } else if let _ = step.exitCodes?.first, let obj = instructionObject["exit"] {
             instruction = obj
@@ -243,7 +243,7 @@ public class OSRMInstructionFormatter: Formatter {
             nthWaypoint = ordinalFormatter.string(from: (legIndex + 1) as NSNumber)
         }
         let exitCode = step.exitCodes?.first ?? ""
-        let destination = step.destinations?.first ?? ""
+        let destination = [step.destinationCodes, step.destinations].flatMap { $0?.first }.joined(separator: ": ")
         var exitOrdinal: String = ""
         if let exitIndex = step.exitIndex, exitIndex <= 10 {
             exitOrdinal = ordinalFormatter.string(from: exitIndex as NSNumber)!
