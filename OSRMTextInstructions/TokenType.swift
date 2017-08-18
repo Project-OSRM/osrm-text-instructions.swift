@@ -12,6 +12,7 @@ public enum TokenType: Int, CustomStringConvertible {
     case modifier
     case direction
     case wayPoint
+    case code
     
     public init?(description: String) {
         let type: TokenType
@@ -34,6 +35,8 @@ public enum TokenType: Int, CustomStringConvertible {
             type = .direction
         case "nth":
             type = .wayPoint
+        case "ref":
+            type = .code
         default:
             return nil
         }
@@ -60,6 +63,8 @@ public enum TokenType: Int, CustomStringConvertible {
             return "direction"
         case .wayPoint:
             return "nth"
+        case .code:
+            return "ref"
         }
     }
 }

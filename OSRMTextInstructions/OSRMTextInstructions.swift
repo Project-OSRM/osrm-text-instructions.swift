@@ -192,11 +192,11 @@ public class OSRMInstructionFormatter: Formatter {
             let isMotorway = roadClasses?.contains(.motorway) ?? false
             
             if let name = name, let ref = ref, name != ref, !isMotorway {
-                wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.wayName, name)) (\(modifyValueByKey!(.wayName, ref)))" : "\(name) (\(ref))"
+                wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.wayName, name)) (\(modifyValueByKey!(.code, ref)))" : "\(name) (\(ref))"
             } else if let ref = ref, isMotorway, let decimalRange = ref.rangeOfCharacter(from: .decimalDigits), !decimalRange.isEmpty {
-                wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.wayName, ref))" : ref
+                wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.code, ref))" : ref
             } else if name == nil, let ref = ref {
-                wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.wayName, ref))" : ref
+                wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.code, ref))" : ref
             } else {
                 wayName = name != nil ? modifyValueByKey != nil ? "\(modifyValueByKey!(.wayName, name!))" : name! : ""
             }
@@ -276,6 +276,7 @@ public class OSRMInstructionFormatter: Formatter {
                 if let tokenType = TokenType(description: token! as String) {
                     var replacement: String
                     switch tokenType {
+                    case .code: replacement = step.codes?.first ?? ""
                     case .wayName: replacement = wayName
                     case .destination: replacement = destination
                     case .exitCode: replacement = exitCode
