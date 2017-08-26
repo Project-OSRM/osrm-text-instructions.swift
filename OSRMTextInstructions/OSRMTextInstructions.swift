@@ -1,9 +1,6 @@
 import Foundation
 import MapboxDirections
 
-// Will automatically read localized Instructions.plist
-let OSRMTextInstructionsStrings = NSDictionary(contentsOfFile: Bundle(for: OSRMInstructionFormatter.self).path(forResource: "Instructions", ofType: "plist")!)!
-
 extension String {
     public var sentenceCased: String {
         return String(characters.prefix(1)).uppercased() + String(characters.dropFirst())
@@ -12,8 +9,14 @@ extension String {
 
 public class OSRMInstructionFormatter: Formatter {
     let version: String
+    public var locale: Locale? {
+        didSet {
+            updateTable()
+        }
+    }
+    var table: [String: Any]!
     var instructions: [String: Any] {
-        return OSRMTextInstructionsStrings[version] as! [String: Any]
+        return table[version] as! [String: Any]
     }
     
     let ordinalFormatter: NumberFormatter = {
@@ -29,23 +32,38 @@ public class OSRMInstructionFormatter: Formatter {
         self.version = version
         
         super.init()
+        
+        updateTable()
     }
     
     required public init?(coder decoder: NSCoder) {
-        if let version = decoder.decodeObject(of: NSString.self, forKey: "version") as String?,
-            OSRMTextInstructionsStrings[version] != nil {
+        if let version = decoder.decodeObject(of: NSString.self, forKey: "version") as String? {
             self.version = version
         } else {
             return nil
         }
         
         super.init(coder: decoder)
+        
+        updateTable()
     }
     
     override public func encode(with coder: NSCoder) {
         super.encode(with: coder)
         
         coder.encode(version, forKey: "version")
+    }
+    
+    func updateTable() {
+        let bundle = Bundle(for: OSRMInstructionFormatter.self)
+        var path: String?
+        if let locale = locale {
+            path = bundle.path(forResource: "Instructions", ofType: "plist", inDirectory: nil, forLocalization: locale.identifier)
+        }
+        if path == nil {
+            path = bundle.path(forResource: "Instructions", ofType: "plist")
+        }
+        table = NSDictionary(contentsOfFile: path!)! as! [String: Any]
     }
 
     var constants: [String: Any] {
@@ -298,7 +316,7 @@ public class OSRMInstructionFormatter: Formatter {
         result = result.replacingOccurrences(of: "\\s\\s", with: " ", options: .regularExpression)
 
         // capitalize
-        let meta = OSRMTextInstructionsStrings["meta"] as! [String: Any]
+        let meta = table["meta"] as! [String: Any]
         if meta["capitalizeFirstLetter"] as? Bool ?? false {
             result = result.sentenceCased
         }
