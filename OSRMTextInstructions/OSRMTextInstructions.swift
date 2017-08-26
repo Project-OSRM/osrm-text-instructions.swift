@@ -57,8 +57,8 @@ public class OSRMInstructionFormatter: Formatter {
     func updateTable() {
         let bundle = Bundle(for: OSRMInstructionFormatter.self)
         var path: String?
-        if let locale = locale {
-            path = bundle.path(forResource: "Instructions", ofType: "plist", inDirectory: nil, forLocalization: locale.identifier)
+        if let locale = locale, let localeIdentifier = Bundle.preferredLocalizations(from: bundle.preferredLocalizations, forPreferences: [locale.identifier, bundle.developmentLocalization ?? "en"]).first {
+            path = bundle.path(forResource: "Instructions", ofType: "plist", inDirectory: nil, forLocalization: localeIdentifier)
         }
         if path == nil {
             path = bundle.path(forResource: "Instructions", ofType: "plist")
