@@ -12,7 +12,9 @@ extension String {
 
 public class OSRMInstructionFormatter: Formatter {
     let version: String
-    let instructions: [String: Any]
+    var instructions: [String: Any] {
+        return OSRMTextInstructionsStrings[version] as! [String: Any]
+    }
     
     let ordinalFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -25,15 +27,14 @@ public class OSRMInstructionFormatter: Formatter {
     
     public init(version: String) {
         self.version = version
-        self.instructions = OSRMTextInstructionsStrings[version] as! [String: Any]
         
         super.init()
     }
     
     required public init?(coder decoder: NSCoder) {
-        if let version = decoder.decodeObject(of: NSString.self, forKey: "version") as String? {
+        if let version = decoder.decodeObject(of: NSString.self, forKey: "version") as String?,
+            OSRMTextInstructionsStrings[version] != nil {
             self.version = version
-            instructions = OSRMTextInstructionsStrings[version] as! [String: Any]
         } else {
             return nil
         }
