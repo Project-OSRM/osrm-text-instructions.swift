@@ -33,12 +33,7 @@ public class OSRMInstructionFormatter: Formatter {
     required public init?(coder decoder: NSCoder) {
         if let version = decoder.decodeObject(of: NSString.self, forKey: "version") as String? {
             self.version = version
-        } else {
-            return nil
-        }
-        
-        if let instructions = decoder.decodeObject(of: [NSDictionary.self, NSArray.self, NSString.self], forKey: "instructions") as? [String: Any] {
-            self.instructions = instructions
+            instructions = OSRMTextInstructionsStrings[version] as! [String: Any]
         } else {
             return nil
         }
@@ -50,7 +45,6 @@ public class OSRMInstructionFormatter: Formatter {
         super.encode(with: coder)
         
         coder.encode(version, forKey: "version")
-        coder.encode(instructions, forKey: "instructions")
     }
 
     var constants: [String: Any] {
