@@ -4,14 +4,20 @@ import MapboxDirections
 // Will automatically read localized Instructions.plist
 let OSRMTextInstructionsStrings = NSDictionary(contentsOfFile: Bundle(for: OSRMInstructionFormatter.self).path(forResource: "Instructions", ofType: "plist")!)!
 
-extension String {
-    public var sentenceCased: String {
-        return String(characters.prefix(1)).uppercased() + String(characters.dropFirst())
-    }
+protocol Tokenized {
+    associatedtype T
     
     /**
      Replaces `{tokens}` in the receiver using the given closure.
      */
+    func replacingTokens(using interpolator: ((TokenType) -> T)) -> T
+}
+
+extension String: Tokenized {
+    public var sentenceCased: String {
+        return String(characters.prefix(1)).uppercased() + String(characters.dropFirst())
+    }
+    
     public func replacingTokens(using interpolator: ((TokenType) -> String)) -> String {
         let scanner = Scanner(string: self)
         scanner.charactersToBeSkipped = nil
@@ -49,6 +55,48 @@ extension String {
             result = result.sentenceCased
         }
         return result
+    }
+}
+
+extension NSAttributedString: Tokenized {
+    public func replacingTokens(using interpolator: ((TokenType) -> NSAttributedString)) -> NSAttributedString {
+        let scanner = Scanner(string: string)
+        scanner.charactersToBeSkipped = nil
+        let result = NSMutableAttributedString()
+        while !scanner.isAtEnd {
+            var buffer: NSString?
+            
+            if scanner.scanUpTo("{", into: &buffer) {
+                result.append(NSAttributedString(string: buffer! as String))
+            }
+            guard scanner.scanString("{", into: nil) else {
+                continue
+            }
+            
+            var token: NSString?
+            guard scanner.scanUpTo("}", into: &token) else {
+                continue
+            }
+            
+            if scanner.scanString("}", into: nil) {
+                if let tokenType = TokenType(description: token! as String) {
+                    result.append(interpolator(tokenType))
+                }
+            } else {
+                result.append(NSAttributedString(string: token! as String))
+            }
+        }
+        
+        // remove excess spaces
+        let wholeRange = NSRange(location: 0, length: result.mutableString.length)
+        result.mutableString.replaceOccurrences(of: "\\s\\s", with: " ", options: .regularExpression, range: wholeRange)
+        
+        // capitalize
+        let meta = OSRMTextInstructionsStrings["meta"] as! [String: Any]
+        if meta["capitalizeFirstLetter"] as? Bool ?? false {
+            result.replaceCharacters(in: NSRange(location: 0, length: 1), with: String(result.string.characters.first!).uppercased())
+        }
+        return result as NSAttributedString
     }
 }
 
@@ -179,7 +227,7 @@ public class OSRMInstructionFormatter: Formatter {
     /**
      Creates an instruction given a step and options.
      
-     - parameter step: 
+     - parameter step: The step to format.
      - parameter legIndex: Current leg index the user is currently on.
      - parameter numberOfLegs: Total number of `RouteLeg` for the given `Route`.
      - parameter roadClasses: Option set representing the classes of road for the `RouteStep`.
@@ -187,6 +235,31 @@ public class OSRMInstructionFormatter: Formatter {
      - returns: An instruction as a `String`.
      */
     public func string(for obj: Any?, legIndex: Int?, numberOfLegs: Int?, roadClasses: RoadClasses? = RoadClasses([]), modifyValueByKey: ((TokenType, String) -> String)?) -> String? {
+        guard let obj = obj else {
+            return nil
+        }
+        
+        var modifyAttributedValueByKey: ((TokenType, NSAttributedString) -> NSAttributedString)?
+        if let modifyValueByKey = modifyValueByKey {
+            modifyAttributedValueByKey = { (key: TokenType, value: NSAttributedString) -> NSAttributedString in
+                return NSAttributedString(string: modifyValueByKey(key, value.string))
+            }
+        }
+        return attributedString(for: obj, legIndex: legIndex, numberOfLegs: numberOfLegs, roadClasses: roadClasses, modifyValueByKey: modifyAttributedValueByKey)?.string
+    }
+    
+    /**
+     Creates an instruction as an attributed string given a step and options.
+     
+     - parameter obj: The step to format.
+     - parameter attrs: The default attributes to use for the returned attributed string.
+     - parameter legIndex: Current leg index the user is currently on.
+     - parameter numberOfLegs: Total number of `RouteLeg` for the given `Route`.
+     - parameter roadClasses: Option set representing the classes of road for the `RouteStep`.
+     - parameter modifyValueByKey: Allows for mutating the instruction at given parts of the instruction.
+     - returns: An instruction as an `NSAttributedString`.
+     */
+    public func attributedString(for obj: Any, withDefaultAttributes attrs: [String : Any]? = nil, legIndex: Int?, numberOfLegs: Int?, roadClasses: RoadClasses? = RoadClasses([]), modifyValueByKey: ((TokenType, NSAttributedString) -> NSAttributedString)?) -> NSAttributedString? {
         guard let step = obj as? RouteStep else {
             return nil
         }
@@ -208,14 +281,14 @@ public class OSRMInstructionFormatter: Formatter {
 
         var instructionObject: InstructionsByToken
         var rotaryName = ""
-        var wayName: String
+        var wayName: NSAttributedString
         switch type {
         case .takeRotary, .takeRoundabout:
             // Special instruction types have an intermediate level keyed to “default”.
             let instructionsByModifier = instructions[type.description] as! [String: InstructionsByModifier]
             let defaultInstructions = instructionsByModifier["default"]!
             
-            wayName = step.exitNames?.first ?? ""
+            wayName = NSAttributedString(string: step.exitNames?.first ?? "", attributes: attrs)
             if let _rotaryName = step.names?.first, let _ = step.exitIndex, let obj = defaultInstructions["name_exit"] {
                 instructionObject = obj
                 rotaryName = _rotaryName
@@ -244,22 +317,42 @@ public class OSRMInstructionFormatter: Formatter {
             let isMotorway = roadClasses?.contains(.motorway) ?? false
             
             if let name = name, let ref = ref, name != ref, !isMotorway {
-                wayName = phrase(named: .nameWithCode).replacingTokens(using: { (tokenType) -> String in
+                let attributedName = NSAttributedString(string: name, attributes: attrs)
+                let attributedRef = NSAttributedString(string: ref, attributes: attrs)
+                let phrase = NSAttributedString(string: self.phrase(named: .nameWithCode), attributes: attrs)
+                wayName = phrase.replacingTokens(using: { (tokenType) -> NSAttributedString in
                     switch tokenType {
                     case .wayName:
-                        return modifyValueByKey?(.wayName, name) ?? name
+                        return modifyValueByKey?(.wayName, attributedName) ?? attributedName
                     case .code:
-                        return modifyValueByKey?(.code, ref) ?? ref
+                        return modifyValueByKey?(.code, attributedRef) ?? attributedRef
                     default:
                         fatalError("Unexpected token type \(tokenType) in name-and-ref phrase")
                     }
                 })
             } else if let ref = ref, isMotorway, let decimalRange = ref.rangeOfCharacter(from: .decimalDigits), !decimalRange.isEmpty {
-                wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.code, ref))" : ref
+                let attributedRef = NSAttributedString(string: ref, attributes: attrs)
+                if let modifyValueByKey = modifyValueByKey {
+                    wayName = modifyValueByKey(.code, attributedRef)
+                } else {
+                    wayName = attributedRef
+                }
             } else if name == nil, let ref = ref {
-                wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.code, ref))" : ref
+                let attributedRef = NSAttributedString(string: ref, attributes: attrs)
+                if let modifyValueByKey = modifyValueByKey {
+                    wayName = modifyValueByKey(.code, attributedRef)
+                } else {
+                    wayName = attributedRef
+                }
+            } else if let name = name {
+                let attributedName = NSAttributedString(string: name, attributes: attrs)
+                if let modifyValueByKey = modifyValueByKey {
+                    wayName = modifyValueByKey(.wayName, attributedName)
+                } else {
+                    wayName = attributedName
+                }
             } else {
-                wayName = name != nil ? modifyValueByKey != nil ? "\(modifyValueByKey!(.wayName, name!))" : name! : ""
+                wayName = NSAttributedString()
             }
         }
 
@@ -292,7 +385,7 @@ public class OSRMInstructionFormatter: Formatter {
             instruction = obj
         } else if let _ = step.exitCodes?.first, let obj = instructionObject["exit"] {
             instruction = obj
-        } else if !wayName.isEmpty, let obj = instructionObject["name"] {
+        } else if !wayName.string.isEmpty, let obj = instructionObject["name"] {
             instruction = obj
         } else {
             instruction = instructionObject["default"]!
@@ -315,11 +408,11 @@ public class OSRMInstructionFormatter: Formatter {
         if step.finalHeading != nil { bearing = Int(step.finalHeading! as Double) }
 
         // Replace tokens
-        let result = instruction.replacingTokens { (tokenType) -> String in
+        let result = NSAttributedString(string: instruction, attributes: attrs).replacingTokens { (tokenType) -> NSAttributedString in
             var replacement: String
             switch tokenType {
             case .code: replacement = step.codes?.first ?? ""
-            case .wayName: replacement = wayName
+            case .wayName: replacement = "" // ignored
             case .destination: replacement = destination
             case .exitCode: replacement = exitCode
             case .exitIndex: replacement = exitOrdinal
@@ -332,9 +425,10 @@ public class OSRMInstructionFormatter: Formatter {
                 fatalError("Unexpected token type \(tokenType) in individual instruction")
             }
             if tokenType == .wayName {
-                return replacement // already modified above
+                return wayName // already modified above
             } else {
-                return modifyValueByKey?(tokenType, replacement) ?? replacement
+                let attributedReplacement = NSAttributedString(string: replacement, attributes: attrs)
+                return modifyValueByKey?(tokenType, attributedReplacement) ?? attributedReplacement
             }
         }
         
