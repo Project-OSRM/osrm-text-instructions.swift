@@ -8,6 +8,48 @@ extension String {
     public var sentenceCased: String {
         return String(characters.prefix(1)).uppercased() + String(characters.dropFirst())
     }
+    
+    /**
+     Replaces `{tokens}` in the receiver using the given closure.
+     */
+    public func replacingTokens(using interpolator: ((TokenType) -> String)) -> String {
+        let scanner = Scanner(string: self)
+        scanner.charactersToBeSkipped = nil
+        var result = ""
+        while !scanner.isAtEnd {
+            var buffer: NSString?
+            
+            if scanner.scanUpTo("{", into: &buffer) {
+                result += buffer! as String
+            }
+            guard scanner.scanString("{", into: nil) else {
+                continue
+            }
+            
+            var token: NSString?
+            guard scanner.scanUpTo("}", into: &token) else {
+                continue
+            }
+            
+            if scanner.scanString("}", into: nil) {
+                if let tokenType = TokenType(description: token! as String) {
+                    result += interpolator(tokenType)
+                }
+            } else {
+                result += token! as String
+            }
+        }
+        
+        // remove excess spaces
+        result = result.replacingOccurrences(of: "\\s\\s", with: " ", options: .regularExpression)
+        
+        // capitalize
+        let meta = OSRMTextInstructionsStrings["meta"] as! [String: Any]
+        if meta["capitalizeFirstLetter"] as? Bool ?? false {
+            result = result.sentenceCased
+        }
+        return result
+    }
 }
 
 public class OSRMInstructionFormatter: Formatter {
@@ -192,7 +234,18 @@ public class OSRMInstructionFormatter: Formatter {
             let isMotorway = roadClasses?.contains(.motorway) ?? false
             
             if let name = name, let ref = ref, name != ref, !isMotorway {
-                wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.wayName, name)) (\(modifyValueByKey!(.code, ref)))" : "\(name) (\(ref))"
+                let phrases = instructions["phrase"] as! [String: String]
+                let phrase = phrases["name and ref"]!
+                wayName = phrase.replacingTokens(using: { (tokenType) -> String in
+                    switch tokenType {
+                    case .wayName:
+                        return modifyValueByKey?(.wayName, name) ?? name
+                    case .code:
+                        return modifyValueByKey?(.code, ref) ?? ref
+                    default:
+                        fatalError("Unexpected token type \(tokenType) in name-and-ref phrase")
+                    }
+                })
             } else if let ref = ref, isMotorway, let decimalRange = ref.rangeOfCharacter(from: .decimalDigits), !decimalRange.isEmpty {
                 wayName = modifyValueByKey != nil ? "\(modifyValueByKey!(.code, ref))" : ref
             } else if name == nil, let ref = ref {
@@ -254,58 +307,27 @@ public class OSRMInstructionFormatter: Formatter {
         if step.finalHeading != nil { bearing = Int(step.finalHeading! as Double) }
 
         // Replace tokens
-        let scanner = Scanner(string: instruction)
-        scanner.charactersToBeSkipped = nil
-        var result = ""
-        while !scanner.isAtEnd {
-            var buffer: NSString?
-
-            if scanner.scanUpTo("{", into: &buffer) {
-                result += buffer! as String
+        let result = instruction.replacingTokens { (tokenType) -> String in
+            var replacement: String
+            switch tokenType {
+            case .code: replacement = step.codes?.first ?? ""
+            case .wayName: replacement = wayName
+            case .destination: replacement = destination
+            case .exitCode: replacement = exitCode
+            case .exitIndex: replacement = exitOrdinal
+            case .rotaryName: replacement = rotaryName
+            case .laneInstruction: replacement = laneInstruction ?? ""
+            case .modifier: replacement = modifierConstant
+            case .direction: replacement = directionFromDegree(degree: bearing)
+            case .wayPoint: replacement = nthWaypoint ?? ""
+            case .firstInstruction, .secondInstruction, .distance:
+                fatalError("Unexpected token type \(tokenType) in individual instruction")
             }
-            guard scanner.scanString("{", into: nil) else {
-                continue
-            }
-
-            var token: NSString?
-            guard scanner.scanUpTo("}", into: &token) else {
-                continue
-            }
-            
-            if scanner.scanString("}", into: nil) {
-                if let tokenType = TokenType(description: token! as String) {
-                    var replacement: String
-                    switch tokenType {
-                    case .code: replacement = step.codes?.first ?? ""
-                    case .wayName: replacement = wayName
-                    case .destination: replacement = destination
-                    case .exitCode: replacement = exitCode
-                    case .exitIndex: replacement = exitOrdinal
-                    case .rotaryName: replacement = rotaryName
-                    case .laneInstruction: replacement = laneInstruction ?? ""
-                    case .modifier: replacement = modifierConstant
-                    case .direction: replacement = directionFromDegree(degree: bearing)
-                    case .wayPoint: replacement = nthWaypoint ?? ""
-                    }
-                    if tokenType == .wayName {
-                        result += replacement // already modified above
-                    } else {
-                        result += modifyValueByKey?(tokenType, replacement) ?? replacement
-                    }
-                }
+            if tokenType == .wayName {
+                return replacement // already modified above
             } else {
-                result += token! as String
+                return modifyValueByKey?(tokenType, replacement) ?? replacement
             }
-            
-        }
-
-        // remove excess spaces
-        result = result.replacingOccurrences(of: "\\s\\s", with: " ", options: .regularExpression)
-
-        // capitalize
-        let meta = OSRMTextInstructionsStrings["meta"] as! [String: Any]
-        if meta["capitalizeFirstLetter"] as? Bool ?? false {
-            result = result.sentenceCased
         }
         
         return result
