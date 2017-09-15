@@ -2,7 +2,7 @@ import Foundation
 
 @objc(OSRMTokenType)
 public enum TokenType: Int, CustomStringConvertible {
-    
+    // For individual instructions
     case wayName
     case destination
     case rotaryName
@@ -14,10 +14,15 @@ public enum TokenType: Int, CustomStringConvertible {
     case wayPoint
     case code
     
+    // For phrases
+    case firstInstruction
+    case secondInstruction
+    case distance
+    
     public init?(description: String) {
         let type: TokenType
         switch description {
-        case "way_name":
+        case "way_name", "name":
             type = .wayName
         case "destination":
             type = .destination
@@ -37,6 +42,12 @@ public enum TokenType: Int, CustomStringConvertible {
             type = .wayPoint
         case "ref":
             type = .code
+        case "instruction_one":
+            type = .firstInstruction
+        case "instruction_two":
+            type = .secondInstruction
+        case "distance":
+            type = .distance
         default:
             return nil
         }
@@ -65,6 +76,12 @@ public enum TokenType: Int, CustomStringConvertible {
             return "nth"
         case .code:
             return "ref"
+        case .firstInstruction:
+            return "instruction_one"
+        case .secondInstruction:
+            return "instruction_two"
+        case .distance:
+            return "distance"
         }
     }
 }

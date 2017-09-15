@@ -21,31 +21,59 @@ class OSRMTextInstructionsTests: XCTestCase {
     }
 
     func testFixtures() {
-        do {
-            let bundle = Bundle(for: OSRMTextInstructionsTests.self)
-            let url = bundle.url(forResource: "v5", withExtension: nil, subdirectory: "osrm-text-instructions/test/fixtures/")!
-            
-            let directoryContents = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: [])
-            for type in directoryContents {
-                let typeDirectoryContents = try FileManager.default.contentsOfDirectory(at: type, includingPropertiesForKeys: nil, options: [])
-                for fixture in typeDirectoryContents {
+        let bundle = Bundle(for: OSRMTextInstructionsTests.self)
+        let url = bundle.url(forResource: "v5", withExtension: nil, subdirectory: "osrm-text-instructions/test/fixtures/")!
+        
+        let phrases = instructions.instructions["phrase"] as! [String: String]
+        
+        var directoryContents: [URL] = []
+        XCTAssertNoThrow(directoryContents = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: []))
+        for type in directoryContents {
+            var typeDirectoryContents: [URL] = []
+            XCTAssertNoThrow(typeDirectoryContents = try FileManager.default.contentsOfDirectory(at: type, includingPropertiesForKeys: nil, options: []))
+            for fixture in typeDirectoryContents {
+                if type.lastPathComponent == "phrase" {
+                    var rawJSON = Data()
+                    XCTAssertNoThrow(rawJSON = try Data(contentsOf: fixture, options: []))
+                    
+                    var json: [String: Any] = [:]
+                    XCTAssertNoThrow(json = try JSONSerialization.jsonObject(with: rawJSON, options: []) as! [String: Any])
+                    
+                    let phrase = fixture.deletingPathExtension().lastPathComponent.replacingOccurrences(of: "_", with: " ")
+                    let fixtureOptions = json["options"] as! [String: String]
+                    
+                    let expectedValue = (json["phrases"] as! [String: String])["en"]
+                    let actualValue = phrases[phrase]?.replacingTokens(using: { (tokenType) -> String in
+                        var replacement: String?
+                        switch tokenType {
+                        case .firstInstruction:
+                            replacement = fixtureOptions["instruction_one"]
+                        case .secondInstruction:
+                            replacement = fixtureOptions["instruction_two"]
+                        case .distance:
+                            replacement = fixtureOptions["distance"]
+                        default:
+                            XCTFail("Unexpected token type \(tokenType) in phrase \(phrase)")
+                        }
+                        XCTAssertNotNil(replacement, "Missing fixture option for \(tokenType)")
+                        return replacement ?? ""
+                    })
+                    XCTAssertEqual(expectedValue, actualValue, fixture.path)
+                } else {
                     // parse fixture
-                    guard let json = getFixture(url: fixture) else {
-                        XCTAssert(false, "invalid json")
-                        return
-                    }
+                    let json = getFixture(url: fixture)
                     let options = json["options"] as? [String: Any]
-
+                    
                     let step = RouteStep(json: json["step"] as! [String: Any])
                     
                     var roadClasses: RoadClasses? = nil
                     if let classes = options?["classes"] as? [String] {
                         roadClasses = RoadClasses(descriptions: classes)
                     }
-
+                    
                     // compile instruction
                     let instruction = instructions.string(for: step, legIndex: options?["legIndex"] as? Int, numberOfLegs: options?["legCount"] as? Int, roadClasses: roadClasses, modifyValueByKey: nil)
-
+                    
                     // check generated instruction against fixture
                     XCTAssertEqual(
                         json["instruction"] as? String,
@@ -54,35 +82,23 @@ class OSRMTextInstructionsTests: XCTestCase {
                     )
                 }
             }
-        } catch let error as NSError {
-            print(error.localizedDescription)
-            XCTAssert(false)
         }
     }
 
-    func getFixture(url: URL) -> NSMutableDictionary? {
+    func getFixture(url: URL) -> [String: Any] {
         var rawJSON = Data()
-        do {
-            rawJSON = try Data(contentsOf: url, options: [])
-        } catch {
-            XCTAssert(false)
-        }
+        XCTAssertNoThrow(rawJSON = try Data(contentsOf: url, options: []))
 
-        let json: NSDictionary
-        do {
-            json = try JSONSerialization.jsonObject(with: rawJSON, options: []) as! NSDictionary
-        } catch {
-            XCTAssert(false)
-            return nil
-        }
+        var json: [String: Any] = [:]
+        XCTAssertNoThrow(json = try JSONSerialization.jsonObject(with: rawJSON, options: []) as! [String: Any])
 
         // provide default values for properties that RouteStep
         // needs, but that our not in the fixtures
-        let fixture: NSMutableDictionary = [:]
-        let maneuver: NSMutableDictionary = [
+        var fixture: [String: Any] = [:]
+        var maneuver: [String: Any] = [
             "location": [ 1.0, 1.0 ]
         ]
-        let step: NSMutableDictionary = [
+        var step: [String: Any] = [
             "mode": "driving"
         ]
 
