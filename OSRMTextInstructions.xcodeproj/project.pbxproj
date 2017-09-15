@@ -37,6 +37,10 @@
 		DA5F58FE1E85C19E00BA4D0A /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51B63E81E65FA04002F4634 /* TokenType.swift */; };
 		DA5F59011E85C1B200BA4D0A /* MapboxDirections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5F58FF1E85C1B200BA4D0A /* MapboxDirections.framework */; };
 		DA5F59021E85C1B200BA4D0A /* Polyline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5F59001E85C1B200BA4D0A /* Polyline.framework */; };
+		DA9CB7741F6C72D800AD2E21 /* PhraseName.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9CB7731F6C72D800AD2E21 /* PhraseName.swift */; };
+		DA9CB7751F6C72D800AD2E21 /* PhraseName.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9CB7731F6C72D800AD2E21 /* PhraseName.swift */; };
+		DA9CB7761F6C72D800AD2E21 /* PhraseName.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9CB7731F6C72D800AD2E21 /* PhraseName.swift */; };
+		DA9CB7771F6C72D800AD2E21 /* PhraseName.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9CB7731F6C72D800AD2E21 /* PhraseName.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +91,7 @@
 		DA5F58F41E85C13700BA4D0A /* OSRMTextInstructions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OSRMTextInstructions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5F58FF1E85C1B200BA4D0A /* MapboxDirections.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapboxDirections.framework; path = Carthage/Build/watchOS/MapboxDirections.framework; sourceTree = "<group>"; };
 		DA5F59001E85C1B200BA4D0A /* Polyline.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Polyline.framework; path = Carthage/Build/watchOS/Polyline.framework; sourceTree = "<group>"; };
+		DA9CB7731F6C72D800AD2E21 /* PhraseName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhraseName.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +215,7 @@
 				358D14561E5E355600ADE590 /* Info.plist */,
 				358D14571E5E355600ADE590 /* OSRMTextInstructions.h */,
 				358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */,
+				DA9CB7731F6C72D800AD2E21 /* PhraseName.swift */,
 				C51B63E81E65FA04002F4634 /* TokenType.swift */,
 			);
 			path = OSRMTextInstructions;
@@ -636,6 +642,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA9CB7741F6C72D800AD2E21 /* PhraseName.swift in Sources */,
 				358D145B1E5E355600ADE590 /* OSRMTextInstructions.swift in Sources */,
 				C51B63E91E65FA04002F4634 /* TokenType.swift in Sources */,
 			);
@@ -645,6 +652,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA9CB7751F6C72D800AD2E21 /* PhraseName.swift in Sources */,
 				DA5F58AC1E85B0A500BA4D0A /* OSRMTextInstructions.swift in Sources */,
 				DA5F58AD1E85B0A500BA4D0A /* TokenType.swift in Sources */,
 			);
@@ -662,6 +670,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA9CB7761F6C72D800AD2E21 /* PhraseName.swift in Sources */,
 				DA5F58E41E85BE1500BA4D0A /* OSRMTextInstructions.swift in Sources */,
 				DA5F58E51E85BE1500BA4D0A /* TokenType.swift in Sources */,
 			);
@@ -679,6 +688,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA9CB7771F6C72D800AD2E21 /* PhraseName.swift in Sources */,
 				DA5F58FD1E85C19E00BA4D0A /* OSRMTextInstructions.swift in Sources */,
 				DA5F58FE1E85C19E00BA4D0A /* TokenType.swift in Sources */,
 			);
