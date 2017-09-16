@@ -99,6 +99,16 @@ public class OSRMInstructionFormatter: Formatter {
         return instructions["constants"] as! [String: Any]
     }
     
+    /**
+     Returns a format string with the given name.
+     
+     - returns: A format string suitable for `String.replacingTokens(using:)`.
+     */
+    public func phrase(named name: PhraseName) -> String {
+        let phrases = instructions["phrase"] as! [String: String]
+        return phrases["\(name)"]!
+    }
+    
     func laneConfig(intersection: Intersection) -> String? {
         guard let approachLanes = intersection.approachLanes else {
             return ""
@@ -234,9 +244,7 @@ public class OSRMInstructionFormatter: Formatter {
             let isMotorway = roadClasses?.contains(.motorway) ?? false
             
             if let name = name, let ref = ref, name != ref, !isMotorway {
-                let phrases = instructions["phrase"] as! [String: String]
-                let phrase = phrases["name and ref"]!
-                wayName = phrase.replacingTokens(using: { (tokenType) -> String in
+                wayName = phrase(named: .nameWithCode).replacingTokens(using: { (tokenType) -> String in
                     switch tokenType {
                     case .wayName:
                         return modifyValueByKey?(.wayName, name) ?? name

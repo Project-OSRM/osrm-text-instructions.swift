@@ -24,8 +24,6 @@ class OSRMTextInstructionsTests: XCTestCase {
         let bundle = Bundle(for: OSRMTextInstructionsTests.self)
         let url = bundle.url(forResource: "v5", withExtension: nil, subdirectory: "osrm-text-instructions/test/fixtures/")!
         
-        let phrases = instructions.instructions["phrase"] as! [String: String]
-        
         var directoryContents: [URL] = []
         XCTAssertNoThrow(directoryContents = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: []))
         for type in directoryContents {
@@ -39,11 +37,18 @@ class OSRMTextInstructionsTests: XCTestCase {
                     var json: [String: Any] = [:]
                     XCTAssertNoThrow(json = try JSONSerialization.jsonObject(with: rawJSON, options: []) as! [String: Any])
                     
-                    let phrase = fixture.deletingPathExtension().lastPathComponent.replacingOccurrences(of: "_", with: " ")
+                    let phraseInFileName = fixture.deletingPathExtension().lastPathComponent.replacingOccurrences(of: "_", with: " ")
+                    let phraseName = PhraseName(description: phraseInFileName)
+                    XCTAssertNotNil(phraseName)
+                    var phrase: String?
+                    if let phraseName = phraseName {
+                        phrase = instructions.phrase(named: phraseName)
+                    }
+                    XCTAssertNotNil(phrase)
                     let fixtureOptions = json["options"] as! [String: String]
                     
                     let expectedValue = (json["phrases"] as! [String: String])["en"]
-                    let actualValue = phrases[phrase]?.replacingTokens(using: { (tokenType) -> String in
+                    let actualValue = phrase?.replacingTokens(using: { (tokenType) -> String in
                         var replacement: String?
                         switch tokenType {
                         case .firstInstruction:
@@ -53,7 +58,7 @@ class OSRMTextInstructionsTests: XCTestCase {
                         case .distance:
                             replacement = fixtureOptions["distance"]
                         default:
-                            XCTFail("Unexpected token type \(tokenType) in phrase \(phrase)")
+                            XCTFail("Unexpected token type \(tokenType) in phrase \(phraseInFileName)")
                         }
                         XCTAssertNotNil(replacement, "Missing fixture option for \(tokenType)")
                         return replacement ?? ""
