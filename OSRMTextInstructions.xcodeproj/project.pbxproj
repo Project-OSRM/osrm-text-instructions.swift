@@ -15,6 +15,9 @@
 		358D145A1E5E355600ADE590 /* OSRMTextInstructions.h in Headers */ = {isa = PBXBuildFile; fileRef = 358D14571E5E355600ADE590 /* OSRMTextInstructions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		358D145B1E5E355600ADE590 /* OSRMTextInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */; };
 		C51B63E91E65FA04002F4634 /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51B63E81E65FA04002F4634 /* TokenType.swift */; };
+		DA5F02781F6CBAAF0040C4AD /* TokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F02771F6CBAAF0040C4AD /* TokenTests.swift */; };
+		DA5F02791F6CBAAF0040C4AD /* TokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F02771F6CBAAF0040C4AD /* TokenTests.swift */; };
+		DA5F027A1F6CBAAF0040C4AD /* TokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F02771F6CBAAF0040C4AD /* TokenTests.swift */; };
 		DA5F589C1E85A32C00BA4D0A /* OSRMTextInstructions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5F58931E85A32C00BA4D0A /* OSRMTextInstructions.framework */; };
 		DA5F58AB1E85B0A000BA4D0A /* OSRMTextInstructions.h in Headers */ = {isa = PBXBuildFile; fileRef = 358D14571E5E355600ADE590 /* OSRMTextInstructions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA5F58AC1E85B0A500BA4D0A /* OSRMTextInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358D14581E5E355600ADE590 /* OSRMTextInstructions.swift */; };
@@ -80,6 +83,7 @@
 		35EBDB5D1E5E1572006EB3CD /* OSRMTextInstructions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OSRMTextInstructions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C51B63E81E65FA04002F4634 /* TokenType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenType.swift; sourceTree = "<group>"; };
 		DA2DFB3B1E8373AF00CEEBE9 /* json2plist.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = json2plist.sh; sourceTree = "<group>"; };
+		DA5F02771F6CBAAF0040C4AD /* TokenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenTests.swift; sourceTree = SOURCE_ROOT; };
 		DA5F58931E85A32C00BA4D0A /* OSRMTextInstructions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OSRMTextInstructions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5F589B1E85A32C00BA4D0A /* OSRMTextInstructionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSRMTextInstructionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5F58B61E85B24E00BA4D0A /* MapboxDirections.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapboxDirections.framework; path = Carthage/Build/Mac/MapboxDirections.framework; sourceTree = "<group>"; };
@@ -177,8 +181,9 @@
 		352BBC2A1E5E4D4200703DF1 /* OSRMTextInstructionsTests */ = {
 			isa = PBXGroup;
 			children = (
-				352BBC2B1E5E4D4200703DF1 /* OSRMTextInstructionsTests.swift */,
 				352BBC2D1E5E4D4200703DF1 /* Info.plist */,
+				352BBC2B1E5E4D4200703DF1 /* OSRMTextInstructionsTests.swift */,
+				DA5F02771F6CBAAF0040C4AD /* TokenTests.swift */,
 			);
 			path = OSRMTextInstructionsTests;
 			sourceTree = "<group>";
@@ -637,6 +642,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA5F02781F6CBAAF0040C4AD /* TokenTests.swift in Sources */,
 				352BBC2C1E5E4D4200703DF1 /* OSRMTextInstructionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -665,6 +671,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA5F02791F6CBAAF0040C4AD /* TokenTests.swift in Sources */,
 				DA5F58AE1E85B0AE00BA4D0A /* OSRMTextInstructionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -683,6 +690,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA5F027A1F6CBAAF0040C4AD /* TokenTests.swift in Sources */,
 				DA5F58E61E85BE1900BA4D0A /* OSRMTextInstructionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

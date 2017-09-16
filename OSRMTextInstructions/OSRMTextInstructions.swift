@@ -34,15 +34,18 @@ extension String: Tokenized {
             
             var token: NSString?
             guard scanner.scanUpTo("}", into: &token) else {
+                result += "{"
                 continue
             }
             
             if scanner.scanString("}", into: nil) {
                 if let tokenType = TokenType(description: token! as String) {
                     result += interpolator(tokenType)
+                } else {
+                    result += "{\(token!)}"
                 }
             } else {
-                result += token! as String
+                result += "{\(token!)"
             }
         }
         
