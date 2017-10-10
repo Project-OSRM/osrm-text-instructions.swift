@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.name = "OSRMTextInstructions"
-  s.version = "0.3.5"
+  s.version = "0.4.0"
   s.summary = "Transforms OSRM route reponses into human-readable instructions."
 
   s.description  = <<-DESC
@@ -46,7 +46,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.module_name = "OSRMTextInstructions"
 
-  s.dependency "MapboxDirections.swift", "~> 0.10"
+  s.dependency "MapboxDirections.swift", "~> 0.11"
 
   s.prepare_command = "./json2plist.sh"
 
