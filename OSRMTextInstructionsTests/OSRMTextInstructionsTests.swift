@@ -48,7 +48,7 @@ class OSRMTextInstructionsTests: XCTestCase {
                     let fixtureOptions = json["options"] as! [String: String]
                     
                     let expectedValue = (json["phrases"] as! [String: String])["en"]
-                    let actualValue = phrase?.replacingTokens(using: { (tokenType) -> String in
+                    let actualValue = phrase?.replacingTokens(using: { (tokenType, variant) -> String in
                         var replacement: String?
                         switch tokenType {
                         case .firstInstruction:
