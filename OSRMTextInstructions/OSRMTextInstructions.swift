@@ -3,6 +3,37 @@ import MapboxDirections
 
 // Will automatically read localized Instructions.plist
 let OSRMTextInstructionsStrings = NSDictionary(contentsOfFile: Bundle(for: OSRMInstructionFormatter.self).path(forResource: "Instructions", ofType: "plist")!)!
+let OSRMTextInstructionsGrammar: NSDictionary? = {
+    guard let path = Bundle(for: OSRMInstructionFormatter.self).path(forResource: "Grammar", ofType: "plist") else {
+        return nil
+    }
+    
+    return NSDictionary(contentsOfFile: path)
+}()
+
+extension NSRegularExpression.Options {
+    init(javaScriptFlags: String) {
+        var options: NSRegularExpression.Options = []
+        for flag in javaScriptFlags.characters {
+            switch flag {
+            case "g":
+                break
+            case "i":
+                options.insert(.caseInsensitive)
+            case "m":
+                options.insert(.anchorsMatchLines)
+            case "u":
+                // Character classes are always Unicode-aware in ICU regular expressions.
+                options.insert(.useUnicodeWordBoundaries)
+            case "y":
+                break
+            default:
+                break
+            }
+        }
+        self.init(rawValue: options.rawValue)
+    }
+}
 
 protocol Tokenized {
     associatedtype T
@@ -10,7 +41,9 @@ protocol Tokenized {
     /**
      Replaces `{tokens}` in the receiver using the given closure.
      */
-    func replacingTokens(using interpolator: ((TokenType) -> T)) -> T
+    func replacingTokens(using interpolator: ((TokenType, String?) -> T)) -> T
+    
+    func inflected(into variant: String, version: String) -> T
 }
 
 extension String: Tokenized {
@@ -18,7 +51,7 @@ extension String: Tokenized {
         return String(characters.prefix(1)).uppercased() + String(characters.dropFirst())
     }
     
-    public func replacingTokens(using interpolator: ((TokenType) -> String)) -> String {
+    public func replacingTokens(using interpolator: ((TokenType, String?) -> String)) -> String {
         let scanner = Scanner(string: self)
         scanner.charactersToBeSkipped = nil
         var result = ""
@@ -38,9 +71,17 @@ extension String: Tokenized {
                 continue
             }
             
+            var variant: NSString?
+            if scanner.scanString(":", into: nil) {
+                guard scanner.scanUpTo("}", into: &variant) else {
+                    result += ":"
+                    continue
+                }
+            }
+            
             if scanner.scanString("}", into: nil) {
                 if let tokenType = TokenType(description: token! as String) {
-                    result += interpolator(tokenType)
+                    result += interpolator(tokenType, variant as String?)
                 } else {
                     result += "{\(token!)}"
                 }
@@ -59,10 +100,34 @@ extension String: Tokenized {
         }
         return result
     }
+    
+    func inflected(into variant: String, version: String) -> String {
+        guard let grammar = OSRMTextInstructionsGrammar?[version] as? [String: Any] else {
+            return self
+        }
+        
+        guard let rules = grammar[variant] as? [[String]] else {
+            return self
+        }
+        
+        var grammaticalReplacement = " \(self) "
+        var regularExpressionOptions: NSRegularExpression.Options = []
+        if let meta = OSRMTextInstructionsGrammar?["meta"] as? [String: String],
+            let flags = meta["regExpFlags"] {
+            regularExpressionOptions = NSRegularExpression.Options(javaScriptFlags: flags)
+        }
+        
+        for rule in rules {
+            let regularExpression = try! NSRegularExpression(pattern: rule[0], options: regularExpressionOptions)
+            grammaticalReplacement = regularExpression.stringByReplacingMatches(in: grammaticalReplacement, options: [], range: NSRange(location: 0, length: grammaticalReplacement.characters.count), withTemplate: rule[1])
+        }
+        
+        return grammaticalReplacement.trimmingCharacters(in: .whitespaces)
+    }
 }
 
 extension NSAttributedString: Tokenized {
-    public func replacingTokens(using interpolator: ((TokenType) -> NSAttributedString)) -> NSAttributedString {
+    public func replacingTokens(using interpolator: ((TokenType, String?) -> NSAttributedString)) -> NSAttributedString {
         let scanner = Scanner(string: string)
         scanner.charactersToBeSkipped = nil
         let result = NSMutableAttributedString()
@@ -78,12 +143,21 @@ extension NSAttributedString: Tokenized {
             
             var token: NSString?
             guard scanner.scanUpTo("}", into: &token) else {
+                result.append(NSAttributedString(string: "}"))
                 continue
+            }
+            
+            var variant: NSString?
+            if scanner.scanString(":", into: nil) {
+                guard scanner.scanUpTo("}", into: &variant) else {
+                    result.append(NSAttributedString(string: "}"))
+                    continue
+                }
             }
             
             if scanner.scanString("}", into: nil) {
                 if let tokenType = TokenType(description: token! as String) {
-                    result.append(interpolator(tokenType))
+                    result.append(interpolator(tokenType, variant as String?))
                 }
             } else {
                 result.append(NSAttributedString(string: token! as String))
@@ -100,6 +174,34 @@ extension NSAttributedString: Tokenized {
             result.replaceCharacters(in: NSRange(location: 0, length: 1), with: String(result.string.characters.first!).uppercased())
         }
         return result as NSAttributedString
+    }
+    
+    @nonobjc func inflected(into variant: String, version: String) -> NSAttributedString {
+        guard let grammar = OSRMTextInstructionsGrammar?[version] as? [String: Any] else {
+            return self
+        }
+        
+        guard let rules = grammar[variant] as? [[String]] else {
+            return self
+        }
+        
+        let grammaticalReplacement = NSMutableAttributedString(string: " ")
+        grammaticalReplacement.append(self)
+        grammaticalReplacement.append(NSAttributedString(string: " "))
+        
+        var regularExpressionOptions: NSRegularExpression.Options = []
+        if let meta = OSRMTextInstructionsGrammar?["meta"] as? [String: String],
+            let flags = meta["regExpFlags"] {
+            regularExpressionOptions = NSRegularExpression.Options(javaScriptFlags: flags)
+        }
+        
+        for rule in rules {
+            let regularExpression = try! NSRegularExpression(pattern: rule[0], options: regularExpressionOptions)
+            regularExpression.replaceMatches(in: grammaticalReplacement.mutableString, options: [], range: NSRange(location: 0, length: grammaticalReplacement.mutableString.length), withTemplate: rule[1])
+        }
+        
+        grammaticalReplacement.mutableString.replaceOccurrences(of: "^ +| +$", with: "", options: .regularExpression, range: NSRange(location: 0, length: grammaticalReplacement.mutableString.length))
+        return grammaticalReplacement
     }
 }
 
@@ -323,15 +425,21 @@ public class OSRMInstructionFormatter: Formatter {
                 let attributedName = NSAttributedString(string: name, attributes: attrs)
                 let attributedRef = NSAttributedString(string: ref, attributes: attrs)
                 let phrase = NSAttributedString(string: self.phrase(named: .nameWithCode), attributes: attrs)
-                wayName = phrase.replacingTokens(using: { (tokenType) -> NSAttributedString in
+                wayName = phrase.replacingTokens(using: { (tokenType, variant) -> NSAttributedString in
+                    var replacement: NSAttributedString
                     switch tokenType {
                     case .wayName:
-                        return modifyValueByKey?(.wayName, attributedName) ?? attributedName
+                        replacement = attributedName
                     case .code:
-                        return modifyValueByKey?(.code, attributedRef) ?? attributedRef
+                        replacement = attributedRef
                     default:
                         fatalError("Unexpected token type \(tokenType) in name-and-ref phrase")
                     }
+                    
+                    if let variant = variant {
+                        replacement = replacement.inflected(into: variant, version: version)
+                    }
+                    return modifyValueByKey?(tokenType, replacement) ?? replacement
                 })
             } else if let ref = ref, isMotorway, let decimalRange = ref.rangeOfCharacter(from: .decimalDigits), !decimalRange.isEmpty {
                 let attributedRef = NSAttributedString(string: ref, attributes: attrs)
@@ -411,7 +519,7 @@ public class OSRMInstructionFormatter: Formatter {
         if step.finalHeading != nil { bearing = Int(step.finalHeading! as Double) }
 
         // Replace tokens
-        let result = NSAttributedString(string: instruction, attributes: attrs).replacingTokens { (tokenType) -> NSAttributedString in
+        let result = NSAttributedString(string: instruction, attributes: attrs).replacingTokens { (tokenType, variant) -> NSAttributedString in
             var replacement: String
             switch tokenType {
             case .code: replacement = step.codes?.first ?? ""
@@ -430,6 +538,9 @@ public class OSRMInstructionFormatter: Formatter {
             if tokenType == .wayName {
                 return wayName // already modified above
             } else {
+                if let variant = variant {
+                    replacement = replacement.inflected(into: variant, version: version)
+                }
                 let attributedReplacement = NSAttributedString(string: replacement, attributes: attrs)
                 return modifyValueByKey?(tokenType, attributedReplacement) ?? attributedReplacement
             }
