@@ -15,7 +15,7 @@ protocol Tokenized {
 
 extension String: Tokenized {
     public var sentenceCased: String {
-        return String(characters.prefix(1)).uppercased() + String(characters.dropFirst())
+        return prefix(1).uppercased() + dropFirst()
     }
     
     public func replacingTokens(using interpolator: ((TokenType) -> String)) -> String {
@@ -62,7 +62,7 @@ extension String: Tokenized {
 }
 
 extension NSAttributedString: Tokenized {
-    public func replacingTokens(using interpolator: ((TokenType) -> NSAttributedString)) -> NSAttributedString {
+    @objc public func replacingTokens(using interpolator: ((TokenType) -> NSAttributedString)) -> NSAttributedString {
         let scanner = Scanner(string: string)
         scanner.charactersToBeSkipped = nil
         let result = NSMutableAttributedString()
@@ -97,13 +97,13 @@ extension NSAttributedString: Tokenized {
         // capitalize
         let meta = OSRMTextInstructionsStrings["meta"] as! [String: Any]
         if meta["capitalizeFirstLetter"] as? Bool ?? false {
-            result.replaceCharacters(in: NSRange(location: 0, length: 1), with: String(result.string.characters.first!).uppercased())
+            result.replaceCharacters(in: NSRange(location: 0, length: 1), with: String(result.string.first!).uppercased())
         }
         return result as NSAttributedString
     }
 }
 
-public class OSRMInstructionFormatter: Formatter {
+@objc public class OSRMInstructionFormatter: Formatter {
     let version: String
     let instructions: [String: Any]
     
@@ -116,7 +116,7 @@ public class OSRMInstructionFormatter: Formatter {
         return formatter
     }()
     
-    public init(version: String) {
+    @objc public init(version: String) {
         self.version = version
         self.instructions = OSRMTextInstructionsStrings[version] as! [String: Any]
         
@@ -155,7 +155,7 @@ public class OSRMInstructionFormatter: Formatter {
      
      - returns: A format string suitable for `String.replacingTokens(using:)`.
      */
-    public func phrase(named name: PhraseName) -> String {
+    @objc public func phrase(named name: PhraseName) -> String {
         let phrases = instructions["phrase"] as! [String: String]
         return phrases["\(name)"]!
     }
@@ -262,7 +262,7 @@ public class OSRMInstructionFormatter: Formatter {
      - parameter modifyValueByKey: Allows for mutating the instruction at given parts of the instruction.
      - returns: An instruction as an `NSAttributedString`.
      */
-    public func attributedString(for obj: Any, withDefaultAttributes attrs: [String : Any]? = nil, legIndex: Int?, numberOfLegs: Int?, roadClasses: RoadClasses? = RoadClasses([]), modifyValueByKey: ((TokenType, NSAttributedString) -> NSAttributedString)?) -> NSAttributedString? {
+    public func attributedString(for obj: Any, withDefaultAttributes attrs: [NSAttributedStringKey: Any]? = nil, legIndex: Int?, numberOfLegs: Int?, roadClasses: RoadClasses? = RoadClasses([]), modifyValueByKey: ((TokenType, NSAttributedString) -> NSAttributedString)?) -> NSAttributedString? {
         guard let step = obj as? RouteStep else {
             return nil
         }
