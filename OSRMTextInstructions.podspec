@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.name = "OSRMTextInstructions"
-  s.version = "0.5.0"
+  s.version = "0.6.0"
   s.summary = "Transforms OSRM route reponses into human-readable instructions."
 
   s.description  = <<-DESC
