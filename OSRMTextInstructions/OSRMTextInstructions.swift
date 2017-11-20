@@ -15,7 +15,7 @@ protocol Tokenized {
 
 extension String: Tokenized {
     public var sentenceCased: String {
-        return String(prefix(1)).uppercased() + String(dropFirst())
+        return prefix(1).uppercased() + dropFirst()
     }
     
     public func replacingTokens(using interpolator: ((TokenType) -> String)) -> String {
