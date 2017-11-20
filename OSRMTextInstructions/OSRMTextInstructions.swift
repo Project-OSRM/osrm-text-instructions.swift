@@ -262,7 +262,7 @@ extension NSAttributedString: Tokenized {
      - parameter modifyValueByKey: Allows for mutating the instruction at given parts of the instruction.
      - returns: An instruction as an `NSAttributedString`.
      */
-    public func attributedString(for obj: Any, withDefaultAttributes attrs: [String : Any]? = nil, legIndex: Int?, numberOfLegs: Int?, roadClasses: RoadClasses? = RoadClasses([]), modifyValueByKey: ((TokenType, NSAttributedString) -> NSAttributedString)?) -> NSAttributedString? {
+    public func attributedString(for obj: Any, withDefaultAttributes attrs: [NSAttributedStringKey: Any]? = nil, legIndex: Int?, numberOfLegs: Int?, roadClasses: RoadClasses? = RoadClasses([]), modifyValueByKey: ((TokenType, NSAttributedString) -> NSAttributedString)?) -> NSAttributedString? {
         guard let step = obj as? RouteStep else {
             return nil
         }
