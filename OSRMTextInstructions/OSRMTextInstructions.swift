@@ -267,11 +267,11 @@ extension NSAttributedString: Tokenized {
             return nil
         }
         
-        var type = step.maneuverType ?? .turn
-        let modifier = step.maneuverDirection?.description
+        var type = step.maneuverType
+        let modifier = step.maneuverDirection.description
         let mode = step.transportType
 
-        if type != .depart && type != .arrive && modifier == nil {
+        if type != .depart && type != .arrive && modifier == .none {
             return nil
         }
 
@@ -306,9 +306,9 @@ extension NSAttributedString: Tokenized {
         default:
             var typeInstructions = instructions[type.description] as! InstructionsByModifier
             let modesInstructions = instructions["modes"] as? InstructionsByModifier
-            if let mode = mode, let modesInstructions = modesInstructions, let modesInstruction = modesInstructions[mode.description] {
+            if let modesInstructions = modesInstructions, let modesInstruction = modesInstructions[mode.description] {
                 instructionObject = modesInstruction
-            } else if let modifier = modifier, let typeInstruction = typeInstructions[modifier] {
+            } else if let typeInstruction = typeInstructions[modifier] {
                 instructionObject = typeInstruction
             } else {
                 instructionObject = typeInstructions["default"]!
@@ -406,7 +406,7 @@ extension NSAttributedString: Tokenized {
             exitOrdinal = ordinalFormatter.string(from: exitIndex as NSNumber)!
         }
         let modifierConstants = constants["modifier"] as! [String: String]
-        let modifierConstant = modifierConstants[modifier ?? "straight"]!
+        let modifierConstant = modifierConstants[modifier == "none" ? "straight" : modifier]!
         var bearing: Int? = nil
         if step.finalHeading != nil { bearing = Int(step.finalHeading! as Double) }
 
