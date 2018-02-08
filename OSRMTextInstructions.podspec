@@ -46,7 +46,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.module_name = "OSRMTextInstructions"
 
-  s.dependency "MapboxDirections.swift", "~> 0.13"
+  s.dependency "MapboxDirections.swift", "~> 0.16"
 
   s.prepare_command = "./json2plist.sh"
 
