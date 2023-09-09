@@ -20,8 +20,13 @@ class OSRMTextInstructionsTests: XCTestCase {
         XCTAssertEqual("", "".sentenceCased)
     }
 
-    func testFixtures() {
+    func testFixtures() throws {
+        #if SWIFT_PACKAGE
+        let bundle = Bundle.module
+        #else
         let bundle = Bundle(for: OSRMTextInstructionsTests.self)
+        #endif
+
         let url = bundle.url(forResource: "v5", withExtension: nil, subdirectory: "osrm-text-instructions/test/fixtures/")!
         
         var directoryContents: [URL] = []
@@ -68,8 +73,9 @@ class OSRMTextInstructionsTests: XCTestCase {
                     // parse fixture
                     let json = getFixture(url: fixture)
                     let options = json["options"] as? [String: Any]
-                    
-                    let step = RouteStep(json: json["step"] as! [String: Any])
+
+                    let encodedJSON = try JSONSerialization.data(withJSONObject: json["step"]!)
+                    let step = try JSONDecoder().decode(RouteStep.self, from: encodedJSON)
                     
                     var roadClasses: RoadClasses? = nil
                     if let classes = options?["classes"] as? [String] {
@@ -101,10 +107,14 @@ class OSRMTextInstructionsTests: XCTestCase {
         // needs, but that our not in the fixtures
         var fixture: [String: Any] = [:]
         var maneuver: [String: Any] = [
-            "location": [ 1.0, 1.0 ]
+            "location": [ 1.0, 1.0 ],
+            "distance": 0,
         ]
         var step: [String: Any] = [
-            "mode": "driving"
+            "mode": "driving",
+            "driving_side": "right",
+            "distance": 0,
+            "duration": 0,
         ]
 
         let jsonStep = json["step"] as! [ String: Any ]
@@ -123,6 +133,12 @@ class OSRMTextInstructionsTests: XCTestCase {
         }
         if let rotaryName = jsonStep["rotary_name"] {
             step["rotary_name"] = rotaryName
+        }
+        if let distance = jsonStep["distance"] {
+            step["distance"] = distance
+        }
+        if let duration = jsonStep["duration"] {
+            step["duration"] = duration
         }
 
         let jsonManeuver = jsonStep["maneuver"] as! [ String: Any ]
