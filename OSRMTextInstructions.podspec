@@ -48,6 +48,4 @@ Pod::Spec.new do |s|
 
   s.dependency "MapboxDirections.swift", "~> 2.0"
 
-  s.prepare_command = "./json2plist.sh"
-
 end

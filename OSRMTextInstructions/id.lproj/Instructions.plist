@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>meta</key>
+	<dict>
+		<key>capitalizeFirstLetter</key>
+		<true/>
+	</dict>
+	<key>v5</key>
+	<dict>
+		<key>arrive</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Anda telah tiba di tujuan ke-{nth}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Anda telah tiba di tujuan ke-{nth}, di sebelah kiri</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Anda telah tiba di tujuan ke-{nth}, di sebelah kanan</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Anda telah tiba di tujuan ke-{nth}, di sebelah kiri</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Anda telah tiba di tujuan ke-{nth}, di sebelah kanan</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Anda telah tiba di tujuan ke-{nth}, di sebelah kiri</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Anda telah tiba di tujuan ke-{nth}, di sebelah kanan</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Anda telah tiba di tujuan ke-{nth}, lurus saja</string>
+			</dict>
+		</dict>
+		<key>constants</key>
+		<dict>
+			<key>direction</key>
+			<dict>
+				<key>east</key>
+				<string>timur</string>
+				<key>north</key>
+				<string>utara</string>
+				<key>northeast</key>
+				<string>timur laut</string>
+				<key>northwest</key>
+				<string>barat laut</string>
+				<key>south</key>
+				<string>selatan</string>
+				<key>southeast</key>
+				<string>tenggara</string>
+				<key>southwest</key>
+				<string>barat daya</string>
+				<key>west</key>
+				<string>barat</string>
+			</dict>
+			<key>lanes</key>
+			<dict>
+				<key>ox</key>
+				<string>Tetap di kiri</string>
+				<key>oxo</key>
+				<string>Tetap di kiri atau kanan</string>
+				<key>xo</key>
+				<string>Tetap di kanan</string>
+				<key>xox</key>
+				<string>Tetap di tengah</string>
+			</dict>
+			<key>modifier</key>
+			<dict>
+				<key>left</key>
+				<string>kiri</string>
+				<key>right</key>
+				<string>kanan</string>
+				<key>sharp left</key>
+				<string>tajam kiri</string>
+				<key>sharp right</key>
+				<string>tajam kanan</string>
+				<key>slight left</key>
+				<string>agak ke kiri</string>
+				<key>slight right</key>
+				<string>agak ke kanan</string>
+				<key>straight</key>
+				<string>lurus</string>
+				<key>uturn</key>
+				<string>putar balik</string>
+			</dict>
+			<key>ordinalize</key>
+			<dict>
+				<key>1</key>
+				<string>1</string>
+				<key>10</key>
+				<string>10</string>
+				<key>2</key>
+				<string>2</string>
+				<key>3</key>
+				<string>3</string>
+				<key>4</key>
+				<string>4</string>
+				<key>5</key>
+				<string>5</string>
+				<key>6</key>
+				<string>6</string>
+				<key>7</key>
+				<string>7</string>
+				<key>8</key>
+				<string>8</string>
+				<key>9</key>
+				<string>9</string>
+			</dict>
+		</dict>
+		<key>continue</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Belok {modifier}</string>
+				<key>destination</key>
+				<string>Belok {modifier} menuju {destination}</string>
+				<key>exit</key>
+				<string>Belok {modifier} ke {way_name}</string>
+				<key>name</key>
+				<string>Terus {modifier} ke {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Belok kiri tajam</string>
+				<key>destination</key>
+				<string>Belok kiri tajam menuju {destination}</string>
+				<key>name</key>
+				<string>Make a sharp left to stay on {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Belok kanan tajam</string>
+				<key>destination</key>
+				<string>Belok kanan tajam menuju {destination}</string>
+				<key>name</key>
+				<string>Make a sharp right to stay on {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Tetap agak di kiri</string>
+				<key>destination</key>
+				<string>Tetap agak di kiri menuju {destination}</string>
+				<key>name</key>
+				<string>Tetap agak di kiri ke {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Tetap agak di kanan</string>
+				<key>destination</key>
+				<string>Tetap agak di kanan menuju {destination}</string>
+				<key>name</key>
+				<string>Tetap agak di kanan ke {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Lurus terus</string>
+				<key>destination</key>
+				<string>Terus menuju {destination}</string>
+				<key>distance</key>
+				<string>Continue straight for {distance}</string>
+				<key>name</key>
+				<string>Terus ke {way_name}</string>
+				<key>namedistance</key>
+				<string>Continue on {way_name} for {distance}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Putar balik</string>
+				<key>destination</key>
+				<string>Putar balik menuju {destination}</string>
+				<key>name</key>
+				<string>Putar balik ke arah {way_name}</string>
+			</dict>
+		</dict>
+		<key>depart</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Arah {direction}</string>
+				<key>name</key>
+				<string>Arah {direction} di {way_name}</string>
+			</dict>
+		</dict>
+		<key>end of road</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Belok {modifier}</string>
+				<key>destination</key>
+				<string>Belok {modifier} menuju {destination}</string>
+				<key>name</key>
+				<string>Belok {modifier} ke {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Lurus terus</string>
+				<key>destination</key>
+				<string>Tetap lurus menuju {destination}</string>
+				<key>name</key>
+				<string>Tetap lurus ke {way_name} </string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Putar balik di akhir jalan</string>
+				<key>destination</key>
+				<string>Putar balik menuju {destination} di akhir jalan</string>
+				<key>name</key>
+				<string>Putar balik di {way_name} di akhir jalan</string>
+			</dict>
+		</dict>
+		<key>exit rotary</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Lakukan {modifier}</string>
+				<key>destination</key>
+				<string>Lakukan {modifier} menuju {destination}</string>
+				<key>name</key>
+				<string>Lakukan {modifier} ke arah {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Belok kiri</string>
+				<key>destination</key>
+				<string>Belok kiri menuju {destination}</string>
+				<key>name</key>
+				<string>Belok kiri ke {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Belok kanan</string>
+				<key>destination</key>
+				<string>Belok kanan menuju {destination}</string>
+				<key>name</key>
+				<string>Belok kanan ke {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Lurus</string>
+				<key>destination</key>
+				<string>Lurus menuju {destination}</string>
+				<key>name</key>
+				<string>Lurus arah {way_name}</string>
+			</dict>
+		</dict>
+		<key>exit roundabout</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Lakukan {modifier}</string>
+				<key>destination</key>
+				<string>Lakukan {modifier} menuju {destination}</string>
+				<key>name</key>
+				<string>Lakukan {modifier} ke arah {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Belok kiri</string>
+				<key>destination</key>
+				<string>Belok kiri menuju {destination}</string>
+				<key>name</key>
+				<string>Belok kiri ke {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Belok kanan</string>
+				<key>destination</key>
+				<string>Belok kanan menuju {destination}</string>
+				<key>name</key>
+				<string>Belok kanan ke {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Lurus</string>
+				<key>destination</key>
+				<string>Lurus menuju {destination}</string>
+				<key>name</key>
+				<string>Lurus arah {way_name}</string>
+			</dict>
+		</dict>
+		<key>fork</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Tetap {modifier} di pertigaan</string>
+				<key>destination</key>
+				<string>Tetap {modifier} di pertigaan menuju {destination}</string>
+				<key>name</key>
+				<string>Tetap {modifier} di pertigaan ke {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Belok kiri pada pertigaan</string>
+				<key>destination</key>
+				<string>Belok kiri pada pertigaan menuju {destination}</string>
+				<key>name</key>
+				<string>Belok kiri pada pertigaan ke arah {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Belok kanan pada pertigaan</string>
+				<key>destination</key>
+				<string>Belok kanan pada pertigaan menuju {destination}</string>
+				<key>name</key>
+				<string>Belok kanan pada pertigaan ke arah {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Tetap di kiri pada pertigaan</string>
+				<key>destination</key>
+				<string>Tetap di kiri pada pertigaan menuju {destination}</string>
+				<key>name</key>
+				<string>Tetap di kiri pada pertigaan ke arah {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Tetap di kanan pada pertigaan</string>
+				<key>destination</key>
+				<string>Tetap di kanan pada pertigaan menuju {destination}</string>
+				<key>name</key>
+				<string>Tetap di kanan pada pertigaan ke arah {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Putar balik</string>
+				<key>destination</key>
+				<string>Putar balik menuju {destination}</string>
+				<key>name</key>
+				<string>Putar balik ke arah {way_name}</string>
+			</dict>
+		</dict>
+		<key>merge</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Bergabung {modifier}</string>
+				<key>destination</key>
+				<string>Bergabung {modifier} menuju {destination}</string>
+				<key>name</key>
+				<string>Bergabung {modifier} ke arah {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Bergabung di kiri</string>
+				<key>destination</key>
+				<string>Bergabung di kiri menuju {destination}</string>
+				<key>name</key>
+				<string>Bergabung di kiri ke arah {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Bergabung di kanan</string>
+				<key>destination</key>
+				<string>Bergabung di kanan menuju {destination}</string>
+				<key>name</key>
+				<string>Bergabung di kanan ke arah {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Bergabung di kiri</string>
+				<key>destination</key>
+				<string>Bergabung di kiri menuju {destination}</string>
+				<key>name</key>
+				<string>Bergabung di kiri ke arah {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Bergabung di kanan</string>
+				<key>destination</key>
+				<string>Bergabung di kanan menuju {destination}</string>
+				<key>name</key>
+				<string>Bergabung di kanan ke arah {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Putar balik</string>
+				<key>destination</key>
+				<string>Putar balik menuju {destination}</string>
+				<key>name</key>
+				<string>Putar balik ke arah {way_name}</string>
+			</dict>
+		</dict>
+		<key>modes</key>
+		<dict>
+			<key>ferry</key>
+			<dict>
+				<key>default</key>
+				<string>Naik ferry</string>
+				<key>destination</key>
+				<string>Naik ferry menuju {destination}</string>
+				<key>name</key>
+				<string>Naik ferry di {way_name}</string>
+			</dict>
+		</dict>
+		<key>new name</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Lanjutkan {modifier}</string>
+				<key>destination</key>
+				<string>Lanjutkan {modifier} menuju {destination}</string>
+				<key>name</key>
+				<string>Lanjutkan {modifier} menuju {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Belok kiri tajam</string>
+				<key>destination</key>
+				<string>Belok kiri tajam menuju {destination}</string>
+				<key>name</key>
+				<string>Belok kiri tajam ke arah {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Belok kanan tajam</string>
+				<key>destination</key>
+				<string>Belok kanan tajam menuju {destination}</string>
+				<key>name</key>
+				<string>Belok kanan tajam ke arah {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Lanjut dengan agak ke kiri</string>
+				<key>destination</key>
+				<string>Tetap agak di kiri menuju {destination}</string>
+				<key>name</key>
+				<string>Lanjut dengan agak di kiri ke {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Tetap agak di kanan</string>
+				<key>destination</key>
+				<string>Tetap agak di kanan menuju {destination}</string>
+				<key>name</key>
+				<string>Tetap agak di kanan ke {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Lurus terus</string>
+				<key>destination</key>
+				<string>Terus menuju {destination}</string>
+				<key>name</key>
+				<string>Terus ke {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Putar balik</string>
+				<key>destination</key>
+				<string>Putar balik menuju {destination}</string>
+				<key>name</key>
+				<string>Putar balik ke arah {way_name}</string>
+			</dict>
+		</dict>
+		<key>notification</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Lanjutkan {modifier}</string>
+				<key>destination</key>
+				<string>Lanjutkan {modifier} menuju {destination}</string>
+				<key>name</key>
+				<string>Lanjutkan {modifier} menuju {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Putar balik</string>
+				<key>destination</key>
+				<string>Putar balik menuju {destination}</string>
+				<key>name</key>
+				<string>Putar balik ke arah {way_name}</string>
+			</dict>
+		</dict>
+		<key>off ramp</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Ambil jalan melandai</string>
+				<key>destination</key>
+				<string>Ambil jalan melandai menuju {destination}</string>
+				<key>exit</key>
+				<string>Take exit {exit}</string>
+				<key>exit_destination</key>
+				<string>Take exit {exit} towards {destination}</string>
+				<key>name</key>
+				<string>Ambil jalan melandai ke {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Ambil jalan yang melandai di sebelah kiri</string>
+				<key>destination</key>
+				<string>Ambil jalan melandai di sebelah kiri menuju {destination}</string>
+				<key>exit</key>
+				<string>Take exit {exit} on the left</string>
+				<key>exit_destination</key>
+				<string>Take exit {exit} on the left towards {destination}</string>
+				<key>name</key>
+				<string>Ambil jalan melandai di sebelah kiri ke arah {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Ambil jalan melandai di sebelah kanan</string>
+				<key>destination</key>
+				<string>Ambil jalan melandai di sebelah kanan menuju {destination}</string>
+				<key>exit</key>
+				<string>Take exit {exit} on the right</string>
+				<key>exit_destination</key>
+				<string>Take exit {exit} on the right towards {destination}</string>
+				<key>name</key>
+				<string>Ambil jalan melandai di sebelah kanan ke {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Ambil jalan yang melandai di sebelah kiri</string>
+				<key>destination</key>
+				<string>Ambil jalan melandai di sebelah kiri menuju {destination}</string>
+				<key>exit</key>
+				<string>Take exit {exit} on the left</string>
+				<key>exit_destination</key>
+				<string>Take exit {exit} on the left towards {destination}</string>
+				<key>name</key>
+				<string>Ambil jalan melandai di sebelah kiri ke arah {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Ambil jalan melandai di sebelah kanan</string>
+				<key>destination</key>
+				<string>Ambil jalan melandai di sebelah kanan menuju {destination}</string>
+				<key>exit</key>
+				<string>Take exit {exit} on the right</string>
+				<key>exit_destination</key>
+				<string>Take exit {exit} on the right towards {destination}</string>
+				<key>name</key>
+				<string>Ambil jalan melandai di sebelah kanan ke {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Ambil jalan yang melandai di sebelah kiri</string>
+				<key>destination</key>
+				<string>Ambil jalan melandai di sebelah kiri menuju {destination}</string>
+				<key>exit</key>
+				<string>Take exit {exit} on the left</string>
+				<key>exit_destination</key>
+				<string>Take exit {exit} on the left towards {destination}</string>
+				<key>name</key>
+				<string>Ambil jalan melandai di sebelah kiri ke arah {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Ambil jalan melandai di sebelah kanan</string>
+				<key>destination</key>
+				<string>Ambil jalan melandai di sebelah kanan  menuju {destination}</string>
+				<key>exit</key>
+				<string>Take exit {exit} on the right</string>
+				<key>exit_destination</key>
+				<string>Take exit {exit} on the right towards {destination}</string>
+				<key>name</key>
+				<string>Ambil jalan melandai di sebelah kanan ke {way_name}</string>
+			</dict>
+		</dict>
+		<key>on ramp</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Ambil jalan melandai</string>
+				<key>destination</key>
+				<string>Ambil jalan melandai menuju {destination}</string>
+				<key>name</key>
+				<string>Ambil jalan melandai ke {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Ambil jalan yang melandai di sebelah kiri</string>
+				<key>destination</key>
+				<string>Ambil jalan melandai di sebelah kiri menuju {destination}</string>
+				<key>name</key>
+				<string>Ambil jalan melandai di sebelah kiri ke arah {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Ambil jalan melandai di sebelah kanan</string>
+				<key>destination</key>
+				<string>Ambil jalan melandai di sebelah kanan  menuju {destination}</string>
+				<key>name</key>
+				<string>Ambil jalan melandai di sebelah kanan ke {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Ambil jalan yang melandai di sebelah kiri</string>
+				<key>destination</key>
+				<string>Ambil jalan melandai di sebelah kiri menuju {destination}</string>
+				<key>name</key>
+				<string>Ambil jalan melandai di sebelah kiri ke arah {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Ambil jalan melandai di sebelah kanan</string>
+				<key>destination</key>
+				<string>Ambil jalan melandai di sebelah kanan  menuju {destination}</string>
+				<key>name</key>
+				<string>Ambil jalan melandai di sebelah kanan ke {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Ambil jalan yang melandai di sebelah kiri</string>
+				<key>destination</key>
+				<string>Ambil jalan melandai di sebelah kiri menuju {destination}</string>
+				<key>name</key>
+				<string>Ambil jalan melandai di sebelah kiri ke arah {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Ambil jalan melandai di sebelah kanan</string>
+				<key>destination</key>
+				<string>Ambil jalan melandai di sebelah kanan  menuju {destination}</string>
+				<key>name</key>
+				<string>Ambil jalan melandai di sebelah kanan ke {way_name}</string>
+			</dict>
+		</dict>
+		<key>phrase</key>
+		<dict>
+			<key>name and ref</key>
+			<string>{name} ({ref})</string>
+			<key>one in distance</key>
+			<string>In {distance}, {instruction_one}</string>
+			<key>two linked</key>
+			<string>{instruction_one} then {instruction_two}</string>
+			<key>two linked by distance</key>
+			<string>{instruction_one} then in {distance} {instruction_two}</string>
+		</dict>
+		<key>rotary</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<dict>
+					<key>default</key>
+					<string>Masuk bundaran</string>
+					<key>destination</key>
+					<string>Masuk bundaran dan keluar menuju {destination}</string>
+					<key>name</key>
+					<string>Masuk bundaran dan keluar arah {way_name}</string>
+				</dict>
+				<key>exit</key>
+				<dict>
+					<key>default</key>
+					<string>Masuk bundaran dan ambil jalan keluar {exit_number}</string>
+					<key>destination</key>
+					<string>Masuk bundaran dan ambil jalan keluar {exit_number} menuju {destination}</string>
+					<key>name</key>
+					<string>Masuk bundaran dan ambil jalan keluar {exit_number} arah {way_name}</string>
+				</dict>
+				<key>name</key>
+				<dict>
+					<key>default</key>
+					<string>Masuk {rotary_name}</string>
+					<key>destination</key>
+					<string>Masuk {rotary_name} dan keluar menuju {destination}</string>
+					<key>name</key>
+					<string>Masuk {rotary_name} dan keluar arah {way_name}</string>
+				</dict>
+				<key>name_exit</key>
+				<dict>
+					<key>default</key>
+					<string>Masuk {rotary_name} dan ambil jalan keluar {exit_number}</string>
+					<key>destination</key>
+					<string>Masuk {rotary_name} dan ambil jalan keluar {exit_number} menuju {destination}</string>
+					<key>name</key>
+					<string>Masuk {rotary_name} dan ambil jalan keluar {exit_number} arah {way_name}</string>
+				</dict>
+			</dict>
+		</dict>
+		<key>roundabout</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<dict>
+					<key>default</key>
+					<string>Masuk bundaran</string>
+					<key>destination</key>
+					<string>Masuk bundaran dan keluar menuju {destination}</string>
+					<key>name</key>
+					<string>Masuk bundaran dan keluar arah {way_name}</string>
+				</dict>
+				<key>exit</key>
+				<dict>
+					<key>default</key>
+					<string>Masuk bundaran dan ambil jalan keluar {exit_number}</string>
+					<key>destination</key>
+					<string>Masuk bundaran dan ambil jalan keluar {exit_number} menuju {destination}</string>
+					<key>name</key>
+					<string>Masuk bundaran dan ambil jalan keluar {exit_number} arah {way_name}</string>
+				</dict>
+			</dict>
+		</dict>
+		<key>roundabout turn</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Di bundaran, lakukan {modifier}</string>
+				<key>destination</key>
+				<string>Di bundaran, lakukan {modifier} menuju {destination}</string>
+				<key>name</key>
+				<string>Di bundaran, lakukan {modifier} ke arah {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Di bundaran belok kiri</string>
+				<key>destination</key>
+				<string>Di bundaran, belok kiri menuju {destination}</string>
+				<key>name</key>
+				<string>Di bundaran, belok kiri arah {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Di bundaran belok kanan</string>
+				<key>destination</key>
+				<string>Di bundaran belok kanan menuju {destination}</string>
+				<key>name</key>
+				<string>Di bundaran belok kanan ke arah {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Di bundaran tetap lurus</string>
+				<key>destination</key>
+				<string>Di bundaran tetap lurus menuju {destination}</string>
+				<key>name</key>
+				<string>Di bundaran tetap lurus ke arah {way_name}</string>
+			</dict>
+		</dict>
+		<key>turn</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Lakukan {modifier}</string>
+				<key>destination</key>
+				<string>Lakukan {modifier} menuju {destination}</string>
+				<key>name</key>
+				<string>Lakukan {modifier} ke arah {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Belok kiri</string>
+				<key>destination</key>
+				<string>Belok kiri menuju {destination}</string>
+				<key>name</key>
+				<string>Belok kiri ke {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Belok kanan</string>
+				<key>destination</key>
+				<string>Belok kanan menuju {destination}</string>
+				<key>name</key>
+				<string>Belok kanan ke {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Lurus</string>
+				<key>destination</key>
+				<string>Lurus menuju {destination}</string>
+				<key>name</key>
+				<string>Lurus arah {way_name}</string>
+			</dict>
+		</dict>
+		<key>use lane</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>{lane_instruction}</string>
+			</dict>
+			<key>no_lanes</key>
+			<dict>
+				<key>default</key>
+				<string>Lurus terus</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>
