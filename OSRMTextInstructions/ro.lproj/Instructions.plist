@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>meta</key>
+	<dict>
+		<key>capitalizeFirstLetter</key>
+		<true/>
+	</dict>
+	<key>v5</key>
+	<dict>
+		<key>arrive</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Ați ajuns la {nth} destinație</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Ați ajuns la {nth} destinație, pe stânga</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Ați ajuns la {nth} destinație, pe dreapta</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Ați ajuns la {nth} destinație, pe stânga</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Ați ajuns la {nth} destinație, pe dreapta</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Ați ajuns la {nth} destinație, pe stânga</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Ați ajuns la {nth} destinație, pe dreapta</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Ați ajuns la {nth} destinație, în față</string>
+			</dict>
+		</dict>
+		<key>constants</key>
+		<dict>
+			<key>direction</key>
+			<dict>
+				<key>east</key>
+				<string>est</string>
+				<key>north</key>
+				<string>nord</string>
+				<key>northeast</key>
+				<string>nord-est</string>
+				<key>northwest</key>
+				<string>nord-vest</string>
+				<key>south</key>
+				<string>sud</string>
+				<key>southeast</key>
+				<string>sud-est</string>
+				<key>southwest</key>
+				<string>sud-vest</string>
+				<key>west</key>
+				<string>vest</string>
+			</dict>
+			<key>lanes</key>
+			<dict>
+				<key>ox</key>
+				<string>Menține dreapta</string>
+				<key>oxo</key>
+				<string>Menține pe laterale</string>
+				<key>xo</key>
+				<string>Menține dreapta</string>
+				<key>xox</key>
+				<string>Menține pe interior</string>
+			</dict>
+			<key>modifier</key>
+			<dict>
+				<key>left</key>
+				<string>stânga</string>
+				<key>right</key>
+				<string>dreapta</string>
+				<key>sharp left</key>
+				<string>brusc stânga</string>
+				<key>sharp right</key>
+				<string>brusc dreapta</string>
+				<key>slight left</key>
+				<string>ușor stânga</string>
+				<key>slight right</key>
+				<string>ușor dreapta</string>
+				<key>straight</key>
+				<string>înainte</string>
+				<key>uturn</key>
+				<string>întoarcere</string>
+			</dict>
+			<key>ordinalize</key>
+			<dict>
+				<key>1</key>
+				<string>prima</string>
+				<key>10</key>
+				<string>a 10-a</string>
+				<key>2</key>
+				<string>a 2-a</string>
+				<key>3</key>
+				<string>a 3-a</string>
+				<key>4</key>
+				<string>a 4-a</string>
+				<key>5</key>
+				<string>a 5-a</string>
+				<key>6</key>
+				<string>a 6-a</string>
+				<key>7</key>
+				<string>a 7-a</string>
+				<key>8</key>
+				<string>a 8-a</string>
+				<key>9</key>
+				<string>a 9-a</string>
+			</dict>
+		</dict>
+		<key>continue</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Virează {modifier}</string>
+				<key>destination</key>
+				<string>Virați {modifier} spre {destination}</string>
+				<key>exit</key>
+				<string>Virați {modifier} pe {way_name}</string>
+				<key>name</key>
+				<string>Virați {modifier} pe {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Virați brusc stânga</string>
+				<key>destination</key>
+				<string>Virați brusc stânga spre {destination}</string>
+				<key>name</key>
+				<string>Virați brusc stânga pe {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Virați brusc dreapta</string>
+				<key>destination</key>
+				<string>Virați brusc dreapta spre {destination}</string>
+				<key>name</key>
+				<string>Virați brusc stânga pe {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Virați ușor stânga</string>
+				<key>destination</key>
+				<string>Virați ușor stânga spre {destination}</string>
+				<key>name</key>
+				<string>Virați ușor stânga pe {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Virați ușor dreapta</string>
+				<key>destination</key>
+				<string>Virați ușor dreapta spre {destination}</string>
+				<key>name</key>
+				<string>Virați ușor dreapta pe {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Mergeți înainte</string>
+				<key>destination</key>
+				<string>Continuați spre {destination}</string>
+				<key>distance</key>
+				<string>Continuați înainte {distance}</string>
+				<key>name</key>
+				<string>Continuați înainte pe {way_name}</string>
+				<key>namedistance</key>
+				<string>Continuați pe {way_name} {distance}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Întoarceți-vă</string>
+				<key>destination</key>
+				<string>Întoarceți-vă spre {destination}</string>
+				<key>name</key>
+				<string>Întoarceți-vă și continuați pe {way_name}</string>
+			</dict>
+		</dict>
+		<key>depart</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Mergeți {direction}</string>
+				<key>name</key>
+				<string>Mergeți {direction} pe {way_name}</string>
+			</dict>
+		</dict>
+		<key>end of road</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Virați {modifier}</string>
+				<key>destination</key>
+				<string>Virați {modifier} spre {destination}</string>
+				<key>name</key>
+				<string>Virați {modifier} pe {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Continuați înainte</string>
+				<key>destination</key>
+				<string>Continuați înainte spre {destination}</string>
+				<key>name</key>
+				<string>Continuați înainte pe {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Întoarceți-vă la sfârșitul drumului</string>
+				<key>destination</key>
+				<string>Întoarceți-vă spre {destination} la sfârșitul drumului</string>
+				<key>name</key>
+				<string>Întoarceți-vă pe {way_name} la sfârșitul drumului</string>
+			</dict>
+		</dict>
+		<key>exit rotary</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Virați {modifier}</string>
+				<key>destination</key>
+				<string>Virați {modifier} spre {destination}</string>
+				<key>name</key>
+				<string>Virați {modifier} pe {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Virați stânga</string>
+				<key>destination</key>
+				<string>Virați stânga spre {destination}</string>
+				<key>name</key>
+				<string>Virați stânga pe {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Virați dreapta</string>
+				<key>destination</key>
+				<string>Virați dreapta spre {destination}</string>
+				<key>name</key>
+				<string>Virați dreapta pe {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Mergeți înainte</string>
+				<key>destination</key>
+				<string>Mergeți înainte spre {destination}</string>
+				<key>name</key>
+				<string>Mergeți înainte pe {way_name}</string>
+			</dict>
+		</dict>
+		<key>exit roundabout</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Virați {modifier}</string>
+				<key>destination</key>
+				<string>Virați {modifier} spre {destination}</string>
+				<key>name</key>
+				<string>Virați {modifier} pe {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Virați stânga</string>
+				<key>destination</key>
+				<string>Virați stânga spre {destination}</string>
+				<key>name</key>
+				<string>Virați stânga pe {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Virați dreapta</string>
+				<key>destination</key>
+				<string>Virați dreapta spre {destination}</string>
+				<key>name</key>
+				<string>Virați dreapta pe {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Mergeți înainte</string>
+				<key>destination</key>
+				<string>Mergeți înainte spre {destination}</string>
+				<key>name</key>
+				<string>Mergeți înainte pe {way_name}</string>
+			</dict>
+		</dict>
+		<key>fork</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Mențineți {modifier} la bifurcație</string>
+				<key>destination</key>
+				<string>Mențineți {modifier} la bifurcație spre {destination}</string>
+				<key>name</key>
+				<string>Mențineți {modifier} la bifurcație pe {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Virați brusc stânga la bifurcație</string>
+				<key>destination</key>
+				<string>Virați brusc stânga la bifurcație spre {destination}</string>
+				<key>name</key>
+				<string>Virați brusc stânga la bifurcație pe {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Virați brusc dreapta la bifurcație</string>
+				<key>destination</key>
+				<string>Virați brusc dreapta la bifurcație spre {destination}</string>
+				<key>name</key>
+				<string>Virați brusc dreapta la bifurcație pe {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Mențineți stânga la bifurcație</string>
+				<key>destination</key>
+				<string>Mențineți stânga la bifurcație spre {destination}</string>
+				<key>name</key>
+				<string>Mențineți stânga la bifurcație pe {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Mențineți dreapta la bifurcație</string>
+				<key>destination</key>
+				<string>Mențineți dreapta la bifurcație spre {destination}</string>
+				<key>name</key>
+				<string>Mențineți dreapta la bifurcație pe {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Întoarceți-vă</string>
+				<key>destination</key>
+				<string>Întoarceți-vă spre {destination}</string>
+				<key>name</key>
+				<string>Întoarceți-vă pe {way_name}</string>
+			</dict>
+		</dict>
+		<key>merge</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Intrați în {modifier}</string>
+				<key>destination</key>
+				<string>Intrați în {modifier} spre {destination}</string>
+				<key>name</key>
+				<string>Intrați în {modifier} pe {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Intrați în stânga</string>
+				<key>destination</key>
+				<string>Intrați în stânga spre {destination}</string>
+				<key>name</key>
+				<string>Intrați în stânga pe {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Intrați în dreapta</string>
+				<key>destination</key>
+				<string>Intrați în dreapta spre {destination}</string>
+				<key>name</key>
+				<string>Intrați în dreapta pe {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Intrați în stânga</string>
+				<key>destination</key>
+				<string>Intrați în stânga spre {destination}</string>
+				<key>name</key>
+				<string>Intrați în stânga pe {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Intrați în dreapta</string>
+				<key>destination</key>
+				<string>Intrați în dreapta spre {destination}</string>
+				<key>name</key>
+				<string>Intrați în dreapta pe {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Întoarceți-vă</string>
+				<key>destination</key>
+				<string>Întoarceți-vă spre {destination}</string>
+				<key>name</key>
+				<string>Întoarceți-vă pe {way_name}</string>
+			</dict>
+		</dict>
+		<key>modes</key>
+		<dict>
+			<key>ferry</key>
+			<dict>
+				<key>default</key>
+				<string>Ia feribotul</string>
+				<key>destination</key>
+				<string>Ia feribotul spre {destination}</string>
+				<key>name</key>
+				<string>Ia feribotul {way_name}</string>
+			</dict>
+		</dict>
+		<key>new name</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Continuați {modifier}</string>
+				<key>destination</key>
+				<string>Continuați {modifier} spre {destination}</string>
+				<key>name</key>
+				<string>Continuați {modifier} pe {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Virați brusc stânga</string>
+				<key>destination</key>
+				<string>Virați brusc stânga spre {destination}</string>
+				<key>name</key>
+				<string>Virați brusc stânga pe {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Virați brusc dreapta</string>
+				<key>destination</key>
+				<string>Virați brusc dreapta spre {destination}</string>
+				<key>name</key>
+				<string>Virați brusc dreapta pe {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Continuați ușor stânga</string>
+				<key>destination</key>
+				<string>Continuați ușor stânga spre {destination}</string>
+				<key>name</key>
+				<string>Continuați ușor stânga pe {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Continuați ușor dreapta</string>
+				<key>destination</key>
+				<string>Continuați ușor dreapta spre {destination}</string>
+				<key>name</key>
+				<string>Continuați ușor dreapta pe {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Continuați înainte</string>
+				<key>destination</key>
+				<string>Continuați spre {destination}</string>
+				<key>name</key>
+				<string>Continuați pe {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Întoarceți-vă</string>
+				<key>destination</key>
+				<string>Întoarceți-vă spre {destination}</string>
+				<key>name</key>
+				<string>Întoarceți-vă pe {way_name}</string>
+			</dict>
+		</dict>
+		<key>notification</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Continuați {modifier}</string>
+				<key>destination</key>
+				<string>Continuați {modifier} spre {destination}</string>
+				<key>name</key>
+				<string>Continuați {modifier} pe {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Întoarceți-vă</string>
+				<key>destination</key>
+				<string>Întoarceți-vă spre {destination}</string>
+				<key>name</key>
+				<string>Întoarceți-vă pe {way_name}</string>
+			</dict>
+		</dict>
+		<key>off ramp</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Urmați rampa</string>
+				<key>destination</key>
+				<string>Urmați rampa spre {destination}</string>
+				<key>exit</key>
+				<string>Ieșiți pe ieșirea {exit}</string>
+				<key>exit_destination</key>
+				<string>Ieșiți pe ieșirea {exit}spre {destination}</string>
+				<key>name</key>
+				<string>Urmați rampa pe {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Urmați rampa pe stânga</string>
+				<key>destination</key>
+				<string>Urmați rampa pe stânga spre {destination}</string>
+				<key>exit</key>
+				<string>Ieșiți pe ieșirea {exit} pe stânga</string>
+				<key>exit_destination</key>
+				<string>Ieșiți pe ieșirea {exit} pe stânga spre {destination}</string>
+				<key>name</key>
+				<string>Urmați rampa pe stânga pe {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Urmați rampa pe dreapta</string>
+				<key>destination</key>
+				<string>Urmați rampa pe dreapta spre {destination}</string>
+				<key>exit</key>
+				<string>Ieșiți pe ieșirea {exit} pe dreapta</string>
+				<key>exit_destination</key>
+				<string>Ieșiți pe ieșirea {exit} pe dreapta spre {destination}</string>
+				<key>name</key>
+				<string>Urmați rampa pe dreapta pe {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Urmați rampa pe stânga</string>
+				<key>destination</key>
+				<string>Urmați rampa pe stânga spre {destination}</string>
+				<key>exit</key>
+				<string>Ieșiți pe ieșirea {exit} pe stânga</string>
+				<key>exit_destination</key>
+				<string>Ieșiți pe ieșirea {exit} pe stânga spre {destination}</string>
+				<key>name</key>
+				<string>Urmați rampa pe stânga pe {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Urmați rampa pe dreapta</string>
+				<key>destination</key>
+				<string>Urmați rampa pe dreapta spre {destination}</string>
+				<key>exit</key>
+				<string>Ieșiți pe ieșirea {exit} pe dreapta</string>
+				<key>exit_destination</key>
+				<string>Ieșiți pe ieșirea {exit} pe dreapta spre {destination}</string>
+				<key>name</key>
+				<string>Urmați rampa pe dreapta pe {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Urmați rampa pe stânga</string>
+				<key>destination</key>
+				<string>Urmați rampa pe stânga spre {destination}</string>
+				<key>exit</key>
+				<string>Ieșiți pe ieșirea {exit} pe stânga</string>
+				<key>exit_destination</key>
+				<string>Ieșiți pe ieșirea {exit} pe stânga spre {destination}</string>
+				<key>name</key>
+				<string>Urmați rampa pe stânga pe {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Urmați rampa pe dreapta</string>
+				<key>destination</key>
+				<string>Urmați rampa pe dreapta spre {destination}</string>
+				<key>exit</key>
+				<string>Ieșiți pe ieșirea {exit} pe dreapta</string>
+				<key>exit_destination</key>
+				<string>Ieșiți pe ieșirea {exit} pe dreapta spre {destination}</string>
+				<key>name</key>
+				<string>Urmați rampa pe dreapta pe {way_name}</string>
+			</dict>
+		</dict>
+		<key>on ramp</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Urmați rampa</string>
+				<key>destination</key>
+				<string>Urmați rampa spre {destination}</string>
+				<key>name</key>
+				<string>Urmați rampa pe {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Urmați rampa pe stânga</string>
+				<key>destination</key>
+				<string>Urmați rampa pe stânga spre {destination}</string>
+				<key>name</key>
+				<string>Urmați rampa pe stânga pe {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Urmați rampa pe dreapta</string>
+				<key>destination</key>
+				<string>Urmați rampa pe dreapta spre {destination}</string>
+				<key>name</key>
+				<string>Urmați rampa pe dreapta pe {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Urmați rampa pe stânga</string>
+				<key>destination</key>
+				<string>Urmați rampa pe stânga spre {destination}</string>
+				<key>name</key>
+				<string>Urmați rampa pe stânga pe {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Urmați rampa pe dreapta</string>
+				<key>destination</key>
+				<string>Urmați rampa pe dreapta spre {destination}</string>
+				<key>name</key>
+				<string>Urmați rampa pe dreapta pe {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Urmați rampa pe stânga</string>
+				<key>destination</key>
+				<string>Urmați rampa pe stânga spre {destination}</string>
+				<key>name</key>
+				<string>Urmați rampa pe stânga pe {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Urmați rampa pe dreapta</string>
+				<key>destination</key>
+				<string>Urmați rampa pe dreapta spre {destination}</string>
+				<key>name</key>
+				<string>Urmați rampa pe dreapta pe {way_name}</string>
+			</dict>
+		</dict>
+		<key>phrase</key>
+		<dict>
+			<key>name and ref</key>
+			<string>{name} ({ref})</string>
+			<key>one in distance</key>
+			<string>În {distance}, {instruction_one}</string>
+			<key>two linked</key>
+			<string>{instruction_one} apoi {instruction_two}</string>
+			<key>two linked by distance</key>
+			<string>{instruction_one} then in {distance} {instruction_two}</string>
+		</dict>
+		<key>rotary</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<dict>
+					<key>default</key>
+					<string>Intrați în sensul giratoriu</string>
+					<key>destination</key>
+					<string>Intrați în sensul giratoriu și ieșiți spre {destination}</string>
+					<key>name</key>
+					<string>Intrați în sensul giratoriu și ieșiți pe {way_name}</string>
+				</dict>
+				<key>exit</key>
+				<dict>
+					<key>default</key>
+					<string>Intrați în sensul giratoriu și mergeți spre ieșirea {exit_number}</string>
+					<key>destination</key>
+					<string>Intrați în sensul giratoriu și mergeți spre ieșirea {exit_number} spre {destination}</string>
+					<key>name</key>
+					<string>Intrați în sensul giratoriu și mergeți spre ieșirea {exit_number} pe {way_name}</string>
+				</dict>
+				<key>name</key>
+				<dict>
+					<key>default</key>
+					<string>Intrați în  {rotary_name}</string>
+					<key>destination</key>
+					<string>Intrați în  {rotary_name} și ieșiți spre {destination}</string>
+					<key>name</key>
+					<string>Intrați în  {rotary_name} și ieșiți pe {way_name}</string>
+				</dict>
+				<key>name_exit</key>
+				<dict>
+					<key>default</key>
+					<string>Intrați în  {rotary_name} și mergeți spre ieșirea {exit_number}</string>
+					<key>destination</key>
+					<string>Intrați în  {rotary_name} și mergeți spre ieșirea {exit_number} spre {destination}</string>
+					<key>name</key>
+					<string>Intrați în  {rotary_name} și mergeți spre ieșirea {exit_number} pe {way_name}</string>
+				</dict>
+			</dict>
+		</dict>
+		<key>roundabout</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<dict>
+					<key>default</key>
+					<string>Intrați în sensul giratoriu</string>
+					<key>destination</key>
+					<string>Intrați în sensul giratoriu și ieșiți spre {destination}</string>
+					<key>name</key>
+					<string>Intrați în sensul giratoriu și ieșiți pe {way_name}</string>
+				</dict>
+				<key>exit</key>
+				<dict>
+					<key>default</key>
+					<string>Intrați în sensul giratoriu și mergeți spre ieșirea {exit_number}</string>
+					<key>destination</key>
+					<string>Intrați în sensul giratoriu și mergeți spre ieșirea {exit_number} spre {destination}</string>
+					<key>name</key>
+					<string>Intrați în sensul giratoriu și mergeți spre ieșirea {exit_number} pe {way_name}</string>
+				</dict>
+			</dict>
+		</dict>
+		<key>roundabout turn</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>La sensul giratoriu virați {modifier}</string>
+				<key>destination</key>
+				<string>La sensul giratoriu virați {modifier} spre {destination}</string>
+				<key>name</key>
+				<string>La sensul giratoriu virați {modifier} pe {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>La sensul giratoriu virați stânga</string>
+				<key>destination</key>
+				<string>La sensul giratoriu virați stânga spre {destination}</string>
+				<key>name</key>
+				<string>La sensul giratoriu virați stânga pe {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>La sensul giratoriu virați dreapta</string>
+				<key>destination</key>
+				<string>La sensul giratoriu virați dreapta spre {destination}</string>
+				<key>name</key>
+				<string>La sensul giratoriu virați dreapta pe {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>La sensul giratoriu continuați înainte</string>
+				<key>destination</key>
+				<string>La sensul giratoriu continuați înainte spre {destination}</string>
+				<key>name</key>
+				<string>La sensul giratoriu continuați înainte pe {way_name}</string>
+			</dict>
+		</dict>
+		<key>turn</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Virați {modifier}</string>
+				<key>destination</key>
+				<string>Virați {modifier} spre {destination}</string>
+				<key>name</key>
+				<string>Virați {modifier} pe {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Virați stânga</string>
+				<key>destination</key>
+				<string>Virați stânga spre {destination}</string>
+				<key>name</key>
+				<string>Virați stânga pe {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Virați dreapta</string>
+				<key>destination</key>
+				<string>Virați dreapta spre {destination}</string>
+				<key>name</key>
+				<string>Virați dreapta pe {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Mergeți înainte</string>
+				<key>destination</key>
+				<string>Mergeți înainte spre {destination}</string>
+				<key>name</key>
+				<string>Mergeți înainte pe {way_name}</string>
+			</dict>
+		</dict>
+		<key>use lane</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>{lane_instruction}</string>
+			</dict>
+			<key>no_lanes</key>
+			<dict>
+				<key>default</key>
+				<string>Mergeți înainte</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>meta</key>
+	<dict>
+		<key>capitalizeFirstLetter</key>
+		<true/>
+	</dict>
+	<key>v5</key>
+	<dict>
+		<key>arrive</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Sei arrivato alla tua {nth} destinazione</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>sei arrivato alla tua {nth} destinazione, sulla sinistra</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>sei arrivato alla tua {nth} destinazione, sulla destra</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>sei arrivato alla tua {nth} destinazione, sulla sinistra</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>sei arrivato alla tua {nth} destinazione, sulla destra</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>sei arrivato alla tua {nth} destinazione, sulla sinistra</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>sei arrivato alla tua {nth} destinazione, sulla destra</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>sei arrivato alla tua {nth} destinazione, si trova davanti a te</string>
+			</dict>
+		</dict>
+		<key>constants</key>
+		<dict>
+			<key>direction</key>
+			<dict>
+				<key>east</key>
+				<string>est</string>
+				<key>north</key>
+				<string>nord</string>
+				<key>northeast</key>
+				<string>nord-est</string>
+				<key>northwest</key>
+				<string>nord-ovest</string>
+				<key>south</key>
+				<string>sud</string>
+				<key>southeast</key>
+				<string>sud-est</string>
+				<key>southwest</key>
+				<string>sud-ovest</string>
+				<key>west</key>
+				<string>ovest</string>
+			</dict>
+			<key>lanes</key>
+			<dict>
+				<key>ox</key>
+				<string>Mantieni la sinistra</string>
+				<key>oxo</key>
+				<string>Mantieni la destra o la sinistra</string>
+				<key>xo</key>
+				<string>Mantieni la destra</string>
+				<key>xox</key>
+				<string>Rimani in mezzo</string>
+			</dict>
+			<key>modifier</key>
+			<dict>
+				<key>left</key>
+				<string>sinistra</string>
+				<key>right</key>
+				<string>destra</string>
+				<key>sharp left</key>
+				<string>sinistra</string>
+				<key>sharp right</key>
+				<string>destra</string>
+				<key>slight left</key>
+				<string>sinistra leggermente</string>
+				<key>slight right</key>
+				<string>destra leggermente</string>
+				<key>straight</key>
+				<string>dritto</string>
+				<key>uturn</key>
+				<string>inversione a U</string>
+			</dict>
+			<key>ordinalize</key>
+			<dict>
+				<key>1</key>
+				<string>1ª</string>
+				<key>10</key>
+				<string>10ª</string>
+				<key>2</key>
+				<string>2ª</string>
+				<key>3</key>
+				<string>3ª</string>
+				<key>4</key>
+				<string>4ª</string>
+				<key>5</key>
+				<string>5ª</string>
+				<key>6</key>
+				<string>6ª</string>
+				<key>7</key>
+				<string>7ª</string>
+				<key>8</key>
+				<string>8ª</string>
+				<key>9</key>
+				<string>9ª</string>
+			</dict>
+		</dict>
+		<key>continue</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Gira a {modifier}</string>
+				<key>destination</key>
+				<string>Gira a {modifier} verso {destination}</string>
+				<key>exit</key>
+				<string>Gira a {modifier} in {way_name}</string>
+				<key>name</key>
+				<string>Gira a {modifier} per stare su {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Svolta a sinistra</string>
+				<key>destination</key>
+				<string>Svolta a sinistra verso {destination}</string>
+				<key>name</key>
+				<string>Fai una stretta curva a sinistra per stare su {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Svolta a destra</string>
+				<key>destination</key>
+				<string>Svolta a destra verso {destination}</string>
+				<key>name</key>
+				<string>Fau una stretta curva a destra per stare su {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Fai una leggera curva a sinistra</string>
+				<key>destination</key>
+				<string>Fai una leggera curva a sinistra verso {destination}</string>
+				<key>name</key>
+				<string>Fai una leggera curva a sinistra per stare su {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Fai una leggera curva a destra</string>
+				<key>destination</key>
+				<string>Fai una leggera curva a destra verso {destination}</string>
+				<key>name</key>
+				<string>Fai una leggera curva a destra per stare su {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Continua dritto</string>
+				<key>destination</key>
+				<string>Continua verso {destination}</string>
+				<key>distance</key>
+				<string>Continua dritto per {distance}</string>
+				<key>name</key>
+				<string>Continua dritto per stare su {way_name}</string>
+				<key>namedistance</key>
+				<string>Continua su {way_name} per {distance}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Fai un'inversione a U</string>
+				<key>destination</key>
+				<string>Fai un'inversione a U verso {destination}</string>
+				<key>name</key>
+				<string>Fai un'inversione ad U poi continua su {way_name}</string>
+			</dict>
+		</dict>
+		<key>depart</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Continua verso {direction}</string>
+				<key>name</key>
+				<string>Continua verso {direction} in {way_name}</string>
+			</dict>
+		</dict>
+		<key>end of road</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Gira a {modifier}</string>
+				<key>destination</key>
+				<string>Gira a {modifier} verso {destination}</string>
+				<key>name</key>
+				<string>Gira a {modifier} in {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Continua dritto</string>
+				<key>destination</key>
+				<string>Continua dritto verso {destination}</string>
+				<key>name</key>
+				<string>Continua dritto in {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Fai un'inversione a U alla fine della strada</string>
+				<key>destination</key>
+				<string>Fai un'inversione a U verso {destination} alla fine della strada</string>
+				<key>name</key>
+				<string>Fai un'inversione a U in {way_name} alla fine della strada</string>
+			</dict>
+		</dict>
+		<key>exit rotary</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Fai una {modifier}</string>
+				<key>destination</key>
+				<string>Fai una {modifier} verso {destination}</string>
+				<key>name</key>
+				<string>Fai una {modifier} in {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Svolta a sinistra</string>
+				<key>destination</key>
+				<string>Svolta a sinistra verso {destination}</string>
+				<key>name</key>
+				<string>Svolta a sinistra in {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Gira a destra</string>
+				<key>destination</key>
+				<string>Svolta a destra verso {destination}</string>
+				<key>name</key>
+				<string>Svolta a destra in {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Prosegui dritto</string>
+				<key>destination</key>
+				<string>Continua verso {destination}</string>
+				<key>name</key>
+				<string>Continua su {way_name}</string>
+			</dict>
+		</dict>
+		<key>exit roundabout</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Fai una {modifier}</string>
+				<key>destination</key>
+				<string>Fai una {modifier} verso {destination}</string>
+				<key>name</key>
+				<string>Fai una {modifier} in {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Svolta a sinistra</string>
+				<key>destination</key>
+				<string>Svolta a sinistra verso {destination}</string>
+				<key>name</key>
+				<string>Svolta a sinistra in {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Gira a destra</string>
+				<key>destination</key>
+				<string>Svolta a destra verso {destination}</string>
+				<key>name</key>
+				<string>Svolta a destra in {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Prosegui dritto</string>
+				<key>destination</key>
+				<string>Continua verso {destination}</string>
+				<key>name</key>
+				<string>Continua su {way_name}</string>
+			</dict>
+		</dict>
+		<key>fork</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Mantieni la {modifier} al bivio</string>
+				<key>destination</key>
+				<string>Mantieni la {modifier} al bivio verso {destination}</string>
+				<key>name</key>
+				<string>Mantieni la {modifier} al bivio in {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Svolta a sinistra al bivio</string>
+				<key>destination</key>
+				<string>Svolta a sinistra al bivio verso {destination}</string>
+				<key>name</key>
+				<string>Svolta a sinistra al bivio in {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Svolta a destra al bivio</string>
+				<key>destination</key>
+				<string>Svolta a destra al bivio verso {destination}</string>
+				<key>name</key>
+				<string>Svolta a destra al bivio in {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Mantieni la sinistra al bivio</string>
+				<key>destination</key>
+				<string>Mantieni la sinistra al bivio verso {destination}</string>
+				<key>name</key>
+				<string>Mantieni la sinistra al bivio in {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Mantieni la destra al bivio</string>
+				<key>destination</key>
+				<string>Mantieni la destra al bivio verso {destination}</string>
+				<key>name</key>
+				<string>Mantieni la destra al bivio in {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Fai un'inversione a U</string>
+				<key>destination</key>
+				<string>Fai un'inversione a U verso {destination}</string>
+				<key>name</key>
+				<string>Fai un'inversione a U in {way_name}</string>
+			</dict>
+		</dict>
+		<key>merge</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Immettiti a {modifier}</string>
+				<key>destination</key>
+				<string>Immettiti {modifier} verso {destination}</string>
+				<key>name</key>
+				<string>Immettiti {modifier} in {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Immettiti a sinistra</string>
+				<key>destination</key>
+				<string>Immettiti a sinistra verso {destination}</string>
+				<key>name</key>
+				<string>Immettiti a sinistra in {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Immettiti a destra</string>
+				<key>destination</key>
+				<string>Immettiti a destra verso {destination}</string>
+				<key>name</key>
+				<string>Immettiti a destra in {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Immettiti a sinistra</string>
+				<key>destination</key>
+				<string>Immettiti a sinistra verso {destination}</string>
+				<key>name</key>
+				<string>Immettiti a sinistra in {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Immettiti a destra</string>
+				<key>destination</key>
+				<string>Immettiti a destra verso {destination}</string>
+				<key>name</key>
+				<string>Immettiti a destra in {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Fai un'inversione a U</string>
+				<key>destination</key>
+				<string>Fai un'inversione a U verso {destination}</string>
+				<key>name</key>
+				<string>Fai un'inversione a U in {way_name}</string>
+			</dict>
+		</dict>
+		<key>modes</key>
+		<dict>
+			<key>ferry</key>
+			<dict>
+				<key>default</key>
+				<string>Prendi il traghetto</string>
+				<key>destination</key>
+				<string>Prendi il traghetto verso {destination}</string>
+				<key>name</key>
+				<string>Prendi il traghetto {way_name}</string>
+			</dict>
+		</dict>
+		<key>new name</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Continua a {modifier}</string>
+				<key>destination</key>
+				<string>Continua a {modifier} verso {destination}</string>
+				<key>name</key>
+				<string>Continua a {modifier} in {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Svolta a sinistra</string>
+				<key>destination</key>
+				<string>Svolta a sinistra verso {destination}</string>
+				<key>name</key>
+				<string>Svolta a sinistra in {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Svolta a destra</string>
+				<key>destination</key>
+				<string>Svolta a destra verso {destination}</string>
+				<key>name</key>
+				<string>Svolta a destra in {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Continua leggermente a sinistra</string>
+				<key>destination</key>
+				<string>Continua leggermente a sinistra verso {destination}</string>
+				<key>name</key>
+				<string>Continua leggermente a sinistra in {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Continua leggermente a destra</string>
+				<key>destination</key>
+				<string>Continua leggermente a destra verso {destination}</string>
+				<key>name</key>
+				<string>Continua leggermente a destra in {way_name} </string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Continua dritto</string>
+				<key>destination</key>
+				<string>Continua verso {destination}</string>
+				<key>name</key>
+				<string>Continua in {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Fai un'inversione a U</string>
+				<key>destination</key>
+				<string>Fai un'inversione a U verso {destination}</string>
+				<key>name</key>
+				<string>Fai un'inversione a U in {way_name}</string>
+			</dict>
+		</dict>
+		<key>notification</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Continua a {modifier}</string>
+				<key>destination</key>
+				<string>Continua a {modifier} verso {destination}</string>
+				<key>name</key>
+				<string>Continua a {modifier} in {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Fai un'inversione a U</string>
+				<key>destination</key>
+				<string>Fai un'inversione a U verso {destination}</string>
+				<key>name</key>
+				<string>Fai un'inversione a U in {way_name}</string>
+			</dict>
+		</dict>
+		<key>off ramp</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Prendi la rampa</string>
+				<key>destination</key>
+				<string>Prendi la rampa verso {destination}</string>
+				<key>exit</key>
+				<string>Prendi l'uscita {exit}</string>
+				<key>exit_destination</key>
+				<string>Prendi l'uscita  {exit} verso {destination}</string>
+				<key>name</key>
+				<string>Prendi la rampa in {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Prendi la rampa a sinistra</string>
+				<key>destination</key>
+				<string>Prendi la rampa a sinistra verso {destination}</string>
+				<key>exit</key>
+				<string>Prendi l'uscita {exit} a sinistra</string>
+				<key>exit_destination</key>
+				<string>Prendi la {exit}  uscita a sinistra verso {destination}</string>
+				<key>name</key>
+				<string>Prendi la rampa a sinistra in {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Prendi la rampa a destra</string>
+				<key>destination</key>
+				<string>Prendi la rampa a destra verso {destination}</string>
+				<key>exit</key>
+				<string>Prendi la {exit} uscita a destra</string>
+				<key>exit_destination</key>
+				<string>Prendi la {exit} uscita a destra verso {destination}</string>
+				<key>name</key>
+				<string>Prendi la rampa a destra in {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Prendi la rampa a sinistra</string>
+				<key>destination</key>
+				<string>Prendi la rampa a sinistra verso {destination}</string>
+				<key>exit</key>
+				<string>Prendi l'uscita {exit} a sinistra</string>
+				<key>exit_destination</key>
+				<string>Prendi la {exit}  uscita a sinistra verso {destination}</string>
+				<key>name</key>
+				<string>Prendi la rampa a sinistra in {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Prendi la rampa a destra</string>
+				<key>destination</key>
+				<string>Prendi la rampa a destra verso {destination}</string>
+				<key>exit</key>
+				<string>Prendi la {exit} uscita a destra</string>
+				<key>exit_destination</key>
+				<string>Prendi la {exit} uscita a destra verso {destination}</string>
+				<key>name</key>
+				<string>Prendi la rampa a destra in {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Prendi la rampa a sinistra</string>
+				<key>destination</key>
+				<string>Prendi la rampa a sinistra verso {destination}</string>
+				<key>exit</key>
+				<string>Prendi l'uscita {exit} a sinistra</string>
+				<key>exit_destination</key>
+				<string>Prendi la {exit}  uscita a sinistra verso {destination}</string>
+				<key>name</key>
+				<string>Prendi la rampa a sinistra in {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Prendi la rampa a destra</string>
+				<key>destination</key>
+				<string>Prendi la rampa a destra verso {destination}</string>
+				<key>exit</key>
+				<string>Prendi la {exit} uscita a destra</string>
+				<key>exit_destination</key>
+				<string>Prendi la {exit} uscita a destra verso {destination}</string>
+				<key>name</key>
+				<string>Prendi la rampa a destra in {way_name}</string>
+			</dict>
+		</dict>
+		<key>on ramp</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Prendi la rampa</string>
+				<key>destination</key>
+				<string>Prendi la rampa verso {destination}</string>
+				<key>name</key>
+				<string>Prendi la rampa in {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Prendi la rampa a sinistra</string>
+				<key>destination</key>
+				<string>Prendi la rampa a sinistra verso {destination}</string>
+				<key>name</key>
+				<string>Prendi la rampa a sinistra in {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Prendi la rampa a destra</string>
+				<key>destination</key>
+				<string>Prendi la rampa a destra verso {destination}</string>
+				<key>name</key>
+				<string>Prendi la rampa a destra in {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Prendi la rampa a sinistra</string>
+				<key>destination</key>
+				<string>Prendi la rampa a sinistra verso {destination}</string>
+				<key>name</key>
+				<string>Prendi la rampa a sinistra in {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Prendi la rampa a destra</string>
+				<key>destination</key>
+				<string>Prendi la rampa a destra verso {destination}</string>
+				<key>name</key>
+				<string>Prendi la rampa a destra in {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Prendi la rampa a sinistra</string>
+				<key>destination</key>
+				<string>Prendi la rampa a sinistra verso {destination}</string>
+				<key>name</key>
+				<string>Prendi la rampa a sinistra in {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Prendi la rampa a destra</string>
+				<key>destination</key>
+				<string>Prendi la rampa a destra verso {destination}</string>
+				<key>name</key>
+				<string>Prendi la rampa a destra in {way_name}</string>
+			</dict>
+		</dict>
+		<key>phrase</key>
+		<dict>
+			<key>name and ref</key>
+			<string>{name} ({ref})</string>
+			<key>one in distance</key>
+			<string>tra {distance} {instruction_one}</string>
+			<key>two linked</key>
+			<string>{instruction_one}, poi {instruction_two}</string>
+			<key>two linked by distance</key>
+			<string>{instruction_one}, poi tra {distance},{instruction_two}</string>
+		</dict>
+		<key>rotary</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<dict>
+					<key>default</key>
+					<string>Immettiti nella rotonda</string>
+					<key>destination</key>
+					<string>Immettiti nella ritonda ed esci verso {destination}</string>
+					<key>name</key>
+					<string>Immettiti nella ritonda ed esci in {way_name}</string>
+				</dict>
+				<key>exit</key>
+				<dict>
+					<key>default</key>
+					<string>Immettiti nella rotonda e prendi la {exit_number} uscita</string>
+					<key>destination</key>
+					<string>Immettiti nella rotonda e prendi la {exit_number} uscita verso   {destination}</string>
+					<key>name</key>
+					<string>Immettiti nella rotonda e prendi la {exit_number} uscita in {way_name}</string>
+				</dict>
+				<key>name</key>
+				<dict>
+					<key>default</key>
+					<string>Immettiti in {rotary_name}</string>
+					<key>destination</key>
+					<string>Immettiti in {rotary_name} ed esci verso {destination}</string>
+					<key>name</key>
+					<string>Immettiti in {rotary_name} ed esci su {way_name}</string>
+				</dict>
+				<key>name_exit</key>
+				<dict>
+					<key>default</key>
+					<string>Immettiti in {rotary_name} e prendi la {exit_number} uscita</string>
+					<key>destination</key>
+					<string>Immettiti in {rotary_name} e prendi la {exit_number}  uscita verso {destination}</string>
+					<key>name</key>
+					<string>Immettiti in {rotary_name} e prendi la {exit_number} uscita in {way_name}</string>
+				</dict>
+			</dict>
+		</dict>
+		<key>roundabout</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<dict>
+					<key>default</key>
+					<string>Entra nella rotonda</string>
+					<key>destination</key>
+					<string>Entra nella rotonda e prendi l'uscita verso {destination}</string>
+					<key>name</key>
+					<string>Entra nella rotonda e prendi l'uscita in {way_name}</string>
+				</dict>
+				<key>exit</key>
+				<dict>
+					<key>default</key>
+					<string>Immettiti nella rotonda e prendi la {exit_number} uscita</string>
+					<key>destination</key>
+					<string>Immettiti nella rotonda e prendi la {exit_number} uscita verso {destination}</string>
+					<key>name</key>
+					<string>Immettiti nella rotonda e prendi la {exit_number} uscita in {way_name}</string>
+				</dict>
+			</dict>
+		</dict>
+		<key>roundabout turn</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Alla rotonda fai una {modifier}</string>
+				<key>destination</key>
+				<string>Alla rotonda fai una {modifier} verso {destination}</string>
+				<key>name</key>
+				<string>Alla rotonda fai una {modifier} in {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Alla rotonda svolta a sinistra</string>
+				<key>destination</key>
+				<string>Alla rotonda svolta a sinistra verso {destination}</string>
+				<key>name</key>
+				<string>Alla rotonda svolta a sinistra in {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Alla rotonda svolta a destra</string>
+				<key>destination</key>
+				<string>Alla rotonda svolta a destra verso {destination}</string>
+				<key>name</key>
+				<string>Alla rotonda svolta a destra in {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Alla rotonda prosegui dritto</string>
+				<key>destination</key>
+				<string>Alla rotonda prosegui dritto verso {destination}</string>
+				<key>name</key>
+				<string>Alla rotonda prosegui dritto in {way_name}</string>
+			</dict>
+		</dict>
+		<key>turn</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Fai una {modifier}</string>
+				<key>destination</key>
+				<string>Fai una {modifier} verso {destination}</string>
+				<key>name</key>
+				<string>Fai una {modifier} in {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Svolta a sinistra</string>
+				<key>destination</key>
+				<string>Svolta a sinistra verso {destination}</string>
+				<key>name</key>
+				<string>Svolta a sinistra in {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Gira a destra</string>
+				<key>destination</key>
+				<string>Svolta a destra verso {destination}</string>
+				<key>name</key>
+				<string>Svolta a destra in {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Prosegui dritto</string>
+				<key>destination</key>
+				<string>Continua verso {destination}</string>
+				<key>name</key>
+				<string>Continua su {way_name}</string>
+			</dict>
+		</dict>
+		<key>use lane</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>{lane_instruction}</string>
+			</dict>
+			<key>no_lanes</key>
+			<dict>
+				<key>default</key>
+				<string>Continua dritto</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

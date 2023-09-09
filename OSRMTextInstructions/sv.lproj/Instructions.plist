@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>meta</key>
+	<dict>
+		<key>capitalizeFirstLetter</key>
+		<true/>
+	</dict>
+	<key>v5</key>
+	<dict>
+		<key>arrive</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Du är framme vid din {nth} destination</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Du är framme vid din {nth} destination, till vänster</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Du är framme vid din {nth} destination, till höger</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Du är framme vid din {nth} destination, skarpt till vänster</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Du är framme vid din {nth} destination, skarpt till höger</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Du är framme vid din {nth} destination, till vänster</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Du är framme vid din {nth} destination, till höger</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Du är framme vid din {nth} destination, rakt fram</string>
+			</dict>
+		</dict>
+		<key>constants</key>
+		<dict>
+			<key>direction</key>
+			<dict>
+				<key>east</key>
+				<string>öster</string>
+				<key>north</key>
+				<string>norr</string>
+				<key>northeast</key>
+				<string>nordost</string>
+				<key>northwest</key>
+				<string>nordväst</string>
+				<key>south</key>
+				<string>söder</string>
+				<key>southeast</key>
+				<string>sydost</string>
+				<key>southwest</key>
+				<string>sydväst</string>
+				<key>west</key>
+				<string>väster</string>
+			</dict>
+			<key>lanes</key>
+			<dict>
+				<key>ox</key>
+				<string>Håll till vänster</string>
+				<key>oxo</key>
+				<string>Håll till vänster eller höger</string>
+				<key>xo</key>
+				<string>Håll till höger</string>
+				<key>xox</key>
+				<string>Håll till mitten</string>
+			</dict>
+			<key>modifier</key>
+			<dict>
+				<key>left</key>
+				<string>vänster</string>
+				<key>right</key>
+				<string>höger</string>
+				<key>sharp left</key>
+				<string>vänster</string>
+				<key>sharp right</key>
+				<string>höger</string>
+				<key>slight left</key>
+				<string>vänster</string>
+				<key>slight right</key>
+				<string>höger</string>
+				<key>straight</key>
+				<string>rakt fram</string>
+				<key>uturn</key>
+				<string>U-sväng</string>
+			</dict>
+			<key>ordinalize</key>
+			<dict>
+				<key>1</key>
+				<string>1:a</string>
+				<key>10</key>
+				<string>10:e</string>
+				<key>2</key>
+				<string>2:a</string>
+				<key>3</key>
+				<string>3:e</string>
+				<key>4</key>
+				<string>4:e</string>
+				<key>5</key>
+				<string>5:e</string>
+				<key>6</key>
+				<string>6:e</string>
+				<key>7</key>
+				<string>7:e</string>
+				<key>8</key>
+				<string>8:e</string>
+				<key>9</key>
+				<string>9:e</string>
+			</dict>
+		</dict>
+		<key>continue</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Sväng {modifier}</string>
+				<key>destination</key>
+				<string>Sväng {modifier} mot {destination}</string>
+				<key>exit</key>
+				<string>Sväng {modifier} in på {way_name}</string>
+				<key>name</key>
+				<string>Sväng {modifier} och fortsätt på {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Sväng vänster</string>
+				<key>destination</key>
+				<string>Sväng vänster mot {destination}</string>
+				<key>name</key>
+				<string>Sväng vänster och fortsätt på {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Sväng höger</string>
+				<key>destination</key>
+				<string>Sväng höger mot {destination}</string>
+				<key>name</key>
+				<string>Sväng höger och fortsätt på {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Sväng vänster</string>
+				<key>destination</key>
+				<string>Sväng vänster mot {destination}</string>
+				<key>name</key>
+				<string>Sväng vänster och fortsätt på {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Sväng höger</string>
+				<key>destination</key>
+				<string>Sväng höger mot {destination}</string>
+				<key>name</key>
+				<string>Sväng höger och fortsätt på {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Fortsätt rakt fram</string>
+				<key>destination</key>
+				<string>Fortsätt mot {destination}</string>
+				<key>distance</key>
+				<string>Fortsätt rakt fram i {distance}</string>
+				<key>name</key>
+				<string>Kör rakt fram och fortsätt på {way_name}</string>
+				<key>namedistance</key>
+				<string>Fortsätt på {way_name} i {distance}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Gör en U-sväng</string>
+				<key>destination</key>
+				<string>Gör en U-sväng mot {destination}</string>
+				<key>name</key>
+				<string>Gör en U-sväng och fortsätt på {way_name}</string>
+			</dict>
+		</dict>
+		<key>depart</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Kör åt {direction}</string>
+				<key>name</key>
+				<string>Kör åt {direction} på {way_name}</string>
+			</dict>
+		</dict>
+		<key>end of road</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Sväng {modifier}</string>
+				<key>destination</key>
+				<string>Sväng {modifier} mot {destination}</string>
+				<key>name</key>
+				<string>Sväng {modifier} in på {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Fortsätt rakt fram</string>
+				<key>destination</key>
+				<string>Fortsätt rakt fram mot {destination}</string>
+				<key>name</key>
+				<string>Fortsätt rakt fram in på {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Gör en U-sväng i slutet av vägen</string>
+				<key>destination</key>
+				<string>Gör en U-sväng mot {destination} i slutet av vägen</string>
+				<key>name</key>
+				<string>Gör en U-sväng in på {way_name} i slutet av vägen</string>
+			</dict>
+		</dict>
+		<key>exit rotary</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Sväng {modifier}</string>
+				<key>destination</key>
+				<string>Sväng {modifier} mot {destination}</string>
+				<key>name</key>
+				<string>Sväng {modifier} in på {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Sväng vänster</string>
+				<key>destination</key>
+				<string>Sväng vänster mot {destination}</string>
+				<key>name</key>
+				<string>Sväng vänster in på {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Sväng höger</string>
+				<key>destination</key>
+				<string>Sväng höger mot {destination}</string>
+				<key>name</key>
+				<string>Sväng höger in på {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Kör rakt fram</string>
+				<key>destination</key>
+				<string>Kör rakt fram mot {destination}</string>
+				<key>name</key>
+				<string>Kör rakt fram in på {way_name}</string>
+			</dict>
+		</dict>
+		<key>exit roundabout</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Sväng {modifier}</string>
+				<key>destination</key>
+				<string>Sväng {modifier} mot {destination}</string>
+				<key>name</key>
+				<string>Sväng {modifier} in på {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Sväng vänster</string>
+				<key>destination</key>
+				<string>Sväng vänster mot {destination}</string>
+				<key>name</key>
+				<string>Sväng vänster in på {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Sväng höger</string>
+				<key>destination</key>
+				<string>Sväng höger mot {destination}</string>
+				<key>name</key>
+				<string>Sväng höger in på {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Kör rakt fram</string>
+				<key>destination</key>
+				<string>Kör rakt fram mot {destination}</string>
+				<key>name</key>
+				<string>Kör rakt fram in på {way_name}</string>
+			</dict>
+		</dict>
+		<key>fork</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Håll till {modifier} där vägen delar sig</string>
+				<key>destination</key>
+				<string>Håll till {modifier} mot {destination}</string>
+				<key>name</key>
+				<string>Håll till {modifier} in på {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Sväng vänster där vägen delar sig</string>
+				<key>destination</key>
+				<string>Sväng vänster mot {destination}</string>
+				<key>name</key>
+				<string>Sväng vänster in på {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Sväng höger där vägen delar sig</string>
+				<key>destination</key>
+				<string>Sväng höger mot {destination}</string>
+				<key>name</key>
+				<string>Sväng höger in på {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Håll till vänster där vägen delar sig</string>
+				<key>destination</key>
+				<string>Håll till vänster mot {destination}</string>
+				<key>name</key>
+				<string>Håll till vänster in på {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Håll till höger där vägen delar sig</string>
+				<key>destination</key>
+				<string>Håll till höger mot {destination}</string>
+				<key>name</key>
+				<string>Håll till höger in på {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Gör en U-sväng</string>
+				<key>destination</key>
+				<string>Gör en U-sväng mot {destination}</string>
+				<key>name</key>
+				<string>Gör en U-sväng in på {way_name}</string>
+			</dict>
+		</dict>
+		<key>merge</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Byt till {modifier} körfält</string>
+				<key>destination</key>
+				<string>Byt till {modifier} körfält mot {destination}</string>
+				<key>name</key>
+				<string>Byt till {modifier} körfält in på {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Byt till vänstra körfältet</string>
+				<key>destination</key>
+				<string>Byt till vänstra körfältet mot {destination}</string>
+				<key>name</key>
+				<string>Byt till vänstra körfältet in på {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Byt till högra körfältet</string>
+				<key>destination</key>
+				<string>Byt till högra körfältet mot {destination}</string>
+				<key>name</key>
+				<string>Byt till högra körfältet in på {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Byt till vänstra körfältet</string>
+				<key>destination</key>
+				<string>Byt till vänstra körfältet mot {destination}</string>
+				<key>name</key>
+				<string>Byt till vänstra körfältet in på {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Byt till högra körfältet</string>
+				<key>destination</key>
+				<string>Byt till högra körfältet mot {destination}</string>
+				<key>name</key>
+				<string>Byt till högra körfältet in på {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Gör en U-sväng</string>
+				<key>destination</key>
+				<string>Gör en U-sväng mot {destination}</string>
+				<key>name</key>
+				<string>Gör en U-sväng in på {way_name}</string>
+			</dict>
+		</dict>
+		<key>modes</key>
+		<dict>
+			<key>ferry</key>
+			<dict>
+				<key>default</key>
+				<string>Ta färjan</string>
+				<key>destination</key>
+				<string>Ta färjan mot {destination}</string>
+				<key>name</key>
+				<string>Ta färjan på {way_name}</string>
+			</dict>
+		</dict>
+		<key>new name</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Fortsätt {modifier}</string>
+				<key>destination</key>
+				<string>Fortsätt {modifier} mot {destination}</string>
+				<key>name</key>
+				<string>Fortsätt {modifier} på {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Gör en skarp vänstersväng</string>
+				<key>destination</key>
+				<string>Gör en skarp vänstersväng mot {destination}</string>
+				<key>name</key>
+				<string>Gör en skarp vänstersväng in på {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Gör en skarp högersväng</string>
+				<key>destination</key>
+				<string>Gör en skarp högersväng mot {destination}</string>
+				<key>name</key>
+				<string>Gör en skarp högersväng in på {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Fortsätt med lätt vänstersväng</string>
+				<key>destination</key>
+				<string>Fortsätt med lätt vänstersväng mot {destination}</string>
+				<key>name</key>
+				<string>Fortsätt med lätt vänstersväng in på {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Fortsätt med lätt högersväng</string>
+				<key>destination</key>
+				<string>Fortsätt med lätt högersväng mot {destination}</string>
+				<key>name</key>
+				<string>Fortsätt med lätt högersväng in på {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Fortsätt rakt fram</string>
+				<key>destination</key>
+				<string>Fortsätt mot {destination}</string>
+				<key>name</key>
+				<string>Fortsätt in på {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Gör en U-sväng</string>
+				<key>destination</key>
+				<string>Gör en U-sväng mot {destination}</string>
+				<key>name</key>
+				<string>Gör en U-sväng in på {way_name}</string>
+			</dict>
+		</dict>
+		<key>notification</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Fortsätt {modifier}</string>
+				<key>destination</key>
+				<string>Fortsätt {modifier} mot {destination}</string>
+				<key>name</key>
+				<string>Fortsätt {modifier} på {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Gör en U-sväng</string>
+				<key>destination</key>
+				<string>Gör en U-sväng mot {destination}</string>
+				<key>name</key>
+				<string>Gör en U-sväng in på {way_name}</string>
+			</dict>
+		</dict>
+		<key>off ramp</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Ta avfarten</string>
+				<key>destination</key>
+				<string>Ta avfarten mot {destination}</string>
+				<key>exit</key>
+				<string>Ta avfart {exit} </string>
+				<key>exit_destination</key>
+				<string>Ta avfart {exit} mot {destination}</string>
+				<key>name</key>
+				<string>Ta avfarten in på {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Ta avfarten till vänster</string>
+				<key>destination</key>
+				<string>Ta avfarten till vänster mot {destination}</string>
+				<key>exit</key>
+				<string>Ta avfart {exit} till vänster</string>
+				<key>exit_destination</key>
+				<string>Ta avfart {exit} till vänster mot {destination}</string>
+				<key>name</key>
+				<string>Ta avfarten till vänster in på {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Ta avfarten till höger</string>
+				<key>destination</key>
+				<string>Ta avfarten till höger mot {destination}</string>
+				<key>exit</key>
+				<string>Ta avfart {exit} till höger</string>
+				<key>exit_destination</key>
+				<string>Ta avfart {exit} till höger mot {destination}</string>
+				<key>name</key>
+				<string>Ta avfarten till höger in på {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Ta avfarten till vänster</string>
+				<key>destination</key>
+				<string>Ta avfarten till vänster mot {destination}</string>
+				<key>exit</key>
+				<string>Ta avfart {exit} till vänster</string>
+				<key>exit_destination</key>
+				<string>Ta avfart {exit} till vänster mot {destination}</string>
+				<key>name</key>
+				<string>Ta avfarten till vänster in på {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Ta avfarten till höger</string>
+				<key>destination</key>
+				<string>Ta avfarten till höger mot {destination}</string>
+				<key>exit</key>
+				<string>Ta avfart {exit} till höger</string>
+				<key>exit_destination</key>
+				<string>Ta avfart {exit} till höger mot {destination}</string>
+				<key>name</key>
+				<string>Ta avfarten till höger in på {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Ta avfarten till vänster</string>
+				<key>destination</key>
+				<string>Ta avfarten till vänster mot {destination}</string>
+				<key>exit</key>
+				<string>Ta avfart {exit} till vänster</string>
+				<key>exit_destination</key>
+				<string>Ta avfart{exit} till vänster mot {destination}</string>
+				<key>name</key>
+				<string>Ta avfarten till vänster in på {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Ta avfarten till höger</string>
+				<key>destination</key>
+				<string>Ta avfarten till höger mot {destination}</string>
+				<key>exit</key>
+				<string>Ta avfart {exit} till höger</string>
+				<key>exit_destination</key>
+				<string>Ta avfart {exit} till höger mot {destination}</string>
+				<key>name</key>
+				<string>Ta avfarten till höger in på {way_name}</string>
+			</dict>
+		</dict>
+		<key>on ramp</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Ta påfarten</string>
+				<key>destination</key>
+				<string>Ta påfarten mot {destination}</string>
+				<key>name</key>
+				<string>Ta påfarten in på {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Ta påfarten till vänster</string>
+				<key>destination</key>
+				<string>Ta påfarten till vänster mot {destination}</string>
+				<key>name</key>
+				<string>Ta påfarten till vänster in på {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Ta påfarten till höger</string>
+				<key>destination</key>
+				<string>Ta påfarten till höger mot {destination}</string>
+				<key>name</key>
+				<string>Ta påfarten till höger in på {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Ta påfarten till vänster</string>
+				<key>destination</key>
+				<string>Ta påfarten till vänster mot {destination}</string>
+				<key>name</key>
+				<string>Ta påfarten till vänster in på {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Ta påfarten till höger</string>
+				<key>destination</key>
+				<string>Ta påfarten till höger mot {destination}</string>
+				<key>name</key>
+				<string>Ta påfarten till höger in på {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Ta påfarten till vänster</string>
+				<key>destination</key>
+				<string>Ta påfarten till vänster mot {destination}</string>
+				<key>name</key>
+				<string>Ta påfarten till vänster in på {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Ta påfarten till höger</string>
+				<key>destination</key>
+				<string>Ta påfarten till höger mot {destination}</string>
+				<key>name</key>
+				<string>Ta påfarten till höger in på {way_name}</string>
+			</dict>
+		</dict>
+		<key>phrase</key>
+		<dict>
+			<key>name and ref</key>
+			<string>{name} ({ref})</string>
+			<key>one in distance</key>
+			<string>Om {distance}, {instruction_one}</string>
+			<key>two linked</key>
+			<string>{instruction_one}, sedan {instruction_two}</string>
+			<key>two linked by distance</key>
+			<string>{instruction_one}, sedan efter {distance}, {instruction_two}</string>
+		</dict>
+		<key>rotary</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<dict>
+					<key>default</key>
+					<string>Kör in i rondellen</string>
+					<key>destination</key>
+					<string>I rondellen ta av mot {destination}</string>
+					<key>name</key>
+					<string>I rondellen ta av in på {way_name}</string>
+				</dict>
+				<key>exit</key>
+				<dict>
+					<key>default</key>
+					<string>I rondellen ta {exit_number} avfarten</string>
+					<key>destination</key>
+					<string>I rondellen ta {exit_number} avfarten mot {destination}</string>
+					<key>name</key>
+					<string>I rondellen ta {exit_number} avfarten in på {way_name}</string>
+				</dict>
+				<key>name</key>
+				<dict>
+					<key>default</key>
+					<string>Kör in i {rotary_name}</string>
+					<key>destination</key>
+					<string>I {rotary_name} ta av mot {destination}</string>
+					<key>name</key>
+					<string>I {rotary_name} ta av in på {way_name}</string>
+				</dict>
+				<key>name_exit</key>
+				<dict>
+					<key>default</key>
+					<string>I {rotary_name} ta {exit_number} avfarten</string>
+					<key>destination</key>
+					<string>I {rotary_name} ta {exit_number} avfarten mot {destination}</string>
+					<key>name</key>
+					<string>I {rotary_name} ta {exit_number}  avfarten in på {way_name}</string>
+				</dict>
+			</dict>
+		</dict>
+		<key>roundabout</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<dict>
+					<key>default</key>
+					<string>Kör in i rondellen</string>
+					<key>destination</key>
+					<string>I rondellen ta av mot {destination}</string>
+					<key>name</key>
+					<string>I rondellen ta av mot {way_name}</string>
+				</dict>
+				<key>exit</key>
+				<dict>
+					<key>default</key>
+					<string>I rondellen ta {exit_number} avfarten</string>
+					<key>destination</key>
+					<string>I rondellen ta {exit_number} avfarten mot {destination}</string>
+					<key>name</key>
+					<string>I rondellen ta {exit_number} avfarten in på {way_name}</string>
+				</dict>
+			</dict>
+		</dict>
+		<key>roundabout turn</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>I rondellen sväng {modifier}</string>
+				<key>destination</key>
+				<string>I rondellen sväng {modifier} mot {destination}</string>
+				<key>name</key>
+				<string>I rondellen sväng {modifier} in på {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>I rondellen sväng vänster</string>
+				<key>destination</key>
+				<string>I rondellen sväng vänster mot {destination}</string>
+				<key>name</key>
+				<string>I rondellen sväng vänster in på {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>I rondellen sväng höger</string>
+				<key>destination</key>
+				<string>I rondellen sväng höger mot {destination}</string>
+				<key>name</key>
+				<string>I rondellen sväng höger in på {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>I rondellen fortsätt rakt fram</string>
+				<key>destination</key>
+				<string>I rondellen fortsätt rakt fram mot {destination}</string>
+				<key>name</key>
+				<string>I rondellen fortsätt rakt fram in på {way_name}</string>
+			</dict>
+		</dict>
+		<key>turn</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Sväng {modifier}</string>
+				<key>destination</key>
+				<string>Sväng {modifier} mot {destination}</string>
+				<key>name</key>
+				<string>Sväng {modifier} in på {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Sväng vänster</string>
+				<key>destination</key>
+				<string>Sväng vänster mot {destination}</string>
+				<key>name</key>
+				<string>Sväng vänster in på {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Sväng höger</string>
+				<key>destination</key>
+				<string>Sväng höger mot {destination}</string>
+				<key>name</key>
+				<string>Sväng höger in på {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Kör rakt fram</string>
+				<key>destination</key>
+				<string>Kör rakt fram mot {destination}</string>
+				<key>name</key>
+				<string>Kör rakt fram in på {way_name}</string>
+			</dict>
+		</dict>
+		<key>use lane</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>{lane_instruction}</string>
+			</dict>
+			<key>no_lanes</key>
+			<dict>
+				<key>default</key>
+				<string>Fortsätt rakt fram</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

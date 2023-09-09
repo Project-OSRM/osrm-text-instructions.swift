@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "MapboxDirections",
+        "repositoryURL": "https://github.com/mapbox/mapbox-directions-swift",
+        "state": {
+          "branch": null,
+          "revision": "3aaab4fb516638c51ec8a2e73cd2fabdb4588622",
+          "version": "2.11.1"
+        }
+      },
+      {
+        "package": "Polyline",
+        "repositoryURL": "https://github.com/raphaelmor/Polyline.git",
+        "state": {
+          "branch": null,
+          "revision": "353f80378dcd8f17eefe8550090c6b1ae3c9da23",
+          "version": "5.1.0"
+        }
+      },
+      {
+        "package": "swift-argument-parser",
+        "repositoryURL": "https://github.com/apple/swift-argument-parser",
+        "state": {
+          "branch": null,
+          "revision": "8f4d2753f0e4778c76d5f05ad16c74f707390531",
+          "version": "1.2.3"
+        }
+      },
+      {
+        "package": "Turf",
+        "repositoryURL": "https://github.com/mapbox/turf-swift.git",
+        "state": {
+          "branch": null,
+          "revision": "f0afe204b4266337066a436becab62fdd2b32378",
+          "version": "2.7.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

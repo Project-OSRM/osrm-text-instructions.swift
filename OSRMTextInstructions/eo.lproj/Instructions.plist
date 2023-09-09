@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>meta</key>
+	<dict>
+		<key>capitalizeFirstLetter</key>
+		<true/>
+	</dict>
+	<key>v5</key>
+	<dict>
+		<key>arrive</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Vi atingis vian {nth} celon</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Vi atingis vian {nth} celon ĉe maldekstre</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Vi atingis vian {nth} celon ĉe dekstre</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Vi atingis vian {nth} celon ĉe maldekstre</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Vi atingis vian {nth} celon ĉe dekstre</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Vi atingis vian {nth} celon ĉe maldekstre</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Vi atingis vian {nth} celon ĉe dekstre</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Vi atingis vian {nth} celon</string>
+			</dict>
+		</dict>
+		<key>constants</key>
+		<dict>
+			<key>direction</key>
+			<dict>
+				<key>east</key>
+				<string>orienten</string>
+				<key>north</key>
+				<string>norden</string>
+				<key>northeast</key>
+				<string>nord-orienten</string>
+				<key>northwest</key>
+				<string>nord-okcidenten</string>
+				<key>south</key>
+				<string>suden</string>
+				<key>southeast</key>
+				<string>sud-orienten</string>
+				<key>southwest</key>
+				<string>sud-okcidenten</string>
+				<key>west</key>
+				<string>okcidenten</string>
+			</dict>
+			<key>lanes</key>
+			<dict>
+				<key>ox</key>
+				<string>Veturu maldekstre</string>
+				<key>oxo</key>
+				<string>Veturu dekstre aŭ maldekstre</string>
+				<key>xo</key>
+				<string>Veturu dekstre</string>
+				<key>xox</key>
+				<string>Veturu meze</string>
+			</dict>
+			<key>modifier</key>
+			<dict>
+				<key>left</key>
+				<string>maldekstren</string>
+				<key>right</key>
+				<string>dekstren</string>
+				<key>sharp left</key>
+				<string>maldekstregen</string>
+				<key>sharp right</key>
+				<string>dekstregen</string>
+				<key>slight left</key>
+				<string>maldekstreten</string>
+				<key>slight right</key>
+				<string>dekstreten</string>
+				<key>straight</key>
+				<string>rekten</string>
+				<key>uturn</key>
+				<string>turniĝu malantaŭen</string>
+			</dict>
+			<key>ordinalize</key>
+			<dict>
+				<key>1</key>
+				<string>1-a</string>
+				<key>10</key>
+				<string>10-a</string>
+				<key>2</key>
+				<string>2-a</string>
+				<key>3</key>
+				<string>3-a</string>
+				<key>4</key>
+				<string>4-a</string>
+				<key>5</key>
+				<string>5-a</string>
+				<key>6</key>
+				<string>6-a</string>
+				<key>7</key>
+				<string>7-a</string>
+				<key>8</key>
+				<string>8-a</string>
+				<key>9</key>
+				<string>9-a</string>
+			</dict>
+		</dict>
+		<key>continue</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Veturu {modifier}</string>
+				<key>destination</key>
+				<string>Veturu {modifier} direkte al {destination}</string>
+				<key>exit</key>
+				<string>Veturu {modifier} direkte al {way_name}</string>
+				<key>name</key>
+				<string>Veturu {modifier} al {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Turniĝu ege maldekstren</string>
+				<key>destination</key>
+				<string>Turniĝu ege maldekstren direkte al {destination}</string>
+				<key>name</key>
+				<string>Turniĝu ege maldekstren al {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Turniĝu ege dekstren</string>
+				<key>destination</key>
+				<string>Turniĝu ege dekstren direkte al {destination}</string>
+				<key>name</key>
+				<string>Turniĝu ege dekstren al {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Turniĝu ete maldekstren</string>
+				<key>destination</key>
+				<string>Turniĝu ete maldekstren direkte al {destination}</string>
+				<key>name</key>
+				<string>Turniĝu ete maldekstren al {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Turniĝu ete dekstren</string>
+				<key>destination</key>
+				<string>Turniĝu ete dekstren direkte al {destination}</string>
+				<key>name</key>
+				<string>Turniĝu ete dekstren al {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Veturu rekten</string>
+				<key>destination</key>
+				<string>Veturu rekten direkte al {destination}</string>
+				<key>distance</key>
+				<string>Veturu rekten dum {distance}</string>
+				<key>name</key>
+				<string>Veturu rekten al {way_name}</string>
+				<key>namedistance</key>
+				<string>Veturu rekten al {way_name} dum {distance}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Turniĝu malantaŭen</string>
+				<key>destination</key>
+				<string>Turniĝu malantaŭen direkte al {destination}</string>
+				<key>name</key>
+				<string>Turniĝu malantaŭen al {way_name}</string>
+			</dict>
+		</dict>
+		<key>depart</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Direktiĝu {direction}</string>
+				<key>name</key>
+				<string>Direktiĝu {direction} al {way_name}</string>
+			</dict>
+		</dict>
+		<key>end of road</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Veturu {modifier}</string>
+				<key>destination</key>
+				<string>Veturu {modifier} direkte al {destination}</string>
+				<key>name</key>
+				<string>Veturu {modifier} direkte al {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Veturu rekten</string>
+				<key>destination</key>
+				<string>Veturu rekten direkte al {destination}</string>
+				<key>name</key>
+				<string>Veturu rekten al {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Turniĝu malantaŭen ĉe fino de la vojo</string>
+				<key>destination</key>
+				<string>Turniĝu malantaŭen direkte al {destination} ĉe fino de la vojo</string>
+				<key>name</key>
+				<string>Turniĝu malantaŭen al {way_name} ĉe fino de la vojo</string>
+			</dict>
+		</dict>
+		<key>exit rotary</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>{modifier}</string>
+				<key>destination</key>
+				<string>Veturu {modifier} direkte al {destination}</string>
+				<key>name</key>
+				<string>{modifier} al {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Turniĝu maldekstren</string>
+				<key>destination</key>
+				<string>Turniĝu maldekstren direkte al {destination}</string>
+				<key>name</key>
+				<string>Turniĝu maldekstren al {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Turniĝu dekstren</string>
+				<key>destination</key>
+				<string>Turniĝu dekstren direkte al {destination}</string>
+				<key>name</key>
+				<string>Turniĝu dekstren al {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Veturu rekten</string>
+				<key>destination</key>
+				<string>Veturu rekten direkte al {destination}</string>
+				<key>name</key>
+				<string>Veturu rekten al {way_name}</string>
+			</dict>
+		</dict>
+		<key>exit roundabout</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Veturu {modifier}</string>
+				<key>destination</key>
+				<string>Veturu {modifier} direkte al {destination}</string>
+				<key>name</key>
+				<string>Veturu {modifier} al {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Turniĝu maldekstren</string>
+				<key>destination</key>
+				<string>Turniĝu maldekstren direkte al {destination}</string>
+				<key>name</key>
+				<string>Turniĝu maldekstren al {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Turniĝu dekstren</string>
+				<key>destination</key>
+				<string>Turniĝu dekstren direkte al {destination}</string>
+				<key>name</key>
+				<string>Turniĝu dekstren al {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Veturu rekten</string>
+				<key>destination</key>
+				<string>Veturu rekten direkte al {destination}</string>
+				<key>name</key>
+				<string>Veturu rekten al {way_name}</string>
+			</dict>
+		</dict>
+		<key>fork</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Daŭru {modifier} ĉe la vojforko</string>
+				<key>destination</key>
+				<string>Pluu {modifier} ĉe la vojforko direkte al {destination}</string>
+				<key>name</key>
+				<string>Pluu {modifier} ĉe la vojforko al {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Ege maldekstren ĉe la vojforko</string>
+				<key>destination</key>
+				<string>Ege maldekstren ĉe la vojforko direkte al {destination}</string>
+				<key>name</key>
+				<string>Ege maldekstren ĉe la vojforko al {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Ege dekstren ĉe la vojforko</string>
+				<key>destination</key>
+				<string>Ege dekstren ĉe la vojforko direkte al {destination}</string>
+				<key>name</key>
+				<string>Ege dekstren ĉe la vojforko al {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Maldekstren ĉe la vojforko</string>
+				<key>destination</key>
+				<string>Maldekstren ĉe la vojforko direkte al {destination}</string>
+				<key>name</key>
+				<string>Maldekstren ĉe la vojforko al {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Dekstren ĉe la vojforko</string>
+				<key>destination</key>
+				<string>Dekstren ĉe la vojforko direkte al {destination}</string>
+				<key>name</key>
+				<string>Dekstren ĉe la vojforko al {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Turniĝu malantaŭen</string>
+				<key>destination</key>
+				<string>Turniĝu malantaŭen direkte al {destination}</string>
+				<key>name</key>
+				<string>Turniĝu malantaŭen al {way_name}</string>
+			</dict>
+		</dict>
+		<key>merge</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Enveturu {modifier}</string>
+				<key>destination</key>
+				<string>Enveturu {modifier} direkte al {destination}</string>
+				<key>name</key>
+				<string>Enveturu {modifier} al {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Enveturu de maldekstre</string>
+				<key>destination</key>
+				<string>Enveturu de maldekstre direkte al {destination}</string>
+				<key>name</key>
+				<string>Enveture de maldekstre al {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Enveturu de dekstre</string>
+				<key>destination</key>
+				<string>Enveturu de dekstre direkte al {destination}</string>
+				<key>name</key>
+				<string>Enveturu de dekstre al {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Enveturu de maldekstre</string>
+				<key>destination</key>
+				<string>Enveturu de maldekstre direkte al {destination}</string>
+				<key>name</key>
+				<string>Enveturu de maldekstre al {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Enveturu de dekstre</string>
+				<key>destination</key>
+				<string>Enveturu de dekstre direkte al {destination}</string>
+				<key>name</key>
+				<string>Enveturu de dekstre al {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Turniĝu malantaŭen</string>
+				<key>destination</key>
+				<string>Turniĝu malantaŭen direkte al {destination}</string>
+				<key>name</key>
+				<string>Turniĝu malantaŭen al {way_name}</string>
+			</dict>
+		</dict>
+		<key>modes</key>
+		<dict>
+			<key>ferry</key>
+			<dict>
+				<key>default</key>
+				<string>Enpramiĝu</string>
+				<key>destination</key>
+				<string>Enpramiĝu direkte al {destination}</string>
+				<key>name</key>
+				<string>Enpramiĝu {way_name}</string>
+			</dict>
+		</dict>
+		<key>new name</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Pluu {modifier}</string>
+				<key>destination</key>
+				<string>Pluu {modifier} direkte al {destination}</string>
+				<key>name</key>
+				<string>Pluu {modifier} al {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Turniĝu ege maldekstren</string>
+				<key>destination</key>
+				<string>Turniĝu ege maldekstren direkte al {destination}</string>
+				<key>name</key>
+				<string>Turniĝu ege maldekstren al {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Turniĝu ege dekstren</string>
+				<key>destination</key>
+				<string>Turniĝu ege dekstren direkte al {destination}</string>
+				<key>name</key>
+				<string>Turniĝu ege dekstren al {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Pluu ete maldekstren</string>
+				<key>destination</key>
+				<string>Pluu ete maldekstren direkte al {destination}</string>
+				<key>name</key>
+				<string>Pluu ete maldekstren al {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Pluu ete dekstren</string>
+				<key>destination</key>
+				<string>Pluu ete dekstren direkte al {destination}</string>
+				<key>name</key>
+				<string>Pluu ete dekstren al {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Veturu rekten</string>
+				<key>destination</key>
+				<string>Veturu rekten direkte al {destination}</string>
+				<key>name</key>
+				<string>Veturu rekten al {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Turniĝu malantaŭen</string>
+				<key>destination</key>
+				<string>Turniĝu malantaŭen direkte al {destination}</string>
+				<key>name</key>
+				<string>Turniĝu malantaŭen al {way_name}</string>
+			</dict>
+		</dict>
+		<key>notification</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Pluu {modifier}</string>
+				<key>destination</key>
+				<string>Pluu {modifier} direkte al {destination}</string>
+				<key>name</key>
+				<string>Pluu {modifier} al {way_name}</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Turniĝu malantaŭen</string>
+				<key>destination</key>
+				<string>Turniĝu malantaŭen direkte al {destination}</string>
+				<key>name</key>
+				<string>Turniĝu malantaŭen al {way_name}</string>
+			</dict>
+		</dict>
+		<key>off ramp</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Direktiĝu al enveturejo</string>
+				<key>destination</key>
+				<string>Direktiĝu al enveturejo direkte al {destination}</string>
+				<key>exit</key>
+				<string>Direktiĝu al elveturejo {exit}</string>
+				<key>exit_destination</key>
+				<string>Direktiĝu al elveturejo {exit} direkte al {destination}</string>
+				<key>name</key>
+				<string>Direktiĝu al enveturejo al {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Direktiĝu al enveturejo ĉe maldekstre</string>
+				<key>destination</key>
+				<string>Direktiĝu al enveturejo ĉe maldekstre al {destination}</string>
+				<key>exit</key>
+				<string>Direktiĝu al elveturejo {exit} ĉe maldekstre</string>
+				<key>exit_destination</key>
+				<string>Direktiĝu al elveturejo {exit} ĉe maldekstre direkte al {destination}</string>
+				<key>name</key>
+				<string>Direktiĝu al enveturejo ĉe maldekstre al {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Direktiĝu al enveturejo ĉe dekstre</string>
+				<key>destination</key>
+				<string>Direktiĝu al enveturejo ĉe dekstre al {destination}</string>
+				<key>exit</key>
+				<string>Direktiĝu al {exit} elveturejo ĉe ldekstre</string>
+				<key>exit_destination</key>
+				<string>Direktiĝu al elveturejo {exit} ĉe dekstre direkte al {destination}</string>
+				<key>name</key>
+				<string>Direktiĝu al enveturejo ĉe dekstre al {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Direktiĝu al enveturejo ĉe maldekstre</string>
+				<key>destination</key>
+				<string>Direktiĝu al enveturejo ĉe maldekstre al {destination}</string>
+				<key>exit</key>
+				<string>Direktiĝu al {exit} elveturejo ĉe maldekstre</string>
+				<key>exit_destination</key>
+				<string>Direktiĝu al elveturejo {exit} ĉe maldekstre direkte al {destination}</string>
+				<key>name</key>
+				<string>Direktiĝu al enveturejo ĉe maldekstre al {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Direktiĝu al enveturejo ĉe dekstre</string>
+				<key>destination</key>
+				<string>Direktiĝu al enveturejo ĉe dekstre al {destination}</string>
+				<key>exit</key>
+				<string>Direktiĝu al elveturejo {exit} ĉe dekstre</string>
+				<key>exit_destination</key>
+				<string>Direktiĝu al elveturejo {exit} ĉe dekstre direkte al {destination}</string>
+				<key>name</key>
+				<string>Direktiĝu al enveturejo ĉe dekstre al {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Direktiĝu al enveturejo ĉe maldekstre</string>
+				<key>destination</key>
+				<string>Direktiĝu al enveturejo ĉe maldekstre al {destination}</string>
+				<key>exit</key>
+				<string>Direktiĝu al {exit} elveturejo ĉe maldekstre</string>
+				<key>exit_destination</key>
+				<string>Direktiĝu al elveturejo {exit} ĉe maldekstre direkte al {destination}</string>
+				<key>name</key>
+				<string>Direktiĝu al enveturejo ĉe maldekstre al {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Direktiĝu al enveturejo ĉe dekstre</string>
+				<key>destination</key>
+				<string>Direktiĝu al enveturejo ĉe dekstre al {destination}</string>
+				<key>exit</key>
+				<string>Direktiĝu al {exit} elveturejo ĉe ldekstre</string>
+				<key>exit_destination</key>
+				<string>Direktiĝu al elveturejo {exit} ĉe dekstre direkte al {destination}</string>
+				<key>name</key>
+				<string>Direktiĝu al enveturejo ĉe dekstre al {way_name}</string>
+			</dict>
+		</dict>
+		<key>on ramp</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Direktiĝu al enveturejo</string>
+				<key>destination</key>
+				<string>Direktiĝu al enveturejo direkte al {destination}</string>
+				<key>name</key>
+				<string>Direktiĝu al enveturejo al {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Direktiĝu al enveturejo ĉe maldekstre</string>
+				<key>destination</key>
+				<string>Direktiĝu al enveturejo ĉe maldekstre al {destination}</string>
+				<key>name</key>
+				<string>Direktiĝu al enveturejo ĉe maldekstre al {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Direktiĝu al enveturejo ĉe dekstre</string>
+				<key>destination</key>
+				<string>Direktiĝu al enveturejo ĉe dekstre al {destination}</string>
+				<key>name</key>
+				<string>Direktiĝu al enveturejo ĉe dekstre al {way_name}</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Direktiĝu al enveturejo ĉe maldekstre</string>
+				<key>destination</key>
+				<string>Direktiĝu al enveturejo ĉe maldekstre al {destination}</string>
+				<key>name</key>
+				<string>Direktiĝu al enveturejo ĉe maldekstre al {way_name}</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Direktiĝu al enveturejo ĉe dekstre</string>
+				<key>destination</key>
+				<string>Direktiĝu al enveturejo ĉe dekstre al {destination}</string>
+				<key>name</key>
+				<string>Direktiĝu al enveturejo ĉe dekstre al {way_name}</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Direktiĝu al enveturejo ĉe maldekstre</string>
+				<key>destination</key>
+				<string>Direktiĝu al enveturejo ĉe maldekstre al {destination}</string>
+				<key>name</key>
+				<string>Direktiĝu al enveturejo ĉe maldekstre al {way_name}</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Direktiĝu al enveturejo ĉe dekstre</string>
+				<key>destination</key>
+				<string>Direktiĝu al enveturejo ĉe dekstre al {destination}</string>
+				<key>name</key>
+				<string>Direktiĝu al enveturejo ĉe dekstre al {way_name}</string>
+			</dict>
+		</dict>
+		<key>phrase</key>
+		<dict>
+			<key>name and ref</key>
+			<string>{name} ({ref})</string>
+			<key>one in distance</key>
+			<string>Post {distance}, {instruction_one}</string>
+			<key>two linked</key>
+			<string>{instruction_one} kaj sekve {instruction_two}</string>
+			<key>two linked by distance</key>
+			<string>{instruction_one} kaj post {distance} {instruction_two}</string>
+		</dict>
+		<key>rotary</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<dict>
+					<key>default</key>
+					<string>Enveturu trafikcirklegon</string>
+					<key>destination</key>
+					<string>Enveturu trafikcirklegon kaj elveturu direkte al {destination}</string>
+					<key>name</key>
+					<string>Enveturu trafikcirklegon kaj elveturu al {way_name}</string>
+				</dict>
+				<key>exit</key>
+				<dict>
+					<key>default</key>
+					<string>Enveturu trafikcirklegon kaj sekve al {exit_number} elveturejo</string>
+					<key>destination</key>
+					<string>Enveturu trafikcirklegon kaj sekve al {exit_number} elveturejo direkte al {destination}</string>
+					<key>name</key>
+					<string>Enveturu trafikcirklegon kaj sekve al {exit_number} elveturejo al {way_name}</string>
+				</dict>
+				<key>name</key>
+				<dict>
+					<key>default</key>
+					<string>Enveturu {rotary_name}</string>
+					<key>destination</key>
+					<string>Enveturu {rotary_name} kaj elveturu direkte al {destination}</string>
+					<key>name</key>
+					<string>Enveturu {rotary_name} kaj elveturu al {way_name}</string>
+				</dict>
+				<key>name_exit</key>
+				<dict>
+					<key>default</key>
+					<string>Enveturu {rotary_name} kaj sekve al {exit_number} elveturejo</string>
+					<key>destination</key>
+					<string>Enveturu {rotary_name} kaj sekve al {exit_number} elveturejo direkte al {destination}</string>
+					<key>name</key>
+					<string>Enveturu {rotary_name} kaj sekve al {exit_number} elveturejo al {way_name}</string>
+				</dict>
+			</dict>
+		</dict>
+		<key>roundabout</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<dict>
+					<key>default</key>
+					<string>Enveturu trafikcirklon</string>
+					<key>destination</key>
+					<string>Enveturu trafikcirklon kaj elveturu direkte al {destination}</string>
+					<key>name</key>
+					<string>Enveturu trafikcirklon kaj elveturu al {way_name}</string>
+				</dict>
+				<key>exit</key>
+				<dict>
+					<key>default</key>
+					<string>Enveturu trafikcirklon kaj sekve al {exit_number} elveturejo</string>
+					<key>destination</key>
+					<string>Enveturu trafikcirklon kaj sekve al {exit_number} elveturejo direkte al {destination}</string>
+					<key>name</key>
+					<string>Enveturu trafikcirklon kaj sekve al {exit_number} elveturejo al {way_name}</string>
+				</dict>
+			</dict>
+		</dict>
+		<key>roundabout turn</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Ĉe la trafikcirklo veturu {modifier}</string>
+				<key>destination</key>
+				<string>Ĉe la trafikcirklo veturu {modifier} direkte al {destination}</string>
+				<key>name</key>
+				<string>Ĉe la trafikcirklo veturu {modifier} al {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Ĉe la trafikcirklo turniĝu maldekstren</string>
+				<key>destination</key>
+				<string>Ĉe la trafikcirklo turniĝu maldekstren direkte al {destination}</string>
+				<key>name</key>
+				<string>Ĉe la trafikcirklo turniĝu maldekstren al {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Ĉe la trafikcirklo turniĝu dekstren</string>
+				<key>destination</key>
+				<string>Ĉe la trafikcirklo turniĝu dekstren direkte al {destination}</string>
+				<key>name</key>
+				<string>Ĉe la trafikcirklo turniĝu dekstren al {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Ĉe la trafikcirklo veturu rekten</string>
+				<key>destination</key>
+				<string>Ĉe la trafikcirklo veturu rekten direkte al {destination}</string>
+				<key>name</key>
+				<string>Ĉe la trafikcirklo veturu rekten al {way_name}</string>
+			</dict>
+		</dict>
+		<key>turn</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Veturu {modifier}</string>
+				<key>destination</key>
+				<string>Veturu {modifier} direkte al {destination}</string>
+				<key>name</key>
+				<string>Veturu {modifier} al {way_name}</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Turniĝu maldekstren</string>
+				<key>destination</key>
+				<string>Turniĝu maldekstren direkte al {destination}</string>
+				<key>name</key>
+				<string>Turniĝu maldekstren al {way_name}</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Turniĝu dekstren</string>
+				<key>destination</key>
+				<string>Turniĝu dekstren direkte al {destination}</string>
+				<key>name</key>
+				<string>Turniĝu dekstren al {way_name}</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Veturu rekten</string>
+				<key>destination</key>
+				<string>Veturu rekten direkte al {destination}</string>
+				<key>name</key>
+				<string>Veturu rekten al {way_name}</string>
+			</dict>
+		</dict>
+		<key>use lane</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>{lane_instruction}</string>
+			</dict>
+			<key>no_lanes</key>
+			<dict>
+				<key>default</key>
+				<string>Pluu rekten</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

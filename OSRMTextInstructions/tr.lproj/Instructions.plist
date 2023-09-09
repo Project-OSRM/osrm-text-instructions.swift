@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>meta</key>
+	<dict>
+		<key>capitalizeFirstLetter</key>
+		<true/>
+	</dict>
+	<key>v5</key>
+	<dict>
+		<key>arrive</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>{nth} hedefinize ulaştınız</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>{nth} hedefinize ulaştınız, hedefiniz solunuzdadır</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>{nth} hedefinize ulaştınız, hedefiniz sağınızdadır</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>{nth} hedefinize ulaştınız, hedefiniz solunuzdadır</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>{nth} hedefinize ulaştınız, hedefiniz sağınızdadır</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>{nth} hedefinize ulaştınız, hedefiniz solunuzdadır</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>{nth} hedefinize ulaştınız, hedefiniz sağınızdadır</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>{nth} hedefinize ulaştınız, hedefiniz karşınızdadır</string>
+			</dict>
+		</dict>
+		<key>constants</key>
+		<dict>
+			<key>direction</key>
+			<dict>
+				<key>east</key>
+				<string>doğu</string>
+				<key>north</key>
+				<string>kuzey</string>
+				<key>northeast</key>
+				<string>kuzeydoğu</string>
+				<key>northwest</key>
+				<string>kuzeybatı</string>
+				<key>south</key>
+				<string>güney</string>
+				<key>southeast</key>
+				<string>güneydoğu</string>
+				<key>southwest</key>
+				<string>güneybatı</string>
+				<key>west</key>
+				<string>batı</string>
+			</dict>
+			<key>lanes</key>
+			<dict>
+				<key>ox</key>
+				<string>Solda kalın</string>
+				<key>oxo</key>
+				<string>Solda veya sağda kalın</string>
+				<key>xo</key>
+				<string>Sağda kalın</string>
+				<key>xox</key>
+				<string>Ortada kalın</string>
+			</dict>
+			<key>modifier</key>
+			<dict>
+				<key>left</key>
+				<string>sol</string>
+				<key>right</key>
+				<string>sağ</string>
+				<key>sharp left</key>
+				<string>keskin sol</string>
+				<key>sharp right</key>
+				<string>keskin sağ</string>
+				<key>slight left</key>
+				<string>hafif sol</string>
+				<key>slight right</key>
+				<string>hafif sağ</string>
+				<key>straight</key>
+				<string>düz</string>
+				<key>uturn</key>
+				<string>U dönüşü</string>
+			</dict>
+			<key>ordinalize</key>
+			<dict>
+				<key>1</key>
+				<string>birinci</string>
+				<key>10</key>
+				<string>onuncu</string>
+				<key>2</key>
+				<string>ikinci</string>
+				<key>3</key>
+				<string>üçüncü</string>
+				<key>4</key>
+				<string>dördüncü</string>
+				<key>5</key>
+				<string>beşinci</string>
+				<key>6</key>
+				<string>altıncı</string>
+				<key>7</key>
+				<string>yedinci</string>
+				<key>8</key>
+				<string>sekizinci</string>
+				<key>9</key>
+				<string>dokuzuncu</string>
+			</dict>
+		</dict>
+		<key>continue</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>{modifier} yöne dön</string>
+				<key>destination</key>
+				<string>{destination} istikametinde {modifier} yöne dön</string>
+				<key>exit</key>
+				<string>{way_name} üzerinde {modifier} yöne dön</string>
+				<key>name</key>
+				<string>{way_name} üzerinde kalmak için {modifier} yöne dön</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Sola keskin dönüş yap</string>
+				<key>destination</key>
+				<string>{destination} istikametinde sola keskin dönüş yap</string>
+				<key>name</key>
+				<string>{way_name} üzerinde kalmak için sola keskin dönüş yap</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Sağa keskin dönüş yap</string>
+				<key>destination</key>
+				<string>{destination} istikametinde sağa keskin dönüş yap</string>
+				<key>name</key>
+				<string>{way_name} üzerinde kalmak için sağa keskin dönüş yap</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Sola hafif dönüş yap</string>
+				<key>destination</key>
+				<string>{destination} istikametinde sola hafif dönüş yap</string>
+				<key>name</key>
+				<string>{way_name} üzerinde kalmak için sola hafif dönüş yap</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Sağa hafif dönüş yap</string>
+				<key>destination</key>
+				<string>{destination} istikametinde sağa hafif dönüş yap</string>
+				<key>name</key>
+				<string>{way_name} üzerinde kalmak için sağa hafif dönüş yap</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Düz devam edin</string>
+				<key>destination</key>
+				<string>{destination} istikametinde devam et</string>
+				<key>distance</key>
+				<string>{distance} boyunca düz devam et</string>
+				<key>name</key>
+				<string>{way_name} üzerinde kalmak için düz devam et</string>
+				<key>namedistance</key>
+				<string>{distance} boyunca {way_name} üzerinde devam et</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>U dönüşü yapın</string>
+				<key>destination</key>
+				<string>{destination} istikametinde bir U-dönüşü yap</string>
+				<key>name</key>
+				<string>Bir U-dönüşü yap ve {way_name} devam et</string>
+			</dict>
+		</dict>
+		<key>depart</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>{direction} tarafına yönelin</string>
+				<key>name</key>
+				<string>{way_name} üzerinde {direction} yöne git</string>
+			</dict>
+		</dict>
+		<key>end of road</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>{modifier} tarafa dönün</string>
+				<key>destination</key>
+				<string>{destination} istikametinde {modifier} yöne dön</string>
+				<key>name</key>
+				<string>{way_name} üzerinde {modifier} yöne dön</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Düz devam edin</string>
+				<key>destination</key>
+				<string>{destination} istikametinde düz devam et</string>
+				<key>name</key>
+				<string>{way_name} üzerinde düz devam et</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>Yolun sonunda U dönüşü yapın</string>
+				<key>destination</key>
+				<string>Yolun sonunda {destination} istikametinde bir U-dönüşü yap</string>
+				<key>name</key>
+				<string>Yolun sonunda {way_name} üzerinde bir U-dönüşü yap</string>
+			</dict>
+		</dict>
+		<key>exit rotary</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>{modifier} yöne dön</string>
+				<key>destination</key>
+				<string>{destination} istikametinde {modifier} yöne dön</string>
+				<key>name</key>
+				<string>{way_name} üzerinde {modifier} yöne dön</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Sola dön</string>
+				<key>destination</key>
+				<string>{destination} istikametinde sola dön</string>
+				<key>name</key>
+				<string>{way_name} üzerinde sola dön</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Sağa dön</string>
+				<key>destination</key>
+				<string>{destination} istikametinde sağa dön</string>
+				<key>name</key>
+				<string>{way_name} üzerinde sağa dön</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Düz git</string>
+				<key>destination</key>
+				<string>{destination} istikametinde düz git</string>
+				<key>name</key>
+				<string>{way_name} üzerinde düz git</string>
+			</dict>
+		</dict>
+		<key>exit roundabout</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>{modifier} yöne dön</string>
+				<key>destination</key>
+				<string>{destination} istikametinde {modifier} yöne dön</string>
+				<key>name</key>
+				<string>{way_name} üzerinde {modifier} yöne dön</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Sola dön</string>
+				<key>destination</key>
+				<string>{destination} istikametinde sola dön</string>
+				<key>name</key>
+				<string>{way_name} üzerinde sola dön</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Sağa dön</string>
+				<key>destination</key>
+				<string>{destination} istikametinde sağa dön</string>
+				<key>name</key>
+				<string>{way_name} üzerinde sağa dön</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Düz git</string>
+				<key>destination</key>
+				<string>{destination} istikametinde düz git</string>
+				<key>name</key>
+				<string>{way_name} üzerinde düz git</string>
+			</dict>
+		</dict>
+		<key>fork</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Yol ayrımında {modifier} yönde kal</string>
+				<key>destination</key>
+				<string>{destination} istikametindeki yol ayrımında {modifier} yönde kal</string>
+				<key>name</key>
+				<string>{way_name} üzerindeki yol ayrımında {modifier} yönde kal</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Çatalda keskin sola dönün</string>
+				<key>destination</key>
+				<string>{destination} istikametindeki yol ayrımında sola keskin dönüş yap</string>
+				<key>name</key>
+				<string>{way_name} üzerindeki yol ayrımında sola keskin dönüş yap</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Çatalda keskin sağa dönün</string>
+				<key>destination</key>
+				<string>{destination} istikametindeki yol ayrımında sola keskin dönüş yap</string>
+				<key>name</key>
+				<string>{way_name} üzerindeki yol ayrımında sağa keskin dönüş yap</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Çatalın solundan devam edin</string>
+				<key>destination</key>
+				<string>{destination} istikametindeki yol ayrımında solda kal</string>
+				<key>name</key>
+				<string>Çatalın solundan {way_name} yoluna doğru </string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Çatalın sağından devam edin</string>
+				<key>destination</key>
+				<string>{destination} istikametindeki yol ayrımında sağda kal</string>
+				<key>name</key>
+				<string>{way_name} üzerindeki yol ayrımında sağda kal</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>U dönüşü yapın</string>
+				<key>destination</key>
+				<string>{destination} istikametinde bir U-dönüşü yap</string>
+				<key>name</key>
+				<string>{way_name} yoluna U dönüşü yapın</string>
+			</dict>
+		</dict>
+		<key>merge</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>{modifier} yöne gir</string>
+				<key>destination</key>
+				<string>{destination} istikametinde {modifier} yöne gir</string>
+				<key>name</key>
+				<string>{way_name} üzerinde {modifier} yöne gir</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Sola gir</string>
+				<key>destination</key>
+				<string>{destination} istikametinde sola gir</string>
+				<key>name</key>
+				<string>{way_name} üzerinde sola gir</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Sağa gir</string>
+				<key>destination</key>
+				<string>{destination} istikametinde sağa gir</string>
+				<key>name</key>
+				<string>{way_name} üzerinde sağa gir</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Sola gir</string>
+				<key>destination</key>
+				<string>{destination} istikametinde sola gir</string>
+				<key>name</key>
+				<string>{way_name} üzerinde sola gir</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Sağa gir</string>
+				<key>destination</key>
+				<string>{destination} istikametinde sağa gir</string>
+				<key>name</key>
+				<string>{way_name} üzerinde sağa gir</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>U dönüşü yapın</string>
+				<key>destination</key>
+				<string>{destination} istikametinde bir U-dönüşü yap</string>
+				<key>name</key>
+				<string>{way_name} yoluna U dönüşü yapın</string>
+			</dict>
+		</dict>
+		<key>modes</key>
+		<dict>
+			<key>ferry</key>
+			<dict>
+				<key>default</key>
+				<string>Vapur kullan</string>
+				<key>destination</key>
+				<string>{destination} istikametine giden vapuru kullan</string>
+				<key>name</key>
+				<string>{way_name} vapurunu kullan</string>
+			</dict>
+		</dict>
+		<key>new name</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>{modifier} yönde devam et</string>
+				<key>destination</key>
+				<string>{destination} istikametinde {modifier} yönde devam et</string>
+				<key>name</key>
+				<string>{way_name} üzerinde {modifier} yönde devam et</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Sola keskin dönüş yapın</string>
+				<key>destination</key>
+				<string>{destination} istikametinde sola keskin dönüş yap</string>
+				<key>name</key>
+				<string>{way_name} yoluna doğru sola keskin dönüş yapın</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Sağa keskin dönüş yapın</string>
+				<key>destination</key>
+				<string>{destination} istikametinde sağa keskin dönüş yap</string>
+				<key>name</key>
+				<string>{way_name} yoluna doğru sağa keskin dönüş yapın</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Hafif soldan devam edin</string>
+				<key>destination</key>
+				<string>{destination} istikametinde hafif solda devam et</string>
+				<key>name</key>
+				<string>{way_name} üzerinde hafif solda devam et</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Hafif sağdan devam edin</string>
+				<key>destination</key>
+				<string>{destination} istikametinde hafif sağda devam et</string>
+				<key>name</key>
+				<string>{way_name} üzerinde hafif sağda devam et</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Düz devam et</string>
+				<key>destination</key>
+				<string>{destination} istikametinde devam et</string>
+				<key>name</key>
+				<string>{way_name} üzerinde devam et</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>U dönüşü yapın</string>
+				<key>destination</key>
+				<string>{destination} istikametinde bir U-dönüşü yap</string>
+				<key>name</key>
+				<string>{way_name} yoluna U dönüşü yapın</string>
+			</dict>
+		</dict>
+		<key>notification</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>{modifier} yönde devam et</string>
+				<key>destination</key>
+				<string>{destination} istikametinde {modifier} yönde devam et</string>
+				<key>name</key>
+				<string>{way_name} üzerinde {modifier} yönde devam et</string>
+			</dict>
+			<key>uturn</key>
+			<dict>
+				<key>default</key>
+				<string>U dönüşü yapın</string>
+				<key>destination</key>
+				<string>{destination} istikametinde bir U-dönüşü yap</string>
+				<key>name</key>
+				<string>{way_name} yoluna U dönüşü yapın</string>
+			</dict>
+		</dict>
+		<key>off ramp</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Bağlantı yoluna geç</string>
+				<key>destination</key>
+				<string>{destination} istikametine giden bağlantı yoluna geç</string>
+				<key>exit</key>
+				<string>{exit} çıkış yoluna geç</string>
+				<key>exit_destination</key>
+				<string>{destination} istikametindeki {exit} çıkış yoluna geç</string>
+				<key>name</key>
+				<string>{way_name} üzerindeki bağlantı yoluna geç</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Soldaki bağlantı yoluna geç</string>
+				<key>destination</key>
+				<string>{destination} istikametine giden sol bağlantı yoluna geç</string>
+				<key>exit</key>
+				<string>Soldaki {exit} çıkış yoluna geç</string>
+				<key>exit_destination</key>
+				<string>{destination} istikametindeki {exit} sol çıkış yoluna geç</string>
+				<key>name</key>
+				<string>{way_name} üzerindeki sol bağlantı yoluna geç</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Sağdaki bağlantı yoluna geç</string>
+				<key>destination</key>
+				<string>{destination} istikametine giden sağ bağlantı yoluna geç</string>
+				<key>exit</key>
+				<string>Sağdaki {exit} çıkış yoluna geç</string>
+				<key>exit_destination</key>
+				<string>{destination} istikametindeki {exit} sağ çıkış yoluna geç</string>
+				<key>name</key>
+				<string>{way_name} üzerindeki sağ bağlantı yoluna geç</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Soldaki bağlantı yoluna geç</string>
+				<key>destination</key>
+				<string>{destination} istikametine giden sol bağlantı yoluna geç</string>
+				<key>exit</key>
+				<string>Soldaki {exit} çıkış yoluna geç</string>
+				<key>exit_destination</key>
+				<string>{destination} istikametindeki {exit} sol çıkış yoluna geç</string>
+				<key>name</key>
+				<string>{way_name} üzerindeki sol bağlantı yoluna geç</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Sağdaki bağlantı yoluna geç</string>
+				<key>destination</key>
+				<string>{destination} istikametine giden sağ bağlantı yoluna geç</string>
+				<key>exit</key>
+				<string>Sağdaki {exit} çıkış yoluna geç</string>
+				<key>exit_destination</key>
+				<string>{destination} istikametindeki {exit} sağ çıkış yoluna geç</string>
+				<key>name</key>
+				<string>{way_name} üzerindeki sağ bağlantı yoluna geç</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Soldaki bağlantı yoluna geç</string>
+				<key>destination</key>
+				<string>{destination} istikametine giden sol bağlantı yoluna geç</string>
+				<key>exit</key>
+				<string>Soldaki {exit} çıkış yoluna geç</string>
+				<key>exit_destination</key>
+				<string>{destination} istikametindeki {exit} sol çıkış yoluna geç</string>
+				<key>name</key>
+				<string>{way_name} üzerindeki sol bağlantı yoluna geç</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Sağdaki bağlantı yoluna geç</string>
+				<key>destination</key>
+				<string>{destination} istikametine giden sağ bağlantı yoluna geç</string>
+				<key>exit</key>
+				<string>Sağdaki {exit} çıkış yoluna geç</string>
+				<key>exit_destination</key>
+				<string>{destination} istikametindeki {exit} sağ çıkış yoluna geç</string>
+				<key>name</key>
+				<string>{way_name} üzerindeki sağ bağlantı yoluna geç</string>
+			</dict>
+		</dict>
+		<key>on ramp</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Bağlantı yoluna geç</string>
+				<key>destination</key>
+				<string>{destination} istikametine giden bağlantı yoluna geç</string>
+				<key>name</key>
+				<string>{way_name} üzerindeki bağlantı yoluna geç</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Soldaki bağlantı yoluna geç</string>
+				<key>destination</key>
+				<string>{destination} istikametine giden sol bağlantı yoluna geç</string>
+				<key>name</key>
+				<string>{way_name} üzerindeki sol bağlantı yoluna geç</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Sağdaki bağlantı yoluna geç</string>
+				<key>destination</key>
+				<string>{destination} istikametine giden sağ bağlantı yoluna geç</string>
+				<key>name</key>
+				<string>{way_name} üzerindeki sağ bağlantı yoluna geç</string>
+			</dict>
+			<key>sharp left</key>
+			<dict>
+				<key>default</key>
+				<string>Soldaki bağlantı yoluna geç</string>
+				<key>destination</key>
+				<string>{destination} istikametine giden sol bağlantı yoluna geç</string>
+				<key>name</key>
+				<string>{way_name} üzerindeki sol bağlantı yoluna geç</string>
+			</dict>
+			<key>sharp right</key>
+			<dict>
+				<key>default</key>
+				<string>Sağdaki bağlantı yoluna geç</string>
+				<key>destination</key>
+				<string>{destination} istikametine giden sağ bağlantı yoluna geç</string>
+				<key>name</key>
+				<string>{way_name} üzerindeki sağ bağlantı yoluna geç</string>
+			</dict>
+			<key>slight left</key>
+			<dict>
+				<key>default</key>
+				<string>Soldaki bağlantı yoluna geç</string>
+				<key>destination</key>
+				<string>{destination} istikametine giden sol bağlantı yoluna geç</string>
+				<key>name</key>
+				<string>{way_name} üzerindeki sol bağlantı yoluna geç</string>
+			</dict>
+			<key>slight right</key>
+			<dict>
+				<key>default</key>
+				<string>Sağdaki bağlantı yoluna geç</string>
+				<key>destination</key>
+				<string>{destination} istikametine giden sağ bağlantı yoluna geç</string>
+				<key>name</key>
+				<string>{way_name} üzerindeki sağ bağlantı yoluna geç</string>
+			</dict>
+		</dict>
+		<key>phrase</key>
+		<dict>
+			<key>name and ref</key>
+			<string>{name} ({ref})</string>
+			<key>one in distance</key>
+			<string>{distance} sonra, {instruction_one}</string>
+			<key>two linked</key>
+			<string>{instruction_one} ve sonra {instruction_two}</string>
+			<key>two linked by distance</key>
+			<string>{instruction_one} ve {distance} sonra {instruction_two}</string>
+		</dict>
+		<key>rotary</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<dict>
+					<key>default</key>
+					<string>Dönel kavşağa gir</string>
+					<key>destination</key>
+					<string>Dönel kavşağa gir ve {destination} istikametinde çık</string>
+					<key>name</key>
+					<string>Dönel kavşağa gir ve {way_name} üzerinde çık</string>
+				</dict>
+				<key>exit</key>
+				<dict>
+					<key>default</key>
+					<string>Dönel kavşağa gir ve {exit_number} numaralı çıkışa gir</string>
+					<key>destination</key>
+					<string>Dönel kavşağa gir ve {destination} istikametindeki {exit_number} numaralı çıkışa gir</string>
+					<key>name</key>
+					<string>Dönel kavşağa gir ve {way_name} üzerindeki {exit_number} numaralı çıkışa gir</string>
+				</dict>
+				<key>name</key>
+				<dict>
+					<key>default</key>
+					<string>{rotary_name} dönel kavşağa gir</string>
+					<key>destination</key>
+					<string>{rotary_name} dönel kavşağa gir ve {destination} istikametinde çık</string>
+					<key>name</key>
+					<string>{rotary_name} dönel kavşağa gir ve {way_name} üzerinde çık</string>
+				</dict>
+				<key>name_exit</key>
+				<dict>
+					<key>default</key>
+					<string>{rotary_name} dönel kavşağa gir ve {exit_number} numaralı çıkışa gir</string>
+					<key>destination</key>
+					<string>{rotary_name} dönel kavşağa gir ve {destination} istikametindeki {exit_number} numaralı çıkışa gir</string>
+					<key>name</key>
+					<string>{rotary_name} dönel kavşağa gir ve {way_name} üzerindeki {exit_number} numaralı çıkışa gir</string>
+				</dict>
+			</dict>
+		</dict>
+		<key>roundabout</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<dict>
+					<key>default</key>
+					<string>Göbekli kavşağa gir</string>
+					<key>destination</key>
+					<string>Göbekli kavşağa gir ve {destination} istikametinde çık</string>
+					<key>name</key>
+					<string>Göbekli kavşağa gir ve {way_name} üzerinde çık</string>
+				</dict>
+				<key>exit</key>
+				<dict>
+					<key>default</key>
+					<string>Göbekli kavşağa gir ve {exit_number} numaralı çıkışa gir</string>
+					<key>destination</key>
+					<string>Göbekli kavşağa gir ve {destination} istikametindeki {exit_number} numaralı çıkışa gir</string>
+					<key>name</key>
+					<string>Göbekli kavşağa gir ve {way_name} üzerindeki {exit_number} numaralı çıkışa gir</string>
+				</dict>
+			</dict>
+		</dict>
+		<key>roundabout turn</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>Göbekli kavşakta {modifier} yöne dön</string>
+				<key>destination</key>
+				<string>{destination} üzerindeki göbekli kavşakta {modifier} yöne dön</string>
+				<key>name</key>
+				<string>{way_name} üzerindeki göbekli kavşakta {modifier} yöne dön</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Göbekli kavşakta sola dön</string>
+				<key>destination</key>
+				<string>Göbekli kavşakta {destination} istikametinde sola dön</string>
+				<key>name</key>
+				<string>Göbekli kavşakta {way_name} üzerinde sola dön</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Göbekli kavşakta sağa dön</string>
+				<key>destination</key>
+				<string>Göbekli kavşakta {destination} üzerinde sağa dön</string>
+				<key>name</key>
+				<string>Göbekli kavşakta {way_name} üzerinde sağa dön</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Göbekli kavşakta düz devam et</string>
+				<key>destination</key>
+				<string>Göbekli kavşakta {destination} istikametinde düz devam et</string>
+				<key>name</key>
+				<string>Göbekli kavşakta {way_name} üzerinde düz devam et</string>
+			</dict>
+		</dict>
+		<key>turn</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>{modifier} yöne dön</string>
+				<key>destination</key>
+				<string>{destination} istikametinde {modifier} yöne dön</string>
+				<key>name</key>
+				<string>{way_name} üzerinde {modifier} yöne dön</string>
+			</dict>
+			<key>left</key>
+			<dict>
+				<key>default</key>
+				<string>Sola dönün</string>
+				<key>destination</key>
+				<string>{destination} istikametinde sola dön</string>
+				<key>name</key>
+				<string>{way_name} üzerinde sola dön</string>
+			</dict>
+			<key>right</key>
+			<dict>
+				<key>default</key>
+				<string>Sağa dönün</string>
+				<key>destination</key>
+				<string>{destination} istikametinde sağa dön</string>
+				<key>name</key>
+				<string>{way_name} üzerinde sağa dön</string>
+			</dict>
+			<key>straight</key>
+			<dict>
+				<key>default</key>
+				<string>Düz git</string>
+				<key>destination</key>
+				<string>{destination} istikametinde düz git</string>
+				<key>name</key>
+				<string>{way_name} üzerinde düz git</string>
+			</dict>
+		</dict>
+		<key>use lane</key>
+		<dict>
+			<key>default</key>
+			<dict>
+				<key>default</key>
+				<string>{lane_instruction}</string>
+			</dict>
+			<key>no_lanes</key>
+			<dict>
+				<key>default</key>
+				<string>Düz devam edin</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>
